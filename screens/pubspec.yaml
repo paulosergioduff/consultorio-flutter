@@ -90,7 +90,20 @@ flutter:
 
 assets:
      - imgs/icon.png
-  #       - asset: fonts/TrajanPro_Bold.ttf
+     - assets/images/
+     - assets/images/properties/
+     - assets/images/social_media/
+     - assets/images/Illustrations/
+     - assets/
+
+fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-ExtraLight.ttf
+        - asset: assets/fonts/Poppins-Light.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf
+        - asset: assets/fonts/Poppins-Regular.ttf
+       #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
   # For details regarding fonts from package dependencies,

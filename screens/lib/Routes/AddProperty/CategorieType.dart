@@ -1,4 +1,4 @@
-import 'package:airbnb_clone/Routes/AddProperty/Emplacement.dart';
+import 'package:screens/Routes/AddProperty/Emplacement.dart';
 import 'package:flutter/material.dart';
 
 import 'Quantitatif.dart';

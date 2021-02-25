@@ -1,8 +1,8 @@
 
-import 'package:airbnb_clone/Constants/Constants.dart';
-import 'package:airbnb_clone/Routes/Properties.dart';
+import 'package:screens/Constants/Constants.dart';
+import 'package:screens/Routes/Properties.dart';
 import 'package:flutter/material.dart';
-import 'package:airbnb_clone/flutter_counter.dart';
+import 'package:screens/flutter_counter.dart';
 import 'package:flutter_date_pickers/flutter_date_pickers.dart' as dp;
 
 class SearchScreen extends StatefulWidget {

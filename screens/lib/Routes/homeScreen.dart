@@ -1,6 +1,6 @@
-import 'package:airbnb_clone/Constants/Constants.dart';
-import 'package:airbnb_clone/Routes/Profile.dart';
-import 'package:airbnb_clone/Routes/SearchScreen.dart';
+import 'package:screens/Constants/Constants.dart';
+import 'package:screens/Routes/Profile.dart';
+import 'package:screens/Routes/SearchScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 void main()=>runApp(

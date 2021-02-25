@@ -1,4 +1,4 @@
-import 'package:airbnb_clone/Model/Address.dart';
+import 'package:screens/Model/Address.dart';
 
 abstract class Property {
   String _titre;

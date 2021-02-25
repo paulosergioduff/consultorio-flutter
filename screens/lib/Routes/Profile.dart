@@ -1,7 +1,7 @@
-import 'package:airbnb_clone/Constants/Constants.dart';
-import 'package:airbnb_clone/Model/Property.dart';
-import 'package:airbnb_clone/Routes/AddProperty.dart';
-import 'package:airbnb_clone/Routes/InfoPersonnel.dart';
+import 'package:screens/Constants/Constants.dart';
+import 'package:screens/Model/Property.dart';
+import 'package:screens/Routes/AddProperty.dart';
+import 'package:screens/Routes/InfoPersonnel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 void main()=>runApp(

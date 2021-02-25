@@ -1,5 +1,5 @@
-import 'package:airbnb_clone/Model/Address.dart';
-import 'package:airbnb_clone/Model/Property.dart';
+import 'package:screens/Model/Address.dart';
+import 'package:screens/Model/Property.dart';
 
 class Maison extends Property{
   bool endroitEntier;

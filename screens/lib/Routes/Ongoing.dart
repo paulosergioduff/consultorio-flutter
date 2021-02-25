@@ -1,6 +1,6 @@
-import 'package:airbnb_clone/Constants/Constants.dart';
-import 'package:airbnb_clone/Model/SliderModel.dart';
-import 'package:airbnb_clone/Routes/login.dart';
+import 'package:screens/Constants/Constants.dart';
+import 'package:screens/Model/SliderModel.dart';
+import 'package:screens/Routes/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

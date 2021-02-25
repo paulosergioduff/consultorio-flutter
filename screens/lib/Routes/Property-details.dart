@@ -1,10 +1,10 @@
-import 'package:airbnb_clone/Constants/Constants.dart';
-import 'package:airbnb_clone/Model/Property.dart';
-import 'package:airbnb_clone/Routes/BookingScreen.dart';
-import 'package:airbnb_clone/Routes/Payer.dart';
-import 'package:airbnb_clone/Widgets/commentsWidget.dart';
-import 'package:airbnb_clone/Routes/DescriptionDetails.dart';
-import 'package:airbnb_clone/Widgets/custom_slider_widget.dart';
+import 'package:screens/Constants/Constants.dart';
+import 'package:screens/Model/Property.dart';
+import 'package:screens/Routes/BookingScreen.dart';
+import 'package:screens/Routes/Payer.dart';
+import 'package:screens/Widgets/commentsWidget.dart';
+import 'package:screens/Routes/DescriptionDetails.dart';
+import 'package:screens/Widgets/custom_slider_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

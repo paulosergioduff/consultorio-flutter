@@ -1,7 +1,7 @@
-import 'package:airbnb_clone/Constants/Constants.dart';
-import 'package:airbnb_clone/Model/Property.dart';
-import 'package:airbnb_clone/Routes/Payer.dart';
-import 'package:airbnb_clone/Routes/Property-details.dart';
+import 'package:screens/Constants/Constants.dart';
+import 'package:screens/Model/Property.dart';
+import 'package:screens/Routes/Payer.dart';
+import 'package:screens/Routes/Property-details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slider_indicator/flutter_slider_indicator.dart';
 

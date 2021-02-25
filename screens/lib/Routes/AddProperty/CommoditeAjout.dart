@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import 'package:airbnb_clone/Routes/AddProperty/Photo.dart';
-import 'package:airbnb_clone/Widgets/CircleCheckBox.dart';
+import 'package:screens/Routes/AddProperty/Photo.dart';
+import 'package:screens/Widgets/CircleCheckBox.dart';
 import 'package:flutter/material.dart';
 class CommoditeAjout extends StatefulWidget {
   @override

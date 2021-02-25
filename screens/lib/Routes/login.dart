@@ -1,4 +1,4 @@
-import 'package:airbnb_clone/Constants/Constants.dart';
+import 'package:screens/Constants/Constants.dart';
 import 'package:flutter/material.dart';
 
 import 'HomePage.dart';
