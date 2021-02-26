@@ -5,13 +5,11 @@ import 'tela2.dart';
 import 'constants.dart';
 
 class MyHomePage extends StatefulWidget {
-
   @override
   _tela1 createState() => _tela1();
 }
 
 class _tela1 extends State<MyHomePage> {
-
   @override
   void initState() {
     super.initState();

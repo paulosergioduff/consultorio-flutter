@@ -24,7 +24,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: APP_NAME,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.purple,
+        primaryColor: const Color(0xFF9c27b0),
+        accentColor: const Color(0xFF9c27b0),
+        canvasColor: const Color(0xFFfafafa),
       ),
       home: Splash(),
     );
