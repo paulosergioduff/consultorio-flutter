@@ -7,23 +7,23 @@ import 'package:flutter/widgets.dart';
 
 //void main() => runApp(MyApp());
 
-class SecondRoute extends StatelessWidget {
+class ThirdRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Início da build do widget
     return Scaffold(
       // Aqui escolhemos uma estrutura de widget. Seja Scaffold ou material app (se for no início do app)
       appBar: AppBar(
-        title: Text("Second Route"),
+        title: Text("Third Route"),
       ),
       body: Center(
-          /* children: RaisedButton(
+        children: RaisedButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          child: Text('Voltar 33'),
-        ),*/
-          ),
+          child: Text('Voltar para tela 2'),
+        ),
+      ),
       drawer: Container(color: Colors.white),
     );
   }
