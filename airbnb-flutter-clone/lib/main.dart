@@ -15,7 +15,12 @@ import 'package:firebase_auth/firebase_auth.dart'; // Only needed if you configu
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_signin_button/button_builder.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  // Uncomment this to use the auth emulator for testing
+  // await FirebaseAuth.instance.useEmulator('http://localhost:9099');
+
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     systemNavigationBarColor: Colors.transparent, // navigation bar color
     statusBarColor: Color(0xAA00A699), // status bar color
