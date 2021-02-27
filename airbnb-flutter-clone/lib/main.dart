@@ -10,59 +10,34 @@ import 'package:airbnb_clone/Routes/HomePage.dart';
 import 'Constants/Constants.dart';
 import 'Routes/login.dart';
 
+// Dependencias para auth
+import 'package:firebase_auth/firebase_auth.dart'; // Only needed if you configure the Auth Emulator below
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_signin_button/button_builder.dart';
+
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    systemNavigationBarColor:Colors.transparent, // navigation bar color
+    systemNavigationBarColor: Colors.transparent, // navigation bar color
     statusBarColor: Color(0xAA00A699), // status bar color
   ));
-  runApp(
-  MaterialApp(
+  runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home : LoginPage(),
+    home: LoginPage(),
     theme: ThemeData(
-      appBarTheme: AppBarTheme(
-        color: Colors.white
-      ),
-      fontFamily: 'Poppins'
-    ),
-  )
-);
+        appBarTheme: AppBarTheme(color: Colors.white), fontFamily: 'Poppins'),
+  ));
 }
+
 class LoginPage extends StatefulWidget {
   @override
-
   _LoginPageState createState() => _LoginPageState();
 }
+
 class _LoginPageState extends State<LoginPage> {
-
-
   @override
   Widget build(BuildContext context) {
     return Ongoing();
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   /*  @override
     Widget build(BuildContext context) {
