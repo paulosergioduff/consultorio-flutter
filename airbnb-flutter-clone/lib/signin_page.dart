@@ -12,6 +12,10 @@ import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
+// Dependencias do front-end do clone
+import 'package:airbnb_clone/Constants/Constants.dart';
+import 'package:airbnb_clone/Routes/HomePage.dart';
+
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
 /// Entrypoint example for various sign-in flows with Firebase.
@@ -498,7 +502,8 @@ class _PhoneSignInSectionState extends State<_PhoneSignInSection> {
       final User user = (await _auth.signInWithCredential(credential)).user;
 
       widget._scaffold.showSnackBar(SnackBar(
-        content: Text('Successfully signed in UID: ${user.uid}'),
+        content: Text(
+            'Successfully signed in UID: ${user.uid}'), // Logando com rede social
       ));
     } catch (e) {
       print(e);
@@ -790,9 +795,15 @@ class _OtherProvidersSignInSectionState
         userCredential = await _auth.signInWithCredential(googleAuthCredential);
       }
 
+      Navigator.push(
+        // Muda de página
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+
       final user = userCredential.user;
       Scaffold.of(context).showSnackBar(SnackBar(
-        content: Text('Sign In ${user.uid} with Google'),
+        content: Text('Sign In ${user.uid} with Google'), // Logando com google
       ));
     } catch (e) {
       print(e);
