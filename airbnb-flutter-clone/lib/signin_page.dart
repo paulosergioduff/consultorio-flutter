@@ -799,7 +799,9 @@ class _OtherProvidersSignInSectionState
       Navigator.push(
         // Muda de página
         context,
-        MaterialPageRoute(builder: (context) => FilmList()),
+        MaterialPageRoute(
+            builder: (context) =>
+                MyApp()), // Nova tela após logado
       );
 
       final user = userCredential.user;
