@@ -15,7 +15,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 // Dependencias do front-end do clone
 import 'package:airbnb_clone/Constants/Constants.dart';
-import 'package:airbnb_clone/Routes/HomePage.dart';
+import 'firestore.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -799,7 +799,7 @@ class _OtherProvidersSignInSectionState
       Navigator.push(
         // Muda de página
         context,
-        MaterialPageRoute(builder: (context) => HomePage()),
+        MaterialPageRoute(builder: (context) => FilmList()),
       );
 
       final user = userCredential.user;
