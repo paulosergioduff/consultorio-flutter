@@ -1,34 +1,37 @@
-// Copyright 2020 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'tela2.dart';
 
-// @dart=2.9
+import 'constants.dart';
 
-//import 'package:firebase_auth/firebase_auth.dart'; // Only needed if you configure the Auth Emulator below
+//Importação de dependencias de formulário
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_builder.dart';
 
 import './register_page.dart';
 import './signin_page.dart';
+// formulário acima
 
-/// The entry point of the application.
-///
-/// Returns a [MaterialApp].
-class AuthExampleApp extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  _tela1 createState() => _tela1();
+}
+
+class _tela1 extends State<MyHomePage> {
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Consultório Beta',
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-        primaryColor: const Color(0xFF9c27b0),
-        accentColor: const Color(0xFF9c27b0),
-        canvasColor: const Color(0xFFfafafa),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(APP_NAME),
       ),
-      home: Scaffold(
-        body: AuthTypeSelector(),
-      ),
+      body: AuthTypeSelector(),
     );
   }
 }
