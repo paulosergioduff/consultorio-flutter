@@ -801,7 +801,7 @@ class _OtherProvidersSignInSectionState
         context,
         MaterialPageRoute(
             builder: (context) =>
-                AddUser("Paulo", "casa", 43)), // Nova tela após logado
+                DeleteDoc("7EvaKQA6c8C2YuIEZPIJ")), // Nova tela após logado
       );
 
       final user = userCredential.user;

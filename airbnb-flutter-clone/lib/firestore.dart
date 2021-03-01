@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // Import the firebase_core and cloud_firestore plugin
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AddUser extends StatelessWidget {
@@ -40,6 +40,37 @@ class AddUser extends StatelessWidget {
   }
 }
 
+class NewDocument extends StatelessWidget {
+  final String documentId;
+
+  NewDocument(this.documentId);
+
+  @override
+  Widget build(BuildContext context) {
+    // Create a CollectionReference called users that references the firestore collection
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+    Future<void> newDocument() {
+      // Call the user's CollectionReference to add a new user
+
+      // Area de operação de CRUD (ABAIXO) <-- Verificar XRUD note
+      return users
+          .doc(documentId)
+          .set({'full_name': "Mary Jane", 'age': 18})
+          .then((value) => print("User Added"))
+          .catchError((error) => print("Failed to add user: $error"));
+      // Area de operação CRUD (ACIMA) <-- Verificar XRUD note
+    }
+
+    return TextButton(
+      onPressed: newDocument,
+      child: Text(
+        "Add User",
+      ),
+    );
+  }
+}
+
 class GetUserName extends StatelessWidget {
   final String documentId;
 
@@ -64,6 +95,37 @@ class GetUserName extends StatelessWidget {
 
         return Text("loading");
       },
+    );
+  }
+}
+
+class DeleteDoc extends StatelessWidget {
+  final String documentId;
+
+  DeleteDoc(this.documentId);
+
+  @override
+  Widget build(BuildContext context) {
+    // Create a CollectionReference called users that references the firestore collection
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+    Future<void> deleteDoc() {
+      // Call the user's CollectionReference to add a new user
+
+      // Area de operação de CRUD (ABAIXO) <-- Verificar XRUD note
+      return users
+          .doc(documentId)
+          .delete()
+          .then((value) => print("User Deleted"))
+          .catchError((error) => print("Failed to delete user: $error"));
+      // Area de operação CRUD (ACIMA) <-- Verificar XRUD note
+    }
+
+    return TextButton(
+      onPressed: deleteDoc,
+      child: Text(
+        "Add User",
+      ),
     );
   }
 }
