@@ -801,7 +801,7 @@ class _OtherProvidersSignInSectionState
         context,
         MaterialPageRoute(
             builder: (context) =>
-                MyApp()), // Nova tela após logado
+                AddUser("Paulo", "casa", 43)), // Nova tela após logado
       );
 
       final user = userCredential.user;
