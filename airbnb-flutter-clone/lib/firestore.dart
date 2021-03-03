@@ -4,6 +4,47 @@ import 'package:flutter/material.dart';
 //import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  //await Firebase.initializeApp();
+  // Uncomment this to use the auth emulator for testing
+  // await FirebaseAuth.instance.useEmulator('http://localhost:9099');
+  runApp(TelaPadrao());
+}
+
+class TelaPadrao extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      title: 'Generated App',
+      theme: new ThemeData(
+        primarySwatch: Colors.blue,
+        primaryColor: const Color(0xFF2196f3),
+        accentColor: const Color(0xFF2196f3),
+        canvasColor: const Color(0xFFfafafa),
+      ),
+      home: new MinhaHome(),
+    );
+  }
+}
+
+class MinhaHome extends StatefulWidget {
+  MinhaHome({Key key}) : super(key: key);
+  @override
+  _MinhaHomeState createState() => new _MinhaHomeState();
+}
+
+class _MinhaHomeState extends State<MinhaHome> {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('App Name'),
+      ),
+    );
+  }
+}
+
 class AddUser extends StatelessWidget {
   final String fullName;
   final String company;

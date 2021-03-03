@@ -800,8 +800,7 @@ class _OtherProvidersSignInSectionState
         // Muda de página
         context,
         MaterialPageRoute(
-            builder: (context) =>
-                DeleteDoc("7EvaKQA6c8C2YuIEZPIJ")), // Nova tela após logado
+            builder: (context) => MinhaHome()), // Nova tela após logado
       );
 
       final user = userCredential.user;
