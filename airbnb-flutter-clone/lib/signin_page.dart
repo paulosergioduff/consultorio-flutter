@@ -6,6 +6,14 @@
 
 // ignore_for_file: deprecated_member_use
 
+import 'dart:ui';
+import 'package:airbnb_clone/Routes/Ongoing.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
+
+import 'package:airbnb_clone/Routes/HomePage.dart';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
@@ -128,7 +136,7 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
                   alignment: Alignment.center,
                   child: SignInButton(
                     Buttons.Email,
-                    text: 'Sign In',
+                    text: 'Entrar',
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         await _signInWithEmailAndPassword();
@@ -215,7 +223,7 @@ class _EmailLinkSignInSectionState extends State<_EmailLinkSignInSection> {
                 alignment: Alignment.center,
                 child: SignInButtonBuilder(
                   icon: Icons.insert_link,
-                  text: 'Sign In',
+                  text: 'Entrar',
                   backgroundColor: Colors.blueGrey[700],
                   onPressed: () async {
                     await _signInWithEmailAndLink();
@@ -289,7 +297,7 @@ class _AnonymouslySignInSectionState extends State<_AnonymouslySignInSection> {
               padding: const EdgeInsets.only(top: 16),
               alignment: Alignment.center,
               child: SignInButtonBuilder(
-                text: 'Sign In',
+                text: 'Entrar',
                 icon: Icons.person_outline,
                 backgroundColor: Colors.deepPurple,
                 onPressed: _signInAnonymously,
@@ -424,7 +432,7 @@ class _PhoneSignInSectionState extends State<_PhoneSignInSection> {
                 icon: Icons.phone,
                 backgroundColor: Colors.deepOrangeAccent[400],
                 onPressed: _signInWithPhoneNumber,
-                text: 'Sign In',
+                text: 'Entrar',
               ),
             ),
             Visibility(
@@ -534,7 +542,7 @@ class _OtherProvidersSignInSectionState
   int _selection = 0;
   bool _showAuthSecretTextField = false;
   bool _showProviderTokenField = true;
-  String _provider = 'GitHub';
+  String _provider = 'Google';
 
   @override
   Widget build(BuildContext context) {
@@ -629,7 +637,7 @@ class _OtherProvidersSignInSectionState
                           : (_provider == 'Twitter'
                               ? Buttons.Twitter
                               : Buttons.GoogleDark)),
-                  text: 'Sign In',
+                  text: 'Entrar',
                   onPressed: () async {
                     _signInWithOtherProvider();
                   },
@@ -801,7 +809,8 @@ class _OtherProvidersSignInSectionState
         // Muda de página
         context,
         MaterialPageRoute(
-            builder: (context) => MyHomePage()), // Nova tela após logado
+            builder: (context) =>
+                HomePage()), //  MyHomePage()), // Nova tela após logado
       );
 
       final user = userCredential.user;
