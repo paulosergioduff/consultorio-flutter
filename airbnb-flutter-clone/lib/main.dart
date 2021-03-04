@@ -18,7 +18,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 
-void main() => runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  // Uncomment this to use the auth emulator for testing
+  // await FirebaseAuth.instance.useEmulator('http://localhost:9099');
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -56,7 +62,7 @@ Widget _introScreen() {
         gradientBackground: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
-          colors: [Color(0xffED213A), Color(0xff93291E)],
+          colors: [Colors.grey[50]],
         ),
         navigateAfterSeconds: HomeScreen(),
         loaderColor: Colors.transparent,
