@@ -4,15 +4,11 @@ import 'package:flutter/material.dart';
 //import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  //await Firebase.initializeApp();
-  // Uncomment this to use the auth emulator for testing
-  // await FirebaseAuth.instance.useEmulator('http://localhost:9099');
-  runApp(TelaPadrao());
+void main() {
+  runApp(new MyApp());
 }
 
-class TelaPadrao extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -23,25 +19,41 @@ class TelaPadrao extends StatelessWidget {
         accentColor: const Color(0xFF2196f3),
         canvasColor: const Color(0xFFfafafa),
       ),
-      home: new MinhaHome(),
+      home: new MyHomePage(),
     );
   }
 }
 
-class MinhaHome extends StatefulWidget {
-  MinhaHome({Key key}) : super(key: key);
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key}) : super(key: key);
   @override
-  _MinhaHomeState createState() => new _MinhaHomeState();
+  _MyHomePageState createState() => new _MyHomePageState();
 }
 
-class _MinhaHomeState extends State<MinhaHome> {
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('App Name'),
       ),
+      body: new RaisedButton(
+          key: null,
+          onPressed: buttonPressed,
+          color: const Color(0xFFe0e0e0),
+          child: new Text(
+            "BUTTON 1",
+            style: new TextStyle(
+                fontSize: 12.0,
+                color: const Color(0xFF000000),
+                fontWeight: FontWeight.w200,
+                fontFamily: "Roboto"),
+          )),
     );
+  }
+
+  void buttonPressed() {
+    runApp(NewDocument('new-doc'));
   }
 }
 

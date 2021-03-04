@@ -63,9 +63,9 @@ class _SignInPageState extends State<SignInPage> {
           padding: const EdgeInsets.all(8),
           children: <Widget>[
             _EmailPasswordForm(),
-            _EmailLinkSignInSection(),
-            _AnonymouslySignInSection(),
-            _PhoneSignInSection(Scaffold.of(context)),
+            //_EmailLinkSignInSection(),
+            //_AnonymouslySignInSection(),
+            //_PhoneSignInSection(Scaffold.of(context)),
             _OtherProvidersSignInSection(),
           ],
         );
@@ -563,14 +563,14 @@ class _OtherProvidersSignInSectionState
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    ListTile(
+                    /*ListTile(
                       title: const Text('GitHub'),
                       leading: Radio<int>(
                         value: 0,
                         groupValue: _selection,
                         onChanged: _handleRadioButtonSelected,
                       ),
-                    ),
+                    ),*/
                     Visibility(
                       visible: !kIsWeb,
                       child: ListTile(
@@ -582,14 +582,14 @@ class _OtherProvidersSignInSectionState
                         ),
                       ),
                     ),
-                    ListTile(
+                    /*ListTile(
                       title: const Text('Twitter'),
                       leading: Radio<int>(
                         value: 2,
                         groupValue: _selection,
                         onChanged: _handleRadioButtonSelected,
                       ),
-                    ),
+                    ),*/
                     ListTile(
                       title: const Text('Google'),
                       leading: Radio<int>(
@@ -800,7 +800,7 @@ class _OtherProvidersSignInSectionState
         // Muda de página
         context,
         MaterialPageRoute(
-            builder: (context) => MinhaHome()), // Nova tela após logado
+            builder: (context) => MyHomePage()), // Nova tela após logado
       );
 
       final user = userCredential.user;
