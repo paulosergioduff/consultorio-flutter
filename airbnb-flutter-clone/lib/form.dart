@@ -46,7 +46,7 @@ class AuthTypeSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Firebase Example App'),
+        title: const Text('Consultório - Locações'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,7 +57,7 @@ class AuthTypeSelector extends StatelessWidget {
             child: SignInButtonBuilder(
               icon: Icons.person_add,
               backgroundColor: Colors.indigo,
-              text: 'Registration',
+              text: 'Cadastre-se',
               onPressed: () => _pushPage(context, RegisterPage()),
             ),
           ),
@@ -67,7 +67,7 @@ class AuthTypeSelector extends StatelessWidget {
             child: SignInButtonBuilder(
               icon: Icons.verified_user,
               backgroundColor: Colors.orange,
-              text: 'Sign In',
+              text: 'Entrar',
               onPressed: () => _pushPage(context, SignInPage()),
             ),
           ),

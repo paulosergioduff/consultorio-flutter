@@ -22,7 +22,7 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
 /// Entrypoint example for various sign-in flows with Firebase.
 class SignInPage extends StatefulWidget {
   /// The page title.
-  final String title = 'Sign In & Out';
+  final String title = 'Autentificação';
 
   @override
   State<StatefulWidget> createState() => _SignInPageState();
@@ -42,7 +42,7 @@ class _SignInPageState extends State<SignInPage> {
                 final User user = _auth.currentUser;
                 if (user == null) {
                   Scaffold.of(context).showSnackBar(const SnackBar(
-                    content: Text('No one has signed in.'),
+                    content: Text('Usuário ainda não foi logado'),
                   ));
                   return;
                 }
@@ -50,10 +50,10 @@ class _SignInPageState extends State<SignInPage> {
 
                 final String uid = user.uid;
                 Scaffold.of(context).showSnackBar(SnackBar(
-                  content: Text('$uid has successfully signed out.'),
+                  content: Text('$uid Foi deslogado com sucesso'),
                 ));
               },
-              child: const Text('Sign out'),
+              child: const Text('Sair'),
             );
           })
         ],
@@ -102,7 +102,7 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
                 Container(
                   alignment: Alignment.center,
                   child: const Text(
-                    'Sign in with email and password',
+                    'Entre usando email e senha',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -110,15 +110,15 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
                   controller: _emailController,
                   decoration: const InputDecoration(labelText: 'Email'),
                   validator: (String value) {
-                    if (value.isEmpty) return 'Please enter some text';
+                    if (value.isEmpty) return 'Falta informar o email';
                     return null;
                   },
                 ),
                 TextFormField(
                   controller: _passwordController,
-                  decoration: const InputDecoration(labelText: 'Password'),
+                  decoration: const InputDecoration(labelText: 'Senha'),
                   validator: (String value) {
-                    if (value.isEmpty) return 'Please enter some text';
+                    if (value.isEmpty) return 'Falta informar a senha';
                     return null;
                   },
                   obscureText: true,
@@ -166,7 +166,8 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
     } catch (e) {
       Scaffold.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Failed to sign in with Email & Password'),
+          content: Text(
+              'Falha ao tentar logar com email e senha. Verifique as credenciais.'),
         ),
       );
     }
@@ -247,14 +248,15 @@ class _EmailLinkSignInSectionState extends State<_EmailLinkSignInSection> {
 
       Scaffold.of(context).showSnackBar(
         SnackBar(
-          content: Text('An email has been sent to $_userEmail'),
+          content: Text(
+              'Um email foi enviado para $_userEmail . Verifique sua caisa de email!'),
         ),
       );
     } catch (e) {
       print(e);
       Scaffold.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Sending email failed'),
+          content: Text('Falha no envio do email'),
         ),
       );
     }
@@ -544,7 +546,7 @@ class _OtherProvidersSignInSectionState
             children: <Widget>[
               Container(
                 alignment: Alignment.center,
-                child: const Text('Social Authentication',
+                child: const Text('Entre usando conta Google ou Facebook',
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ),
               Container(
@@ -554,8 +556,7 @@ class _OtherProvidersSignInSectionState
                     ? const Text(
                         'When using Flutter Web, API keys are configured through the Firebase Console. The below providers demonstrate how this works')
                     : const Text(
-                        'We do not provide an API to obtain the token for below providers apart from Google '
-                        'Please use a third party service to obtain token for other providers.'),
+                        'Clique na opção abaixo para logar conta Google ou Facebook.'),
               ),
               Container(
                 padding: const EdgeInsets.only(top: 16),
@@ -601,7 +602,7 @@ class _OtherProvidersSignInSectionState
                   ],
                 ),
               ),
-              Visibility(
+              /*Visibility(
                 visible: _showProviderTokenField && !kIsWeb,
                 child: TextField(
                   controller: _tokenController,
@@ -616,7 +617,7 @@ class _OtherProvidersSignInSectionState
                   decoration: const InputDecoration(
                       labelText: "Enter provider's authTokenSecret"),
                 ),
-              ),
+              ),*/
               Container(
                 padding: const EdgeInsets.only(top: 16),
                 alignment: Alignment.center,

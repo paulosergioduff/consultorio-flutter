@@ -13,7 +13,7 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
 /// Entrypoint example for registering via Email/Password.
 class RegisterPage extends StatefulWidget {
   /// The page title.
-  final String title = 'Registration';
+  final String title = 'Cadastro';
 
   @override
   State<StatefulWidget> createState() => _RegisterPageState();
@@ -46,17 +46,17 @@ class _RegisterPageState extends State<RegisterPage> {
                     decoration: const InputDecoration(labelText: 'Email'),
                     validator: (String value) {
                       if (value.isEmpty) {
-                        return 'Please enter some text';
+                        return 'Por favor, insira o email';
                       }
                       return null;
                     },
                   ),
                   TextFormField(
                     controller: _passwordController,
-                    decoration: const InputDecoration(labelText: 'Password'),
+                    decoration: const InputDecoration(labelText: 'Senha'),
                     validator: (String value) {
                       if (value.isEmpty) {
-                        return 'Please enter some text';
+                        return 'Por favor, insira a senha';
                       }
                       return null;
                     },
@@ -73,7 +73,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           await _register();
                         }
                       },
-                      text: 'Register',
+                      text: 'Cadastro',
                     ),
                   ),
                   Container(
@@ -81,8 +81,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: Text(_success == null
                         ? ''
                         : (_success
-                            ? 'Successfully registered $_userEmail'
-                            : 'Registration failed')),
+                            ? 'Cadastro feito com sucesso para o email $_userEmail'
+                            : 'O cadastro falhou!')),
                   )
                 ],
               ),
