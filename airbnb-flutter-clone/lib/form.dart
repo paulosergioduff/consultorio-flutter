@@ -15,7 +15,7 @@ import './signin_page.dart';
 /// The entry point of the application.
 ///
 /// Returns a [MaterialApp].
-class AuthExampleApp extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

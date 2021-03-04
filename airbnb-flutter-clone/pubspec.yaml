@@ -28,6 +28,8 @@ dependencies:
   flutter_signin_button: ^1.0.0
   google_sign_in: ^4.5.9
   cloud_firestore: ^0.16.0+1
+  splashscreen: ^1.2.0
+
 
 
 
@@ -68,7 +70,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-     - assets/images/
+     - assets/logo.png
      - assets/images/properties/
      - assets/images/social_media/
      - assets/images/Illustrations/
