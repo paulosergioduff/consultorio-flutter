@@ -8,30 +8,17 @@
   "client": [
     {
       "client_info": {
-<<<<<<< HEAD
         "mobilesdk_app_id": "1:1098940546944:android:9fde6147f36f8d4fc1cb65",
         "android_client_info": {
           "package_name": "br.psd.rj.sublocacoes"
-=======
-        "mobilesdk_app_id": "1:1098940546944:android:e9debe5e78c7531dc1cb65",
-        "android_client_info": {
-          "package_name": "bmitech.sub_locacoes"
->>>>>>> 3e0cba80b83cbdc025d6f24f6ee28dc528ee183b
         }
       },
       "oauth_client": [
         {
-<<<<<<< HEAD
           "client_id": "1098940546944-rq10qi7u07l61kn1pub1ibs5j5dqh98o.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "br.psd.rj.sublocacoes",
-=======
-          "client_id": "1098940546944-u8afes2g35kmo9lppsu749qkmv69ct2e.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "bmitech.sub_locacoes",
->>>>>>> 3e0cba80b83cbdc025d6f24f6ee28dc528ee183b
             "certificate_hash": "8a8a1305a19b89012a7d67a1ce135972409f1468"
           }
         },
