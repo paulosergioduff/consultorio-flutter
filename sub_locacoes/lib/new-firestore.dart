@@ -25,13 +25,13 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyCRUDPage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class MyCRUDPage extends StatefulWidget {
+  MyCRUDPage({Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -45,12 +45,15 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyCRUDPageState createState() => _MyCRUDPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyCRUDPageState extends State<MyCRUDPage> {
   int _counter = 0;
 
+  //_counter++;
+  //setState(())
+/*
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -60,6 +63,19 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+  }*/
+//Fonte: https://medium.com/flutterdevs/using-firebase-firestore-in-flutter-b0ea2c62bc7
+  Future<void> _incrementCounter() async {
+    setState(() {
+      _counter++;
+    });
+
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc("finalmente")
+        .set({'full_name': "Mary Jane", 'age': 18})
+        .then((value) => print("User Added"))
+        .catchError((error) => print("Failed to add user: $error"));
   }
 
   @override
@@ -72,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
+        // Here we take the value from the MyCRUDPage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
