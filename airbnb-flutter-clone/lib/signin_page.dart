@@ -7,12 +7,12 @@
 // ignore_for_file: deprecated_member_use
 
 import 'dart:ui';
-import 'package:airbnb_clone/Routes/Ongoing.dart';
+import 'package:sub_locacoes/Routes/Ongoing.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
-import 'package:airbnb_clone/Routes/HomePage.dart';
+import 'package:sub_locacoes/Routes/HomePage.dart';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -22,7 +22,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 // Dependencias do front-end do clone
-import 'package:airbnb_clone/Constants/Constants.dart';
+import 'package:sub_locacoes/Constants/Constants.dart';
 import 'firestore.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;

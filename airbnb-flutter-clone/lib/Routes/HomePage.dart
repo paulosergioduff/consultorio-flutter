@@ -1,9 +1,9 @@
-import 'package:airbnb_clone/Constants/Constants.dart';
-import 'package:airbnb_clone/Routes/AddProperty.dart';
-import 'package:airbnb_clone/Routes/Profile.dart';
-import 'package:airbnb_clone/Routes/Messages.dart';
-import 'package:airbnb_clone/Routes/Properties.dart';
-import 'package:airbnb_clone/Routes/homeScreen.dart';
+import 'package:sub_locacoes/Constants/Constants.dart';
+import 'package:sub_locacoes/Routes/AddProperty.dart';
+import 'package:sub_locacoes/Routes/Profile.dart';
+import 'package:sub_locacoes/Routes/Messages.dart';
+import 'package:sub_locacoes/Routes/Properties.dart';
+import 'package:sub_locacoes/Routes/homeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

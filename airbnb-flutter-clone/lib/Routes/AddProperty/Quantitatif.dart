@@ -1,4 +1,4 @@
-import 'package:airbnb_clone/flutter_counter.dart';
+import 'package:sub_locacoes/flutter_counter.dart';
 import 'package:flutter/material.dart';
 
 class Quantitatif extends StatefulWidget {

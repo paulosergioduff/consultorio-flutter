@@ -1,7 +1,7 @@
-import 'package:airbnb_clone/Constants/Constants.dart';
-import 'package:airbnb_clone/Model/Wilaya.dart';
-import 'package:airbnb_clone/Routes/Profile.dart';
-import 'package:airbnb_clone/Routes/Properties1.dart';
+import 'package:sub_locacoes/Constants/Constants.dart';
+import 'package:sub_locacoes/Model/Wilaya.dart';
+import 'package:sub_locacoes/Routes/Profile.dart';
+import 'package:sub_locacoes/Routes/Properties1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

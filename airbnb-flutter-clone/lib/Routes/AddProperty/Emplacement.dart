@@ -1,6 +1,6 @@
-import 'package:airbnb_clone/Model/Property.dart';
-import 'package:airbnb_clone/Routes/AddProperty/CommoditeAjout.dart';
-import 'package:airbnb_clone/flutter_counter.dart';
+import 'package:sub_locacoes/Model/Property.dart';
+import 'package:sub_locacoes/Routes/AddProperty/CommoditeAjout.dart';
+import 'package:sub_locacoes/flutter_counter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
