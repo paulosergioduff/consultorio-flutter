@@ -49,7 +49,11 @@ dev_dependencies:
   google_maps_flutter: ^2.0.1
   syncfusion_flutter_datepicker: ^18.4.46-beta
   flutter_date_pickers: ^0.1.10
-  date_range_picker: ^1.0.6
+  #date_range_picker: ^1.0.6 # problemas com desenvolvimento
+  #Issue do problema: https://github.com/danvick/flutter_form_builder/issues/698
+  date_range_picker:
+    git:
+      url: https://github.com/LempereurBenjamin/date_range_picker
   flutter_launcher_icons: ^0.9.0
 
   #Toddos os pacotes importados
