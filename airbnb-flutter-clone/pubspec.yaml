@@ -1,4 +1,4 @@
-name: airbnb_clone
+name: sub_locacoes
 description: air bnb clone 
 
 # The following line prevents the package from being accidentally published to
@@ -23,8 +23,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  intl_translation: any
+  intl: any
+  firebase_auth: ^0.20.0+1
   firebase_core: ^0.7.0
-  firebase_auth: ^0.20.1
   flutter_signin_button: ^1.0.0
   google_sign_in: ^4.5.9
   cloud_firestore: ^0.16.0+1

@@ -1,10 +1,10 @@
 import 'dart:ui';
 
-import 'package:airbnb_clone/Model/Address.dart';
-import 'package:airbnb_clone/Model/Hotel.dart';
-import 'package:airbnb_clone/Model/Property.dart';
-import 'package:airbnb_clone/Model/Wilaya.dart';
-import 'package:airbnb_clone/Model/Appartement.dart';
+import 'package:sub_locacoes/Model/Address.dart';
+import 'package:sub_locacoes/Model/Hotel.dart';
+import 'package:sub_locacoes/Model/Property.dart';
+import 'package:sub_locacoes/Model/Wilaya.dart';
+import 'package:sub_locacoes/Model/Appartement.dart';
 class Constants {
 
   static List<Property> properties=[

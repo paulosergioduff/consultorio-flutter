@@ -1,13 +1,13 @@
 
-import 'package:airbnb_clone/Routes/AddProperty/CategorieType.dart';
-import 'package:airbnb_clone/Routes/Map.dart';
-import 'package:airbnb_clone/Widgets/ItemDropDownButtonCategory.dart';
+import 'package:sub_locacoes/Routes/AddProperty/CategorieType.dart';
+import 'package:sub_locacoes/Routes/Map.dart';
+import 'package:sub_locacoes/Widgets/ItemDropDownButtonCategory.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 
-import 'package:airbnb_clone/Routes/HomePage.dart';
+import 'package:sub_locacoes/Routes/HomePage.dart';
 
 void main() => runApp(
   MaterialApp(

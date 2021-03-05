@@ -1,6 +1,6 @@
-import 'package:airbnb_clone/Model/Property.dart';
-import 'package:airbnb_clone/Routes/BookingScreen.dart';
-import 'package:airbnb_clone/Routes/Profile.dart';
+import 'package:sub_locacoes/Model/Property.dart';
+import 'package:sub_locacoes/Routes/BookingScreen.dart';
+import 'package:sub_locacoes/Routes/Profile.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 class CustomSliderWidget extends StatefulWidget {

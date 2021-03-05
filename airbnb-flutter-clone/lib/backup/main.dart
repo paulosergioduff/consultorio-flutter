@@ -1,11 +1,11 @@
 import 'dart:ui';
-import 'package:airbnb_clone/Routes/Ongoing.dart';
+import 'package:sub_locacoes/Routes/Ongoing.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
-import 'package:airbnb_clone/Routes/HomePage.dart';
+import 'package:sub_locacoes/Routes/HomePage.dart';
 
 import 'Constants/Constants.dart';
 import 'Routes/login.dart';

@@ -1,4 +1,4 @@
-package bmitech.airbnb_clone;
+package bmitech.sub_locacoes;
 
 import io.flutter.embedding.android.FlutterActivity;
 

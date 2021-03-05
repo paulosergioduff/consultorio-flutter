@@ -1,5 +1,5 @@
-import 'package:airbnb_clone/Model/Property.dart';
-import 'package:airbnb_clone/Model/Address.dart';
+import 'package:sub_locacoes/Model/Property.dart';
+import 'package:sub_locacoes/Model/Address.dart';
 
 class Chambre extends Property{
   bool sanitairePrive;

@@ -1,5 +1,5 @@
-import 'package:airbnb_clone/Constants/Constants.dart';
-import 'package:airbnb_clone/Model/Property.dart';
+import 'package:sub_locacoes/Constants/Constants.dart';
+import 'package:sub_locacoes/Model/Property.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 void main()=>runApp(
