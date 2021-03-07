@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sub_locacoes/xrud.dart';
 
 void main() {
   runApp(MyApp()); //Enviando commit
@@ -50,6 +51,7 @@ class MyCRUDPage extends StatefulWidget {
 
 class _MyCRUDPageState extends State<MyCRUDPage> {
   int _counter = 0;
+  String menssage;
 
   //_counter++;
   //setState(())
@@ -65,17 +67,16 @@ class _MyCRUDPageState extends State<MyCRUDPage> {
     });
   }*/
 //Fonte: https://medium.com/flutterdevs/using-firebase-firestore-in-flutter-b0ea2c62bc7
-  Future<void> _incrementCounter() async {
+  Future<String> _incrementCounter() async {
     setState(() {
       _counter++;
+      //print(XrudRead("users", "global-function"));
     });
 
-    await FirebaseFirestore.instance
-        .collection("users")
-        .doc("finalmente")
-        .set({'full_name': "Mary Jane", 'age': 18})
-        .then((value) => print("User Added"))
-        .catchError((error) => print("Failed to add user: $error"));
+    Map<String, Object> dados = {'full_name': "Mary novidade", 'age': 18};
+    //XrudSend("users", "global-function", dados);
+    //XrudDelete("users", "global-function");
+    ReadDemo("users", "global-function");
   }
 
   @override
@@ -93,23 +94,7 @@ class _MyCRUDPageState extends State<MyCRUDPage> {
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(

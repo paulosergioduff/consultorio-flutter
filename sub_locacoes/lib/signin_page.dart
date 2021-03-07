@@ -1,11 +1,3 @@
-// Copyright 2020 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-// @dart=2.9
-
-// ignore_for_file: deprecated_member_use
-
 import 'dart:ui';
 import 'package:sub_locacoes/Routes/Ongoing.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,7 +15,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 // Dependencias do front-end do clone
 import 'package:sub_locacoes/Constants/Constants.dart';
-import 'new-firestore.dart';
+import 'read-demo.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -810,7 +802,7 @@ class _OtherProvidersSignInSectionState
         context,
         MaterialPageRoute(
             builder: (context) =>
-                MyCRUDPage()), //  MyHomePage()), // Nova tela após logado
+                MyBlackScreen()), //  MyHomePage()), // Nova tela após logado
       );
 
       final user = userCredential.user;
