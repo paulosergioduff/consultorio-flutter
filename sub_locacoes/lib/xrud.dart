@@ -21,34 +21,15 @@ Future<void> XrudDelete(collection, document) async {
       .catchError((error) => print("Failed to add user: $error"));*/
 }
 
-class ReadDemo extends StatelessWidget {
-  final String documentId;
-  final String collection;
-
-  ReadDemo(this.collection, this.documentId);
-
-  @override
-  Widget build(BuildContext context) {
-    CollectionReference users =
-        FirebaseFirestore.instance.collection(collection);
-
-    return FutureBuilder<DocumentSnapshot>(
-      future: users.doc(documentId).get(),
-      builder:
-          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-        if (snapshot.hasError) {
-          return Text("Something went wrong");
-        }
-
-        if (snapshot.connectionState == ConnectionState.done) {
-          Map<String, dynamic> data = snapshot.data.data();
-          return Text("Full Name: ${data['full_name']} age: ${data['age']}");
-        }
-
-        return Text("loading");
-      },
-    );
-  }
+Future<dynamic> XrudRead(collection, document) async {
+  await FirebaseFirestore.instance
+      .collection(collection)
+      .doc(document)
+      .get()
+      .then((DocumentSnapshot ds) {
+    //String username = ds["name"];
+    return ds;
+  });
 }
 
 
