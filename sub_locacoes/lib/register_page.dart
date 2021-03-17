@@ -62,6 +62,26 @@ class _RegisterPageState extends State<RegisterPage> {
                     },
                     obscureText: true,
                   ),
+                  TextFormField(
+                    //controller: _emailController,
+                    decoration: const InputDecoration(labelText: 'Atividade'),
+                    validator: (String value) {
+                      if (value.isEmpty) {
+                        return 'Por favor, insira a atividade';
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    //controller: _emailController,
+                    decoration: const InputDecoration(labelText: 'Novo campo'),
+                    validator: (String value) {
+                      if (value.isEmpty) {
+                        return 'Por favor, insira o novo campo';
+                      }
+                      return null;
+                    },
+                  ),
                   Container(
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     alignment: Alignment.center,
