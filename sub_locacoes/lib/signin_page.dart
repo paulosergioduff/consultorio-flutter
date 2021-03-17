@@ -67,7 +67,7 @@ class _SignInPageState extends State<SignInPage> {
             //_EmailLinkSignInSection(),
             //_AnonymouslySignInSection(),
             //_PhoneSignInSection(Scaffold.of(context)),
-            _OtherProvidersSignInSection(),
+            //_OtherProvidersSignInSection(),
           ],
         );
       }),
@@ -161,8 +161,16 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
 
       Scaffold.of(context).showSnackBar(
         SnackBar(
-          content: Text('${user.email} signed in'),
+          content: Text('${user.email} Logado'),
         ),
+      );
+
+      Navigator.push(
+        // Muda de página
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                MyCRUDPage()), //  MyHomePage()), // Nova tela após logado
       );
     } catch (e) {
       Scaffold.of(context).showSnackBar(
