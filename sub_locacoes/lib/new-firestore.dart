@@ -75,8 +75,8 @@ class _MyCRUDPageState extends State<MyCRUDPage> {
 
     Map<String, Object> dados = {'full_name': "Mary novidade", 'age': 18};
     //XrudSend("users", "global-function", dados);
-    //XrudDelete("users", "global-function");
-    ReadDemo("users", "global-function");
+    XrudDelete("users", "global-function");
+    //ReadDemo("users", "global-function");
   }
 
   @override

@@ -16,7 +16,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 // Dependencias do front-end do clone
 import 'package:sub_locacoes/Constants/Constants.dart';
 //import 'read-demo.dart';
-import 'package:sub_locacoes/engine/lendoJson.dart';
+import 'package:sub_locacoes/new-firestore.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -803,7 +803,7 @@ class _OtherProvidersSignInSectionState
         context,
         MaterialPageRoute(
             builder: (context) =>
-                LendoJsonPage()), //  MyHomePage()), // Nova tela após logado
+                MyCRUDPage()), //  MyHomePage()), // Nova tela após logado
       );
 
       final user = userCredential.user;
