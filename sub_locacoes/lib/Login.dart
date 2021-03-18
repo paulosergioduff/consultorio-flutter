@@ -473,6 +473,7 @@ class _PhoneSignInSectionState extends State<_PhoneSignInSection> {
 
     PhoneCodeSent codeSent =
         (String verificationId, [int forceResendingToken]) async {
+      // ignore: deprecated_member_use
       widget._scaffold.showSnackBar(const SnackBar(
         content: Text('Please check your phone for the verification code.'),
       ));
