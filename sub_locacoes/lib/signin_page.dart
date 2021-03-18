@@ -1,11 +1,3 @@
-// Copyright 2020 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-// @dart=2.9
-
-// ignore_for_file: deprecated_member_use
-
 import 'dart:ui';
 import 'package:sub_locacoes/Routes/Ongoing.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,7 +15,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 // Dependencias do front-end do clone
 import 'package:sub_locacoes/Constants/Constants.dart';
-import 'firestore.dart';
+//import 'read-demo.dart';
+import 'package:sub_locacoes/new-firestore.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -74,7 +67,7 @@ class _SignInPageState extends State<SignInPage> {
             //_EmailLinkSignInSection(),
             //_AnonymouslySignInSection(),
             //_PhoneSignInSection(Scaffold.of(context)),
-            _OtherProvidersSignInSection(),
+            //_OtherProvidersSignInSection(),
           ],
         );
       }),
@@ -168,8 +161,16 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
 
       Scaffold.of(context).showSnackBar(
         SnackBar(
-          content: Text('${user.email} signed in'),
+          content: Text('${user.email} Logado'),
         ),
+      );
+
+      Navigator.push(
+        // Muda de página
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                MyCRUDPage()), //  MyHomePage()), // Nova tela após logado
       );
     } catch (e) {
       Scaffold.of(context).showSnackBar(
@@ -810,7 +811,7 @@ class _OtherProvidersSignInSectionState
         context,
         MaterialPageRoute(
             builder: (context) =>
-                HomePage()), //  MyHomePage()), // Nova tela após logado
+                MyCRUDPage()), //  MyHomePage()), // Nova tela após logado
       );
 
       final user = userCredential.user;

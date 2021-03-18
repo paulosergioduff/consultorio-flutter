@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/home/linkingage/Documentos/flutter-projects/testes/online-json-data-calendar-flutter/build/firebase_analytics/intermediates/res/merged/release/color/common_google_signin_btn_text_light.xml",
+        "source": "/home/linkingage/.gradle/caches/transforms-2/files-2.1/fd3a947d03f0d589035242c9e7cebdd5/jetified-play-services-base-16.0.1/res/color/common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "/home/linkingage/Documentos/flutter-projects/testes/online-json-data-calendar-flutter/build/firebase_analytics/intermediates/res/merged/release/color/common_google_signin_btn_tint.xml",
+        "source": "/home/linkingage/.gradle/caches/transforms-2/files-2.1/fd3a947d03f0d589035242c9e7cebdd5/jetified-play-services-base-16.0.1/res/color/common_google_signin_btn_tint.xml"
+    },
+    {
+        "merged": "/home/linkingage/Documentos/flutter-projects/testes/online-json-data-calendar-flutter/build/firebase_analytics/intermediates/res/merged/release/color/common_google_signin_btn_text_dark.xml",
+        "source": "/home/linkingage/.gradle/caches/transforms-2/files-2.1/fd3a947d03f0d589035242c9e7cebdd5/jetified-play-services-base-16.0.1/res/color/common_google_signin_btn_text_dark.xml"
+    }
+]
