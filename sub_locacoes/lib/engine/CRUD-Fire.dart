@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:sub_locacoes/engine/xrud.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() {
   runApp(MyApp()); //Enviando commit
+}
+
+final FirebaseAuth _auth = FirebaseAuth.instance;
+
+// Example code for sign out.
+Future<void> _signOut() async {
+  await _auth.signOut();
 }
 
 class MyApp extends StatelessWidget {
@@ -146,9 +154,20 @@ class _MyCRUDPageState extends State<MyCRUDPage> {
             ),
             ListTile(
               title: Text('Sair'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
+              onTap: () async {
+                final User user = _auth.currentUser;
+                if (user == null) {
+                  Scaffold.of(context).showSnackBar(const SnackBar(
+                    content: Text('Usuário ainda não foi logado'),
+                  ));
+                  return;
+                }
+                await _signOut();
+
+                final String uid = user.uid;
+                Scaffold.of(context).showSnackBar(SnackBar(
+                  content: Text('$uid Foi deslogado com sucesso'),
+                ));
               },
             ),
           ],
