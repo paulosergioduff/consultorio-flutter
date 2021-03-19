@@ -76,6 +76,7 @@ class _HomeState extends State<Home> {
                         description:
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                         listDateDisabled: [
+                          DateTime.parse("2021-03-10"),
                           DateTime.now().subtract(Duration(days: 2)),
                           DateTime.now().subtract(Duration(days: 4)),
                           DateTime.now().subtract(Duration(days: 6)),
