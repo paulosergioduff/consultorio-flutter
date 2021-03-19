@@ -63,22 +63,35 @@ class _HomeState extends State<Home> {
                 //const SizedBox(height: 16),
 
                 const SizedBox(height: 12),
+                const SizedBox(height: 12),
                 FloatingActionButton.extended(
                   onPressed: () async {
                     DateTime newDateTime = await showRoundedDatePicker(
-                      context: context,
-                      theme: ThemeData(primarySwatch: Colors.blue),
-                      imageHeader: AssetImage(
-                        "assets/images/calendar_header.jpg",
-                      ),
-                      description:
-                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    );
+                        context: context,
+                        theme: ThemeData(primarySwatch: Colors.blue),
+                        imageHeader: AssetImage(
+                          "assets/images/calendar_header_rainy.jpg",
+                        ),
+                        fontFamily: "Mali",
+                        description:
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                        listDateDisabled: [
+                          DateTime.now().subtract(Duration(days: 2)),
+                          DateTime.now().subtract(Duration(days: 4)),
+                          DateTime.now().subtract(Duration(days: 6)),
+                          DateTime.now().subtract(Duration(days: 8)),
+                          DateTime.now().subtract(Duration(days: 10)),
+                          DateTime.now().add(Duration(days: 2)),
+                          DateTime.now().add(Duration(days: 4)),
+                          DateTime.now().add(Duration(days: 6)),
+                          DateTime.now().add(Duration(days: 8)),
+                          DateTime.now().add(Duration(days: 10)),
+                        ]);
                     if (newDateTime != null) {
                       setState(() => dateTime = newDateTime);
                     }
                   },
-                  label: const Text("Rounded Calendar and Image Header"),
+                  label: const Text("Rounded Calendar and Custom Font"),
                 ),
 
                 //const SizedBox(height: 12),
