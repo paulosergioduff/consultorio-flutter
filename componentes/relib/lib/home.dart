@@ -20,6 +20,23 @@ class _HomeState extends State<Home> {
     super.initState();
   }
 
+  Future<List> processaDias() {
+    List result = [
+      DateTime.parse("2021-03-10"),
+      DateTime.now().subtract(Duration(days: 2)),
+      DateTime.now().subtract(Duration(days: 4)),
+      DateTime.now().subtract(Duration(days: 6)),
+      DateTime.now().subtract(Duration(days: 8)),
+      DateTime.now().subtract(Duration(days: 10)),
+      DateTime.now().add(Duration(days: 2)),
+      DateTime.now().add(Duration(days: 4)),
+      DateTime.now().add(Duration(days: 6)),
+      DateTime.now().add(Duration(days: 8)),
+      DateTime.now().add(Duration(days: 10)),
+    ];
+    return result;
+  };
+
   @override
   Widget build(BuildContext context) {
     Widget _buildBody() {
@@ -75,19 +92,8 @@ class _HomeState extends State<Home> {
                         fontFamily: "Mali",
                         description:
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                        listDateDisabled: [
-                          DateTime.parse("2021-03-10"),
-                          DateTime.now().subtract(Duration(days: 2)),
-                          DateTime.now().subtract(Duration(days: 4)),
-                          DateTime.now().subtract(Duration(days: 6)),
-                          DateTime.now().subtract(Duration(days: 8)),
-                          DateTime.now().subtract(Duration(days: 10)),
-                          DateTime.now().add(Duration(days: 2)),
-                          DateTime.now().add(Duration(days: 4)),
-                          DateTime.now().add(Duration(days: 6)),
-                          DateTime.now().add(Duration(days: 8)),
-                          DateTime.now().add(Duration(days: 10)),
-                        ]);
+                        listDateDisabled: processaDias(),
+                        );
                     if (newDateTime != null) {
                       setState(() => dateTime = newDateTime);
                     }
