@@ -34,8 +34,7 @@ class ReadAll extends StatelessWidget {
           children: snapshot.data.docs.map((DocumentSnapshot document) {
             return new ListTile(
               title: new Text(document.data()['full_name']),
-              subtitle: new Text(document.data()['company']),
-              // Uso new ReadAll("users"),
+              subtitle: new Text(document.data()['age']),
             );
           }).toList(),
         );
