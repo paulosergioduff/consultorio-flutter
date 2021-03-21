@@ -9,15 +9,15 @@ void main() {
   runApp(MyApp()); //Enviando commit
 }
 
-class ReadAll extends StatelessWidget {
+class ReadDocument extends StatelessWidget {
+  final String documentId;
   final String collection;
 
-  ReadAll(this.collection);
+  ReadDocument(this.documentId, this.collection);
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference users =
-        FirebaseFirestore.instance.collection(collection);
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
 
     return StreamBuilder<QuerySnapshot>(
       stream: users.snapshots(),
@@ -32,7 +32,12 @@ class ReadAll extends StatelessWidget {
 
         return new ListView(
           children: snapshot.data.docs.map((DocumentSnapshot document) {
-            print(['full_name']);
+            Map<String, Object> dados = {
+              'full_name': "teste de vida",
+              'age': 18
+            };
+            String documentName = document.data()['full_name'];
+            XrudSend("recebe", documentName, dados);
             return new ListTile(
               title: new Text(document.data()['full_name']),
               subtitle: new Text(document.data()['age']),
@@ -117,7 +122,7 @@ class _MyCRUDPageState extends State<MyCRUDPage> {
     });
 
     Map<String, Object> dados = {'full_name': "Mary novidade", 'age': 18};
-    XrudSend("users", "refactory", dados);
+    XrudSend("users", "testFunction", dados);
     //XrudDelete("users", "global-function");
     //ReadDemo("users", "global-function");
   }
@@ -140,7 +145,7 @@ class _MyCRUDPageState extends State<MyCRUDPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new ReadAll("users"),
+            new ReadDocument("finalmente", "users"),
             Text(
               'You have pushed the button this many times:',
             ),
