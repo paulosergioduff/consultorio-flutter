@@ -11,12 +11,14 @@ void main() {
 
 class ReadDocument extends StatelessWidget {
   final String documentId;
+  final String collection;
 
-  ReadDocument(this.documentId);
+  ReadDocument(this.documentId, this.collection);
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference users = FirebaseFirestore.instance.collection('users');
+    CollectionReference users =
+        FirebaseFirestore.instance.collection(collection);
 
     return FutureBuilder<DocumentSnapshot>(
       future: users.doc(documentId).get(),
@@ -140,7 +142,7 @@ class _MyCRUDPageState extends State<MyCRUDPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new ReadDocument("finalmente"),
+            new ReadDocument("finalmente", "users"),
             Text(
               'You have pushed the button this many times:',
             ),
