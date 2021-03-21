@@ -9,14 +9,14 @@ void main() {
   runApp(MyApp()); //Enviando commit
 }
 
-class GetUserName extends StatelessWidget {
+class ReadDocument extends StatelessWidget {
   final String documentId;
 
-  GetUserName(this.documentId);
+  ReadDocument(this.documentId);
 
   @override
   Widget build(BuildContext context) {
-    /*CollectionReference users = FirebaseFirestore.instance.collection('users');
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
 
     return FutureBuilder<DocumentSnapshot>(
       future: users.doc(documentId).get(),
@@ -29,11 +29,11 @@ class GetUserName extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data = snapshot.data.data();
           return Text("Full Name: ${data['full_name']} Data: ${data['age']}");
-        }*/
+        }
 
-    return Text("Correção de sintaxe");
-    //},
-    //);
+        return Text("loading");
+      },
+    );
   }
 }
 
@@ -133,7 +133,7 @@ class _MyCRUDPageState extends State<MyCRUDPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new GetUserName("finalmente"),
+            new ReadDocument("finalmente"),
             Text(
               'You have pushed the button this many times:',
             ),
