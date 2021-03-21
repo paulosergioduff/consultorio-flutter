@@ -23,12 +23,19 @@ class ReadDocument extends StatelessWidget {
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.hasError) {
-          return Text("Something went wrong");
+          String mensageiro = "Um erro ocorreu durante a leitura do sistema";
+          return ListBody(
+            children: <Widget>[
+              Text(mensageiro),
+              // Text('Would you like to approve of this message?'),
+            ],
+          );
         }
 
         if (snapshot.connectionState == ConnectionState.done) {
-          Map<String, dynamic> data = snapshot.data.data();
-          return Text("Full Name: ${data['full_name']} Data: ${data['age']}");
+          Map<String, dynamic> retorno = snapshot.data.data();
+          return Text(
+              "Olha a novidade aí gente: Full Name: ${retorno['full_name']} Data: ${retorno['age']}");
         }
 
         return Text("loading");
