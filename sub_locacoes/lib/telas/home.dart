@@ -27,13 +27,13 @@ class GetUserName extends StatelessWidget {
         }
 
         if (snapshot.connectionState == ConnectionState.done) {
-          Map<String, dynamic> data = snapshot.data.data();*/
-          return Text("Nome: Paulo; idade: 36");//"Full Name: ${data['full_name']} Data: ${data['age']}");
-        }
+          Map<String, dynamic> data = snapshot.data.data();
+          return Text("Full Name: ${data['full_name']} Data: ${data['age']}");
+        }*/
 
-        return Text("loading");
-      },
-    );
+    return Text("Correção de sintaxe");
+    //},
+    //);
   }
 }
 
