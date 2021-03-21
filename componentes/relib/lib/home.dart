@@ -20,23 +20,6 @@ class _HomeState extends State<Home> {
     super.initState();
   }
 
-  Future<List> processaDias() {
-    List result = [
-      DateTime.parse("2021-03-10"),
-      DateTime.now().subtract(Duration(days: 2)),
-      DateTime.now().subtract(Duration(days: 4)),
-      DateTime.now().subtract(Duration(days: 6)),
-      DateTime.now().subtract(Duration(days: 8)),
-      DateTime.now().subtract(Duration(days: 10)),
-      DateTime.now().add(Duration(days: 2)),
-      DateTime.now().add(Duration(days: 4)),
-      DateTime.now().add(Duration(days: 6)),
-      DateTime.now().add(Duration(days: 8)),
-      DateTime.now().add(Duration(days: 10)),
-    ];
-    return result;
-  };
-
   @override
   Widget build(BuildContext context) {
     Widget _buildBody() {
@@ -83,17 +66,29 @@ class _HomeState extends State<Home> {
                 const SizedBox(height: 12),
                 FloatingActionButton.extended(
                   onPressed: () async {
+                    List<DateTime> diasCancelados = [
+                      DateTime.parse("2021-03-10"),
+                    ];
+
+                    List<DateTime> novosDias = [
+                      DateTime.parse("2021-03-11"),
+                      DateTime.parse("2021-03-12"),
+                      DateTime.parse("2021-03-13"),
+                    ];
+
+                    novosDias.forEach((element) => diasCancelados.add(element));
+
                     DateTime newDateTime = await showRoundedDatePicker(
-                        context: context,
-                        theme: ThemeData(primarySwatch: Colors.blue),
-                        imageHeader: AssetImage(
-                          "assets/images/calendar_header_rainy.jpg",
-                        ),
-                        fontFamily: "Mali",
-                        description:
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                        listDateDisabled: processaDias(),
-                        );
+                      context: context,
+                      theme: ThemeData(primarySwatch: Colors.blue),
+                      imageHeader: AssetImage(
+                        "assets/images/calendar_header_rainy.jpg",
+                      ),
+                      fontFamily: "Mali",
+                      description:
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                      listDateDisabled: diasCancelados,
+                    );
                     if (newDateTime != null) {
                       setState(() => dateTime = newDateTime);
                     }
