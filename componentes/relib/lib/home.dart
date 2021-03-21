@@ -68,6 +68,8 @@ class _HomeState extends State<Home> {
                   onPressed: () async {
                     List<DateTime> diasCancelados = [
                       DateTime.parse("2021-03-10"),
+                      DateTime.parse("2021-03-11"),
+                      DateTime.parse("2021-03-12"),
                     ];
 
                     List<DateTime> novosDias = [
@@ -75,8 +77,8 @@ class _HomeState extends State<Home> {
                       DateTime.parse("2021-03-12"),
                       DateTime.parse("2021-03-13"),
                     ];
-
-                    novosDias.forEach((element) => diasCancelados.add(element));
+                    // FOREACH ESTÁ IMPEDINDO INSTALAÇÃO DO APP
+                    //novosDias.forEach((element) => diasCancelados.add(element));
 
                     DateTime newDateTime = await showRoundedDatePicker(
                       context: context,

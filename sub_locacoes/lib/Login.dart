@@ -11,7 +11,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:sub_locacoes/engine/CRUD-Fire.dart';
+import 'package:sub_locacoes/telas/home.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
