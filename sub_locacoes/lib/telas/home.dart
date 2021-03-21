@@ -9,38 +9,36 @@ void main() {
   runApp(MyApp()); //Enviando commit
 }
 
-class ReadDocument extends StatelessWidget {
-  final String documentId;
+class ReadAll extends StatelessWidget {
   final String collection;
 
-  ReadDocument(this.documentId, this.collection);
+  ReadAll(this.collection);
 
   @override
   Widget build(BuildContext context) {
     CollectionReference users =
         FirebaseFirestore.instance.collection(collection);
 
-    return FutureBuilder<DocumentSnapshot>(
-      future: users.doc(documentId).get(),
-      builder:
-          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+    return StreamBuilder<QuerySnapshot>(
+      stream: users.snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
-          String mensageiro = "Um erro ocorreu durante a leitura do sistema";
-          return ListBody(
-            children: <Widget>[
-              Text(mensageiro),
-              // Text('Would you like to approve of this message?'),
-            ],
-          );
+          return Text('Something went wrong');
         }
 
-        if (snapshot.connectionState == ConnectionState.done) {
-          Map<String, dynamic> retorno = snapshot.data.data();
-          return Text(
-              "Olha a novidade aí gente: Full Name: ${retorno['full_name']} Data: ${retorno['age']}");
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Text("Loading");
         }
 
-        return Text("loading");
+        return new ListView(
+          children: snapshot.data.docs.map((DocumentSnapshot document) {
+            return new ListTile(
+              title: new Text(document.data()['full_name']),
+              subtitle: new Text(document.data()['company']),
+              // Uso new ReadAll("users"),
+            );
+          }).toList(),
+        );
       },
     );
   }
@@ -142,7 +140,7 @@ class _MyCRUDPageState extends State<MyCRUDPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new ReadDocument("finalmente", "users"),
+            new ReadAll("users"),
             Text(
               'You have pushed the button this many times:',
             ),
