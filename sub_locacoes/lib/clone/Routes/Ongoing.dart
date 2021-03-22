@@ -1,8 +1,8 @@
 import 'package:sub_locacoes/clone/Constants/Constants.dart';
 import 'package:sub_locacoes/clone/Model/SliderModel.dart';
-import 'package:sub_locacoes/clone/Routes/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sub_locacoes/apps/calendario/start.dart';
 
 class Ongoing extends StatefulWidget {
   @override
@@ -103,10 +103,12 @@ class SlideTiles extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Login()),
-              );
+              if (title == "Reserve por hora") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CalendarioStart()),
+                );
+              }
             },
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
@@ -120,7 +122,7 @@ class SlideTiles extends StatelessWidget {
                         blurRadius: 2, color: Colors.grey, offset: Offset(0, 2))
                   ]),
               child: Text(
-                "Login",
+                "Selecionar",
                 style: TextStyle(color: Colors.white),
                 textAlign: TextAlign.center,
               ),
