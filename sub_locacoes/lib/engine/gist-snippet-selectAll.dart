@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(new SelectAllDate());
+void main() => runApp(new MyApp());
 
-class SelectAllDate extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: new FloatingActionButton(
         child: new Icon(Icons.add),
         onPressed: () {
-          FirebaseFirestore.instance.collection('recebe').doc().set(
+          FirebaseFirestore.instance.collection('mountains').doc().set(
             {
               'title': 'Mount Vesuvius',
               'type': 'volcano',

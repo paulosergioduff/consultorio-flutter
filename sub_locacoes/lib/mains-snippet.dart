@@ -40,12 +40,12 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: new FloatingActionButton(
         child: new Icon(Icons.add),
         onPressed: () {
-          FirebaseFirestore.instance.collection('recebe').doc().set(
+          /*FirebaseFirestore.instance.collection('recebe').doc().set(
             {
               'title': 'Mount Vesuvius',
               'type': 'volcano',
             },
-          );
+          );*/
         },
       ),
     );
@@ -60,12 +60,19 @@ class MountainList extends StatelessWidget {
     return new StreamBuilder(
       stream: users.snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (!snapshot.hasData) return new Text('Loading...');
+        if (snapshot.hasError) {
+          return Text('Something went wrong');
+        }
+
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Text("Loading");
+        }
+
         return new ListView(
           children: snapshot.data.docs.map((DocumentSnapshot document) {
             return new ListTile(
-              title: new Text(document['full_name']),
-              subtitle: new Text(document['age']),
+              title: new Text(document.data()['full_name']),
+              subtitle: new Text(document.data()['age']),
             );
           }).toList(),
         );

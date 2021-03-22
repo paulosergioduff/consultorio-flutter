@@ -11,7 +11,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:sub_locacoes/telas/home.dart';
+import 'package:sub_locacoes/engine/yelloCrud.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -165,7 +165,7 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
         context,
         MaterialPageRoute(
             builder: (context) =>
-                MyCRUDPage()), //  MyHomePage()), // Nova tela após logado
+                YellowCrud()), //  MyHomePage()), // Nova tela após logado
       );
     } catch (e) {
       Scaffold.of(context).showSnackBar(
@@ -807,7 +807,7 @@ class _OtherProvidersSignInSectionState
         context,
         MaterialPageRoute(
             builder: (context) =>
-                MyCRUDPage()), //  MyHomePage()), // Nova tela após logado
+                YellowCrud()), //  MyHomePage()), // Nova tela após logado
       );
 
       final user = userCredential.user;
