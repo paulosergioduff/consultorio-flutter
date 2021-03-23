@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sub_locacoes/clone/Routes/Ongoing.dart';
+import 'main.dart';
 
 void main() {
   runApp(SubLocacoes());
@@ -123,6 +124,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 await _signOut();
 
                 final String uid = user.uid;
+
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => MyApp()));
+
                 Scaffold.of(context).showSnackBar(SnackBar(
                   content: Text('$uid Foi deslogado com sucesso'),
                 ));

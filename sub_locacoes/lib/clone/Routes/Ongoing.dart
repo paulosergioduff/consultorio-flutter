@@ -142,10 +142,8 @@ class SlideTiles extends StatelessWidget {
                 //AddProperty
                 //textoBotao = "Sair";
 
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MyHomePage()),
-                );
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => MyHomePage()));
               }
             },
             child: Container(
