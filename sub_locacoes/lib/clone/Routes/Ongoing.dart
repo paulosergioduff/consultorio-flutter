@@ -1,8 +1,11 @@
+import 'package:sub_locacoes/apps/calendario/home.dart';
 import 'package:sub_locacoes/clone/Constants/Constants.dart';
 import 'package:sub_locacoes/clone/Model/SliderModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sub_locacoes/apps/calendario/start.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:sub_locacoes/clone/Routes/Properties.dart';
+import '../../home.dart';
 
 class Ongoing extends StatefulWidget {
   @override
@@ -11,6 +14,13 @@ class Ongoing extends StatefulWidget {
 
 class _OngoingState extends State<Ongoing> {
   List<SliderModel> slides = new List<SliderModel>();
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+// Example code for sign out.
+  Future<void> _signOut() async {
+    await _auth.signOut();
+  }
 
   int currentState;
 
@@ -22,6 +32,17 @@ class _OngoingState extends State<Ongoing> {
 
   @override
   Widget build(BuildContext context) {
+    //StartMenu();
+    MaterialApp(
+      title: 'Sub Locações',
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+        primaryColor: const Color(0xFF9c27b0),
+        accentColor: const Color(0xFF9c27b0),
+        canvasColor: const Color(0xFFfafafa),
+      ),
+      home: MyHomePage(title: 'Sub Locações'),
+    );
     return Scaffold(
       backgroundColor: Colors.white,
       body: PageView.builder(
@@ -47,6 +68,7 @@ class _OngoingState extends State<Ongoing> {
 class SlideTiles extends StatelessWidget {
   String imagePath, text, title;
   int current;
+  String textoBotao = "Selecionar";
 
   SlideTiles(this.imagePath, this.text, this.title, this.current);
 
@@ -106,7 +128,23 @@ class SlideTiles extends StatelessWidget {
               if (title == "Reserve por hora") {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CalendarioStart()),
+                  MaterialPageRoute(builder: (context) => Home()),
+                );
+              }
+              if (title == "Reserve por sala") {
+                //AddProperty
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Properties()),
+                );
+              }
+              if (title == "Sair do modo agendamento") {
+                //AddProperty
+                //textoBotao = "Sair";
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyHomePage()),
                 );
               }
             },
@@ -122,7 +160,7 @@ class SlideTiles extends StatelessWidget {
                         blurRadius: 2, color: Colors.grey, offset: Offset(0, 2))
                   ]),
               child: Text(
-                "Selecionar",
+                textoBotao,
                 style: TextStyle(color: Colors.white),
                 textAlign: TextAlign.center,
               ),
