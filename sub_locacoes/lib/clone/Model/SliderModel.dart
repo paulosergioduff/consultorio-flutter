@@ -17,7 +17,7 @@ class SliderModel {
         "Reserve por sala", "Várias salas configuradas para sua especialidade");
     SliderModel s3 = new SliderModel(
         "assets/images/Illustrations/il3.jpg",
-        "Deslize para a direita",
+        "Sair do modo agendamento",
         "Deslize para direita para voltar para as opções ");
     slides.add(s1);
     slides.add(s2);
