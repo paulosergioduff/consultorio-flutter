@@ -16,6 +16,8 @@ void main() async {
   ));
 }
 
+List<dynamic> diasCancelados = [];
+
 class MeusAgendametnos extends StatefulWidget {
   @override
   _MeusAgendametnosState createState() => _MeusAgendametnosState();
@@ -23,42 +25,26 @@ class MeusAgendametnos extends StatefulWidget {
 
 class _MeusAgendametnosState extends State<MeusAgendametnos> {
   String stdName;
-  List<dynamic> diasCancelados;
+  // List<dynamic> diasCancelados;
 
   getStudentName(name) {
     this.stdName = name;
   }
 
-  getDiasCancelados(dias) {
-    this.diasCancelados = dias;
-  }
-
-  // Controller
-
-  final myController = TextEditingController();
-
-  @override
-  void dispose() {
-    // Clean up the controller when the widget is disposed.
-    myController.dispose();
-    super.dispose();
-  }
-
-  //
-
   @override
   Widget build(BuildContext context) {
-    var diasCancelados = [];
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text('Meus agendamentos'),
       ),
-      body: SingleChildScrollView(
+      body: Center(
         child: Padding(
           padding: EdgeInsets.all(12.0),
           child: Column(
             children: [
+              new CircularProgressIndicator(),
+              new Text("Aguarde"),
               SizedBox(height: 15.0),
               StreamBuilder(
                   stream:
