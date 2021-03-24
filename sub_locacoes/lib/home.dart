@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sub_locacoes/clone/Routes/Ongoing.dart';
+import 'package:sub_locacoes/telas/meus_agendamentos.dart';
 import 'main.dart';
 
 void main() {
@@ -93,8 +94,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               title: Text('Meus agendamentos'),
               onTap: () {
-                // Update the state of the app.
-                // ...
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => MeusAgendametnos()));
               },
             ),
             ListTile(
