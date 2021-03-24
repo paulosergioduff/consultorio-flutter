@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sub_locacoes/engine/meus_agendamentos-widgets.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,34 +22,37 @@ class MeusAgendametnos extends StatefulWidget {
 }
 
 class _MeusAgendametnosState extends State<MeusAgendametnos> {
-  String stdName, stdID, programID;
-  double stdGPA;
-  List<dynamic> retemDados;
-  String result;
+  String stdName;
+  List<dynamic> diasCancelados;
 
   getStudentName(name) {
     this.stdName = name;
   }
 
-  getStudentID(id) {
-    this.stdID = id;
+  getDiasCancelados(dias) {
+    this.diasCancelados = dias;
   }
 
-  getStudyProgramID(pid) {
-    this.programID = pid;
+  // Controller
+
+  final myController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController.dispose();
+    super.dispose();
   }
 
-  getStudentCGPA(result) {
-    this.stdGPA = double.parse(result);
-  }
+  //
 
   @override
   Widget build(BuildContext context) {
-    List<dynamic> retemDados = [];
+    var diasCancelados = [];
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('CRUD App'),
+        title: Text('Meus agendamentos'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -59,60 +61,28 @@ class _MeusAgendametnosState extends State<MeusAgendametnos> {
             children: [
               SizedBox(height: 15.0),
               StreamBuilder(
-                stream:
-                    FirebaseFirestore.instance.collection('crud').snapshots(),
-                // ignore: missing_return
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
+                  stream:
+                      FirebaseFirestore.instance.collection('crud').snapshots(),
+                  builder: (context, snapshot) {
                     return ListView.builder(
                       shrinkWrap: true,
                       itemCount: snapshot.data.docs.length,
                       itemBuilder: (context, index) {
                         DocumentSnapshot documentSnapshot =
                             snapshot.data.docs[index];
-                        retemDados.add("Nada a declarar\n");
+                        diasCancelados.add(documentSnapshot["studentName"]);
                         return Row(
                           children: [
                             Expanded(
-                              child: Text(
-                                documentSnapshot["studentName"],
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            Expanded(
-                              child: Text(
-                                documentSnapshot["studentID"],
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            Expanded(
-                              child: Text(
-                                documentSnapshot["studyProgramID"],
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            Expanded(
-                              child: Text(
-                                documentSnapshot["studentCGPA"].toString(),
-                                textAlign: TextAlign.center,
-                              ),
+                              child: TextFormField(
+                                  initialValue: diasCancelados.toString()),
                             ),
                           ],
                         );
                       },
                     );
-                  } else {
-                    return Align(
-                      alignment: FractionalOffset.bottomCenter,
-                      child: CircularProgressIndicator(
-                        backgroundColor: Colors.black,
-                      ),
-                    );
-                  }
-                },
-              ),
-              //String result = retemDados.toString();
-              Text("Nossos results: \n " + retemDados.toString() + ""),
+                  }),
+              Text("Nossos results: \n " + diasCancelados.toString() + ""),
             ],
           ),
         ),
