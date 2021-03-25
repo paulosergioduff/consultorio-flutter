@@ -1,4 +1,4 @@
-import 'package:sub_locacoes/apps/calendario/home.dart';
+import 'package:sub_locacoes/apps/calendario/calendario-main.dart';
 import 'package:sub_locacoes/clone/Constants/Constants.dart';
 import 'package:sub_locacoes/clone/Model/SliderModel.dart';
 import 'package:flutter/cupertino.dart';
@@ -128,7 +128,8 @@ class SlideTiles extends StatelessWidget {
               if (title == "Reserve por hora") {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Home()),
+                  MaterialPageRoute(
+                      builder: (context) => CalendarioInterface()),
                 );
               }
               if (title == "Reserve por sala") {

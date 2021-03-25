@@ -4,12 +4,12 @@ import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 //import 'package:flutter_rounded_date_picker/src/material_rounded_date_picker_style.dart';
 //import 'package:flutter_rounded_date_picker/src/material_rounded_year_picker_style.dart';
 
-class Home extends StatefulWidget {
+class CalendarioInterface extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<CalendarioInterface> {
   DateTime dateTime;
   Duration duration;
 
