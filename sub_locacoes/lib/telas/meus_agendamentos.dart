@@ -16,9 +16,6 @@ void main() async {
   ));
 }
 
-List<dynamic> diasCancelados = [];
-int contador = 0;
-
 class MeusAgendametnos extends StatefulWidget {
   @override
   _MeusAgendametnosState createState() => _MeusAgendametnosState();
@@ -28,6 +25,9 @@ class _MeusAgendametnosState extends State<MeusAgendametnos> {
   String stdName;
   bool showButton = false;
   // List<dynamic> diasCancelados;
+
+  List<dynamic> diasCancelados = [];
+  int contador = 0;
 
   getStudentName(name) {
     this.stdName = name;
@@ -64,6 +64,7 @@ class _MeusAgendametnosState extends State<MeusAgendametnos> {
                         contador++;
                         int qtItens = snapshot.data.docs.length.toInt();
                         if (contador == qtItens) {
+                          contador = 0;
                           return Text(
                               "Fim do percurso ->" + diasCancelados.toString());
                         }
