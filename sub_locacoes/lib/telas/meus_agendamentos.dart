@@ -44,6 +44,7 @@ class _MeusAgendametnosState extends State<MeusAgendametnos> {
         child: Padding(
           padding: EdgeInsets.all(12.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               new CircularProgressIndicator(),
               new Text("Aguarde"),
@@ -61,9 +62,8 @@ class _MeusAgendametnosState extends State<MeusAgendametnos> {
                             snapshot.data.docs[index];
                         diasCancelados.add(documentSnapshot["studentName"]);
                         contador++;
-                        String saida = contador.toString();
-                        int numdoc = snapshot.data.docs.length.toInt();
-                        if (contador == numdoc) {
+                        int qtItens = snapshot.data.docs.length.toInt();
+                        if (contador == qtItens) {
                           return Text(
                               "Fim do percurso ->" + diasCancelados.toString());
                         }
@@ -73,7 +73,7 @@ class _MeusAgendametnosState extends State<MeusAgendametnos> {
                               child: TextFormField(
                                   initialValue: diasCancelados.toString()),
                             ),
-                            Text("teste-> $numdoc"),
+                            Text("teste-> c: $contador qt:$qtItens"),
                           ],
                         );
                       },
