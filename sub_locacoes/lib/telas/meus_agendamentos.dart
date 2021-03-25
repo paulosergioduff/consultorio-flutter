@@ -17,6 +17,7 @@ void main() async {
 }
 
 List<dynamic> diasCancelados = [];
+int contador = 0;
 
 class MeusAgendametnos extends StatefulWidget {
   @override
@@ -25,6 +26,7 @@ class MeusAgendametnos extends StatefulWidget {
 
 class _MeusAgendametnosState extends State<MeusAgendametnos> {
   String stdName;
+  bool showButton = false;
   // List<dynamic> diasCancelados;
 
   getStudentName(name) {
@@ -46,6 +48,7 @@ class _MeusAgendametnosState extends State<MeusAgendametnos> {
               new CircularProgressIndicator(),
               new Text("Aguarde"),
               SizedBox(height: 15.0),
+
               StreamBuilder(
                   stream:
                       FirebaseFirestore.instance.collection('crud').snapshots(),
@@ -57,18 +60,27 @@ class _MeusAgendametnosState extends State<MeusAgendametnos> {
                         DocumentSnapshot documentSnapshot =
                             snapshot.data.docs[index];
                         diasCancelados.add(documentSnapshot["studentName"]);
+                        contador++;
+                        String saida = contador.toString();
+                        int numdoc = snapshot.data.docs.length.toInt();
+                        if (contador == numdoc) {
+                          return Text(
+                              "Fim do percurso ->" + diasCancelados.toString());
+                        }
                         return Row(
                           children: [
                             Expanded(
                               child: TextFormField(
                                   initialValue: diasCancelados.toString()),
                             ),
+                            Text("teste-> $numdoc"),
                           ],
                         );
                       },
                     );
                   }),
-              Text("Nossos results: \n " + diasCancelados.toString() + ""),
+              Text("Nossos results: \n " + diasCancelados.toString()),
+              // Linpando lista
             ],
           ),
         ),
