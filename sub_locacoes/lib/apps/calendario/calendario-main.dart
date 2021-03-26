@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 //import 'package:flutter_rounded_date_picker/src/material_rounded_date_picker_style.dart';
 //import 'package:flutter_rounded_date_picker/src/material_rounded_year_picker_style.dart';
 
@@ -8,6 +10,9 @@ class CalendarioInterface extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
+
+CollectionReference agendamentos =
+    FirebaseFirestore.instance.collection('crud');
 
 class _HomeState extends State<CalendarioInterface> {
   DateTime dateTime;
@@ -19,6 +24,11 @@ class _HomeState extends State<CalendarioInterface> {
     duration = Duration(minutes: 10);
     super.initState();
   }
+
+  //########### VARIÁVEIS PARA CARREGAMENTO DE DADOS
+  List<DateTime> diasCancelados = [];
+  int contador = 0;
+  //##############################################
 
   @override
   Widget build(BuildContext context) {
@@ -60,13 +70,44 @@ class _HomeState extends State<CalendarioInterface> {
             child: ListView(
               padding: const EdgeInsets.only(bottom: 50),
               children: <Widget>[
-                //const SizedBox(height: 16),
+                //####################### APP CARREGA DADOS ########################################
+                StreamBuilder<QuerySnapshot>(
+                  stream: agendamentos.snapshots(),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<QuerySnapshot> snapshot) {
+                    if (snapshot.hasError) {
+                      return Text('Something went wrong');
+                    }
+
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Text("Loading");
+                    }
+
+                    snapshot.data.docs.map((DocumentSnapshot document) {
+                      /* return new ListTile(
+                          title: new Text(document.data()['full_name']),
+                        );*/
+                      diasCancelados
+                          .add(DateTime.parse(document.data()["studentName"]));
+                    }).toList();
+
+                    /*return new ListView(
+                      children:
+                          snapshot.data.docs.map((DocumentSnapshot document) {
+                        /* return new ListTile(
+                          title: new Text(document.data()['full_name']),
+                        );*/
+                      }).toList(),
+                    );*/
+                  },
+                ),
+                //####################### APP CARREGA DADOS ########################################
 
                 const SizedBox(height: 12),
                 const SizedBox(height: 12),
                 FloatingActionButton.extended(
                   onPressed: () async {
-                    List<DateTime> diasCancelados = [
+                    List<DateTime> oldDays = [
                       DateTime.parse("2021-03-10"),
                       DateTime.parse("2021-03-11"),
                       DateTime.parse("2021-03-12"),
