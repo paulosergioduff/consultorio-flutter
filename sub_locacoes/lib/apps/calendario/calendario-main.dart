@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sub_locacoes/engine/xrud.dart';
+import '../../home.dart';
 
 class CalendarioInterface extends StatefulWidget {
   @override
@@ -11,13 +13,23 @@ class CalendarioInterface extends StatefulWidget {
 CollectionReference agendamentos =
     FirebaseFirestore.instance.collection('crud');
 
+agendarData(dataAlvo) {
+  Map<String, Object> dados = {'studentName': dataAlvo};
+
+  XrudSend("crud", dataAlvo, dados);
+  MaterialPageRoute(builder: (context) => MyHomePage());
+}
+
 class _HomeState extends State<CalendarioInterface> {
   DateTime dateTime;
+  DateTime hoje;
   Duration duration;
 
   @override
   void initState() {
     dateTime = DateTime.now();
+    hoje = DateTime.now();
+
     duration = Duration(minutes: 10);
     super.initState();
   }
@@ -37,17 +49,17 @@ class _HomeState extends State<CalendarioInterface> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Text(
-                    "Date Time selected",
+                    "Horário selecionado",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.grey[600],
                     ),
                   ),
-                  Text(
-                    "$dateTime",
-                    style: const TextStyle(fontSize: 20),
-                  ),
+                  //XrudSend("users", "refactory", dados);
+                  ElevatedButton(
+                      onPressed: agendarData("$dateTime"),
+                      child: Text("Confirmar $dateTime"))
                 ],
               ),
             ),
@@ -66,7 +78,7 @@ class _HomeState extends State<CalendarioInterface> {
                     }
 
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Text("Loading");
+                      return new CircularProgressIndicator();
                     }
 
                     snapshot.data.docs.map((DocumentSnapshot document) {
@@ -89,14 +101,14 @@ class _HomeState extends State<CalendarioInterface> {
                       ),
                       fontFamily: "Mali",
                       description:
-                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                          "Escolha no calendário entre as datas disponíveis.",
                       listDateDisabled: diasCancelados,
                     );
                     if (newDateTime != null) {
                       setState(() => dateTime = newDateTime);
                     }
                   },
-                  label: const Text("Rounded Calendar and Custom Font"),
+                  label: const Text("Selecionar data"),
                 ),
               ],
             ),
@@ -108,7 +120,7 @@ class _HomeState extends State<CalendarioInterface> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Rounded Date Picker'),
+        title: Text('Calendário'),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 32),
