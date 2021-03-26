@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-//import 'package:flutter_rounded_date_picker/src/material_rounded_date_picker_style.dart';
-//import 'package:flutter_rounded_date_picker/src/material_rounded_year_picker_style.dart';
-
 class CalendarioInterface extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -25,13 +22,11 @@ class _HomeState extends State<CalendarioInterface> {
     super.initState();
   }
 
-  //########### VARIÁVEIS PARA CARREGAMENTO DE DADOS
   List<DateTime> diasCancelados = [];
-  int contador = 0;
-  //##############################################
 
   @override
   Widget build(BuildContext context) {
+    //String novo = "teste";
     Widget _buildBody() {
       return Column(
         children: <Widget>[
@@ -51,15 +46,6 @@ class _HomeState extends State<CalendarioInterface> {
                   ),
                   Text(
                     "$dateTime",
-                    style: const TextStyle(fontSize: 20),
-                  ),
-                  Text(
-                    "Duration Selected",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 20, color: Colors.grey[600]),
-                  ),
-                  Text(
-                    "$duration",
                     style: const TextStyle(fontSize: 20),
                   ),
                 ],
@@ -84,21 +70,9 @@ class _HomeState extends State<CalendarioInterface> {
                     }
 
                     snapshot.data.docs.map((DocumentSnapshot document) {
-                      /* return new ListTile(
-                          title: new Text(document.data()['full_name']),
-                        );*/
                       diasCancelados
                           .add(DateTime.parse(document.data()["studentName"]));
                     }).toList();
-
-                    /*return new ListView(
-                      children:
-                          snapshot.data.docs.map((DocumentSnapshot document) {
-                        /* return new ListTile(
-                          title: new Text(document.data()['full_name']),
-                        );*/
-                      }).toList(),
-                    );*/
                   },
                 ),
                 //####################### APP CARREGA DADOS ########################################
@@ -107,20 +81,6 @@ class _HomeState extends State<CalendarioInterface> {
                 const SizedBox(height: 12),
                 FloatingActionButton.extended(
                   onPressed: () async {
-                    List<DateTime> oldDays = [
-                      DateTime.parse("2021-03-10"),
-                      DateTime.parse("2021-03-11"),
-                      DateTime.parse("2021-03-12"),
-                    ];
-
-                    List<DateTime> novosDias = [
-                      DateTime.parse("2021-03-11"),
-                      DateTime.parse("2021-03-12"),
-                      DateTime.parse("2021-03-13"),
-                    ];
-                    // FOREACH ESTÁ IMPEDINDO INSTALAÇÃO DO APP
-                    //novosDias.forEach((element) => diasCancelados.add(element));
-
                     DateTime newDateTime = await showRoundedDatePicker(
                       context: context,
                       theme: ThemeData(primarySwatch: Colors.blue),
@@ -138,8 +98,6 @@ class _HomeState extends State<CalendarioInterface> {
                   },
                   label: const Text("Rounded Calendar and Custom Font"),
                 ),
-
-                //const SizedBox(height: 12),
               ],
             ),
           ),
