@@ -22,16 +22,8 @@ class MeusAgendametnos extends StatefulWidget {
 }
 
 class _MeusAgendametnosState extends State<MeusAgendametnos> {
-  String stdName;
-  bool showButton = false;
-  // List<dynamic> diasCancelados;
-
   List<dynamic> diasCancelados = [];
   int contador = 0;
-
-  getStudentName(name) {
-    this.stdName = name;
-  }
 
   @override
   Widget build(BuildContext context) {
