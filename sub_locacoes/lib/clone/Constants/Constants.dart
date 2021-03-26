@@ -7,14 +7,16 @@ import 'package:sub_locacoes/clone/Model/Property.dart';
 import 'package:sub_locacoes/clone/Model/Wilaya.dart';
 import 'package:sub_locacoes/clone/Model/Appartement.dart';
 
+String texto = ""; // Texto para editar informações
+
 class Constants {
   static List<Property> properties = [
     Hotel(
       "hotel",
       ['assets/images/properties/p1.jpg', "assets/images/properties/p2.jpg"],
       5000,
-      Address("Algerie", "Blida", "Boufarik", "el mo9rani", "15", "09025"),
-      "description  qui peut depasser 3 lignes donc la suite sera cachée until clicking the button afficher la suite pour l'afficher. voici une démonstration qui le fait ",
+      Address("Label1", "String1", "Title1", "Hotel1", "num15", "num09025"),
+      "As mais pedidas da programação ",
       4.2,
       Commodite(true, true, false, true, true, true, true, true, true),
       true,
@@ -25,8 +27,9 @@ class Constants {
       "appartement",
       ['assets/images/properties/p1.jpg', "assets/images/properties/p2.jpg"],
       2500,
-      Address("Algerie", "Alger", "Reghaia", "el hadad", "55", "16025"),
-      "description  qui peut depasser 3 lignes donc la suite sera cachée until clicking the button afficher la suite pour l'afficher. voici une démonstration qui le fait ",
+      Address(
+          "Label2", "String2", "Title2", "Appartment2", "num55", "num16025"),
+      "O aplicativo que mais cresce no Brasil ",
       4.0,
       Commodite(true, true, false, true, true, true, true, true, true),
       true,
