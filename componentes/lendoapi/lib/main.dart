@@ -30,7 +30,7 @@ class Server {
     return Server(
       userId: json['userId'],
       id: json['id'],
-      content: json['content'],
+      title: json['content'],
     );
   }
 }
@@ -56,13 +56,13 @@ class _LendoJsonPageState extends State<LendoJsonPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      content: 'Resgatando dados do servidor',
+      title: 'Resgatando dados do servidor',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
         appBar: AppBar(
-          content: Text('Resgatando dados do servidor'),
+          title: Text('Resgatando dados do servidor'),
         ),
         body: Center(
           child: FutureBuilder<Server>(
