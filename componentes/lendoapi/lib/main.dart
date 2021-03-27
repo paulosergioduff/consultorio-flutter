@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 Future<Server> fetchServer() async {
-  final response = await http.get(Uri.https('https://cdn.jsdelivr.net',
-      'gh/paulosergioduff/serverbtcapi/sublocacoes/subloc-server.json'));
+  final response = await http.get(Uri.https('cdn.jsdelivr.net',
+      'gh/paulosergioduff/serverbtcapi@master/sublocacoes/subloc-server.json'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
@@ -30,7 +30,7 @@ class Server {
     return Server(
       userId: json['userId'],
       id: json['id'],
-      title: json['content'],
+      content: json['content'],
     );
   }
 }
