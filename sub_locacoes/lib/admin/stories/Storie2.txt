@@ -1,0 +1,5 @@
+* Com a conta cadastrada, recebo atualizações sobre pedidos de agendamento
+- Escolhe atender ou recusar
+* Todas os atos vão para o relatório
+* O dono pode dar gratuidade ou cancelar o agendamento
+* Cadastro o PIX do meu domínio 

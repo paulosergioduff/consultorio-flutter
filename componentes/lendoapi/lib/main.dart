@@ -4,33 +4,33 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-Future<Album> fetchAlbum() async {
-  final response =
-      await http.get(Uri.https('jsonplaceholder.typicode.com', 'albums/1'));
+Future<Server> fetchServer() async {
+  final response = await http.get(Uri.https('https://cdn.jsdelivr.net',
+      'gh/paulosergioduff/serverbtcapi/sublocacoes/subloc-server.json'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
     // then parse the JSON.
-    return Album.fromJson(jsonDecode(response.body));
+    return Server.fromJson(jsonDecode(response.body));
   } else {
     // If the server did not return a 200 OK response,
     // then throw an exception.
-    throw Exception('Failed to load album');
+    throw Exception('Failed to load Server');
   }
 }
 
-class Album {
+class Server {
   final int userId;
   final int id;
-  final String title;
+  final String content;
 
-  Album({this.userId, this.id, this.title});
+  Server({this.userId, this.id, this.content});
 
-  factory Album.fromJson(Map<String, dynamic> json) {
-    return Album(
+  factory Server.fromJson(Map<String, dynamic> json) {
+    return Server(
       userId: json['userId'],
       id: json['id'],
-      title: json['title'],
+      content: json['content'],
     );
   }
 }
@@ -45,31 +45,31 @@ class LendoJsonPage extends StatefulWidget {
 }
 
 class _LendoJsonPageState extends State<LendoJsonPage> {
-  Future<Album> futureAlbum;
+  Future<Server> futureServer;
 
   @override
   void initState() {
     super.initState();
-    futureAlbum = fetchAlbum();
+    futureServer = fetchServer();
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Fetch Data Example',
+      content: 'Resgatando dados do servidor',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Fetch Data Example'),
+          content: Text('Resgatando dados do servidor'),
         ),
         body: Center(
-          child: FutureBuilder<Album>(
-            future: futureAlbum,
+          child: FutureBuilder<Server>(
+            future: futureServer,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Text(snapshot.data.title);
+                return Text(snapshot.data.content);
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
               }

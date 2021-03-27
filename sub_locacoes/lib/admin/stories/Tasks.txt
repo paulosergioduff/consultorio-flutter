@@ -1,0 +1,10 @@
+1) -> Cadastro de admin 
+* Na tela de instalação, acho opções de instalação, proprietário ou profissional querendo alugar
+* Instação requer nome de usuário admin e celular
+* Ao entrar no aplicativo, ele cadastra suas salas enviando uploads e descrição
+
+2) -> Pedidos de agendamento admin 
+
+* Com a conta cadastrada, recebo atualizações sobre pedidos de agendamento
+
+3) -> Compartilhar variável com resto da aplicação (pesquisar)

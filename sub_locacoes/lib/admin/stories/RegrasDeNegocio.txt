@@ -1,0 +1,14 @@
+* Código do dono da sla para permissão de agendamento
+* Resgatar informações da sala com código, para tela de confirmação de agendamento do usuário
+* Hierarquia de CLÍNICA/PRÉDIO diferente sala 
+* Clínica/Prédio hierarquia necessária somente para identificação de usuário
+* Código de clínica na validação do cadastro ou tela (tela isolada recomendada fortemente para isso)
+* Liberação de agendamento partindo do dono da clínica (TELA ADMIN POPUP)
+* Validação por celular para remarketing
+* Usuário admin no domínio do nome de usuário 
+* Validação de duas etapas
+* Fluxo de dono de Sala    App -> Landing page  -> Recebi o código -> Página inicial do app para inserir o código
+-> Posso criar salas  - usuario@nomeDaclinica.com.br + email
+* Fluxo do usuário -> Contato com dono da clínica -> Indicação do aplicativo para agendamento -> Instalar e executar o código
+da clínica -> Validações etc -> Agendar nas salas da clínica do dominio cadastrado  -> Demais regras de negócio
+* Agendamento em massa para TODOS os usuários
