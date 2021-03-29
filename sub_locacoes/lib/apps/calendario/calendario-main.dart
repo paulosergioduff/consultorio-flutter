@@ -10,8 +10,10 @@ class CalendarioInterface extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
+final rotacrud = "$colletionDomain/reserva/data";
+
 CollectionReference agendamentos =
-    FirebaseFirestore.instance.collection('crud');
+    FirebaseFirestore.instance.collection(rotacrud);
 
 agendarData(dataAlvo) {
   Map<String, Object> dados = {'studentName': dataAlvo};
@@ -30,9 +32,9 @@ agendarData(dataAlvo) {
   var hoje = domain2.toString();
 
   if (dataRecebida != hoje) {
-    XrudSend("crud", dataRecebida, dados);
+    XrudSend(rotacrud, dataRecebida, dados);
+    MaterialPageRoute(builder: (BuildContext context) => MyHomePage());
   }
-  MaterialPageRoute(builder: (context) => MyHomePage());
 }
 
 class _HomeState extends State<CalendarioInterface> {
@@ -72,9 +74,7 @@ class _HomeState extends State<CalendarioInterface> {
                     ),
                   ),
                   //XrudSend("users", "refactory", dados);
-                  ElevatedButton(
-                      onPressed: agendarData("$dateTime"),
-                      child: Text("Confirmar $dateTime"))
+                  Text("Confirmar $dateTime"),
                 ],
               ),
             ),
@@ -108,6 +108,7 @@ class _HomeState extends State<CalendarioInterface> {
                 const SizedBox(height: 12),
                 FloatingActionButton.extended(
                   onPressed: () async {
+                    agendarData("$dateTime");
                     DateTime newDateTime = await showRoundedDatePicker(
                       context: context,
                       theme: ThemeData(primarySwatch: Colors.blue),
