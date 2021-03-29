@@ -1,29 +1,12 @@
-/// Flutter code sample for Radio
-
-// Here is an example of Radio widgets wrapped in ListTiles, which is similar
-// to what you could get with the RadioListTile widget.
-//
-// The currently selected character is passed into `groupValue`, which is
-// maintained by the example's `State`. In this case, the first `Radio`
-// will start off selected because `_character` is initialized to
-// `SingingCharacter.lafayette`.
-//
-// If the second radio button is pressed, the example's state is updated
-// with `setState`, updating `_character` to `SingingCharacter.jefferson`.
-// This causes the buttons to rebuild with the updated `groupValue`, and
-// therefore the selection of the second button.
-//
-// Requires one of its ancestors to be a [Material] widget.
-
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const TipoDeCadastro());
 
 /// This is the main application widget.
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class TipoDeCadastro extends StatelessWidget {
+  const TipoDeCadastro({Key key}) : super(key: key);
 
-  static const String _title = 'Tipo de cadastro';
+  static const String _title = 'Flutter Code Sample';
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +22,11 @@ class MyApp extends StatelessWidget {
   }
 }
 
-enum SingingCharacter { lafayette, jefferson }
+enum SingingCharacter { AdminRegisterPage, RegisterPage }
 
 /// This is the stateful widget that the main application instantiates.
 class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
+  const MyStatefulWidget({Key key}) : super(key: key);
 
   @override
   _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
@@ -51,18 +34,24 @@ class MyStatefulWidget extends StatefulWidget {
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  SingingCharacter? _character = SingingCharacter.lafayette;
+  SingingCharacter _character = SingingCharacter.AdminRegisterPage;
+
+  void _pushPage(BuildContext context, Widget page) {
+    Navigator.of(context) /*!*/ .push(
+      MaterialPageRoute<void>(builder: (_) => page),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         ListTile(
-          title: const Text('Sou proprietário, alugo minhas  salas'),
+          title: const Text('Sou proprietário! Quero locar!'),
           leading: Radio<SingingCharacter>(
-            value: SingingCharacter.lafayette,
+            value: SingingCharacter.AdminRegisterPage,
             groupValue: _character,
-            onChanged: (SingingCharacter? value) {
+            onChanged: (SingingCharacter value) {
               setState(() {
                 _character = value;
               });
@@ -70,18 +59,18 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ),
         ),
         ListTile(
-          title: const Text('Sou profissional, quero alugar salas'),
+          title: const Text('Sou profissional! Quero alugar!'),
           leading: Radio<SingingCharacter>(
-            value: SingingCharacter.jefferson,
+            value: SingingCharacter.RegisterPage,
             groupValue: _character,
-            onChanged: (SingingCharacter? value) {
+            onChanged: (SingingCharacter value) {
               setState(() {
                 _character = value;
               });
             },
           ),
         ),
-        Text("$_character"),
+        ElevatedButton(onPressed: null, child: Text("Opção $_character")),
       ],
     );
   }

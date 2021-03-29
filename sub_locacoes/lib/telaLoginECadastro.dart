@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_builder.dart';
 
 import './Cadastro.dart';
+import './AdminCadastro.dart';
+//import 'package:sub_locacoes/admin/tiposDeCadastro.dart';
 import './Login.dart';
 
 /// The entry point of the application.
@@ -56,7 +58,17 @@ class AuthTypeSelector extends StatelessWidget {
             child: SignInButtonBuilder(
               icon: Icons.person_add,
               backgroundColor: Colors.indigo,
-              text: 'Cadastre-se',
+              text: 'Cadastre-se como proprietário',
+              onPressed: () => _pushPage(context, AdminRegisterPage()),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(16),
+            alignment: Alignment.center,
+            child: SignInButtonBuilder(
+              icon: Icons.person_add,
+              backgroundColor: Colors.indigo,
+              text: 'Cadastre-se como profissional',
               onPressed: () => _pushPage(context, RegisterPage()),
             ),
           ),

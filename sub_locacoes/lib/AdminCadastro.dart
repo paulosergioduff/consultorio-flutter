@@ -7,64 +7,53 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_signin_button/button_builder.dart';
+import 'package:sub_locacoes/Cadastro.dart';
 import 'package:sub_locacoes/engine/xrud.dart';
 import 'package:sub_locacoes/services/services-main.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
-
 String nomeDeDocumento = "beta";
+
+String completaNome = "name_system";
+String completaEmail = "system_email@email.com";
+String completaClinica = "company_system";
+String completaEndereco = "address_system";
+String completaTelefone = "555-555-555";
 
 Future<void> completaCadastro() async {
   String domainRegister = setDomain(nomeDeDocumento).toString();
-  String domainTarget = "$domainRegister/common-users/data";
+  String domainTarget = "$domainRegister/admin/users";
 
   Map<String, Object> dados = {
     'Nome': "$completaNome",
-    'idade': "$completaIdade",
-    'telefone': "$completaTelefone",
-    'CRP:': "$completaCrp",
-    'email de contato': "$completaEmail",
-    'abordagem': "$completaAbordagem",
-    'Tempo de formação:': "$completaTempoFormacao",
-    'Especialidade': "$completaEspecialidade",
-    'Formação': "$completaFormacao"
+    'Clínica': "$completaClinica",
+    'Email de contato': "$completaEmail",
+    'Endereço': "$completaEndereco",
+    'Telefone': "$completaTelefone",
+    'Domain': "$domainTarget"
   };
 
   XrudSend("$domainTarget", "$nomeDeDocumento", dados);
 }
 
-String completaNome = "Nome padrão";
-String completaIdade = "00-00";
-String completaTelefone = "555-555";
-String completaCrp = "CRP - 00";
-String completaEmail = "emailPadrao";
-String completaAbordagem = "Abordagem: fff";
-String completaTempoFormacao = "000";
-String completaEspecialidade = "especialidade";
-String completaFormacao = "Formacao";
-
 /// Entrypoint example for registering via Email/Password.
-class RegisterPage extends StatefulWidget {
+class AdminRegisterPage extends StatefulWidget {
   /// The page title.
   final String title = 'Cadastro';
 
   @override
-  State<StatefulWidget> createState() => _RegisterPageState();
+  State<StatefulWidget> createState() => _AdminRegisterPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _AdminRegisterPageState extends State<AdminRegisterPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _clinica = TextEditingController();
+  final TextEditingController _endereco = TextEditingController();
   final TextEditingController _nome = TextEditingController();
-  final TextEditingController _idade = TextEditingController();
   final TextEditingController _telefone = TextEditingController();
-  final TextEditingController _crp = TextEditingController();
-  final TextEditingController _email = TextEditingController();
-  final TextEditingController _abordagem = TextEditingController();
-  final TextEditingController _tempoFormacao = TextEditingController();
-  final TextEditingController _especialidade = TextEditingController();
-  final TextEditingController _formacao = TextEditingController();
+  final TextEditingController _emailContao = TextEditingController();
 
   bool _success;
   String _userEmail = '';
@@ -110,22 +99,45 @@ class _RegisterPageState extends State<RegisterPage> {
                           obscureText: true,
                         ),
                         TextFormField(
-                          controller: _nome,
-                          decoration: const InputDecoration(labelText: 'Nome'),
+                          controller: _clinica,
+                          decoration:
+                              const InputDecoration(labelText: 'Clínica'),
                           validator: (String value) {
                             if (value.isEmpty) {
-                              return 'Por favor, insira seu nome';
+                              return 'Qual o nome da sua clínica?';
                             }
                             return null;
                           },
                         ),
                         TextFormField(
-                          controller: _idade,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(labelText: 'Idade'),
+                          controller: _emailContao,
+                          decoration: const InputDecoration(
+                              labelText: 'Email mais utilizado'),
                           validator: (String value) {
                             if (value.isEmpty) {
-                              return 'Por favor, insira sua idade';
+                              return 'Por favor, insira o email';
+                            }
+                            return null;
+                          },
+                        ),
+                        TextFormField(
+                          controller: _endereco,
+                          decoration: const InputDecoration(
+                              labelText: 'Endereço completo'),
+                          validator: (String value) {
+                            if (value.isEmpty) {
+                              return 'Por favor, insira o endreço completo';
+                            }
+                            return null;
+                          },
+                        ),
+                        TextFormField(
+                          controller: _nome,
+                          decoration:
+                              const InputDecoration(labelText: 'Nome completo'),
+                          validator: (String value) {
+                            if (value.isEmpty) {
+                              return 'Por favor, insira o novo campo';
                             }
                             return null;
                           },
@@ -138,73 +150,6 @@ class _RegisterPageState extends State<RegisterPage> {
                           validator: (String value) {
                             if (value.isEmpty) {
                               return 'Por favor, insira seu telefone';
-                            }
-                            return null;
-                          },
-                        ),
-                        TextFormField(
-                          controller: _crp,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(labelText: 'CRP'),
-                          validator: (String value) {
-                            if (value.isEmpty) {
-                              return 'Por favor, insira o número do seu CRP';
-                            }
-                            return null;
-                          },
-                        ),
-                        TextFormField(
-                          controller: _email,
-                          decoration: const InputDecoration(
-                              labelText: 'Email mais usado para contato'),
-                          validator: (String value) {
-                            if (value.isEmpty) {
-                              return 'Por favor, insira o novo campo';
-                            }
-                            return null;
-                          },
-                        ),
-                        TextFormField(
-                          controller: _abordagem,
-                          decoration:
-                              const InputDecoration(labelText: 'Abordagem'),
-                          validator: (String value) {
-                            if (value.isEmpty) {
-                              return 'Por favor, insira a abordagem que trabalha';
-                            }
-                            return null;
-                          },
-                        ),
-                        TextFormField(
-                          controller: _tempoFormacao,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                              labelText: 'Tempo de formação (em anos)'),
-                          validator: (String value) {
-                            if (value.isEmpty) {
-                              return 'Por favor, insira o tempo de formação';
-                            }
-                            return null;
-                          },
-                        ),
-                        TextFormField(
-                          controller: _especialidade,
-                          decoration:
-                              const InputDecoration(labelText: 'Especialidade'),
-                          validator: (String value) {
-                            if (value.isEmpty) {
-                              return 'Por favor, insira sua especialidade';
-                            }
-                            return null;
-                          },
-                        ),
-                        TextFormField(
-                          controller: _formacao,
-                          decoration: const InputDecoration(
-                              labelText: 'Nível de formação'),
-                          validator: (String value) {
-                            if (value.isEmpty) {
-                              return 'Por favor, insira o nível de formação';
                             }
                             return null;
                           },
@@ -252,14 +197,10 @@ class _RegisterPageState extends State<RegisterPage> {
   // Example code for registration.
   Future<void> _register() async {
     completaNome = _nome.text;
-    completaIdade = _idade.text;
+    completaEmail = _emailContao.text;
+    completaClinica = _clinica.text;
+    completaEndereco = _endereco.text;
     completaTelefone = _telefone.text;
-    completaCrp = _crp.text;
-    completaEmail = _email.text;
-    completaAbordagem = _abordagem.text;
-    completaTempoFormacao = _tempoFormacao.text;
-    completaEspecialidade = _especialidade.text;
-    completaFormacao = _formacao.text;
 
     nomeDeDocumento = _emailController.text;
 
