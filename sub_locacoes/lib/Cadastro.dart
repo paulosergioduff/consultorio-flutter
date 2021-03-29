@@ -7,6 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_signin_button/button_builder.dart';
+import 'package:sub_locacoes/engine/xrud.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -23,6 +24,11 @@ class _RegisterPageState extends State<RegisterPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _campo1 = TextEditingController();
+  final TextEditingController _campo2 = TextEditingController();
+  final TextEditingController _campo3 = TextEditingController();
+  final TextEditingController _campo4 = TextEditingController();
+  final TextEditingController _campo5 = TextEditingController();
 
   bool _success;
   String _userEmail = '';
@@ -63,7 +69,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     obscureText: true,
                   ),
                   TextFormField(
-                    //controller: _emailController,
+                    controller: _campo1,
                     decoration: const InputDecoration(labelText: 'Atividade'),
                     validator: (String value) {
                       if (value.isEmpty) {
@@ -73,7 +79,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     },
                   ),
                   TextFormField(
-                    //controller: _emailController,
+                    controller: _campo2,
                     decoration: const InputDecoration(labelText: 'Novo campo'),
                     validator: (String value) {
                       if (value.isEmpty) {

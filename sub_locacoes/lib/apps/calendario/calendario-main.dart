@@ -16,7 +16,22 @@ CollectionReference agendamentos =
 agendarData(dataAlvo) {
   Map<String, Object> dados = {'studentName': dataAlvo};
 
-  XrudSend("crud", dataAlvo, dados);
+  String dataAlvoString = dataAlvo.toString();
+
+  var arr1 = dataAlvoString.split(' ');
+  var domain1 = arr1[0];
+  var dataRecebida = domain1.toString();
+  //DateTime.now()
+
+  String hojeString = DateTime.now().toString();
+
+  var arr2 = hojeString.split(' ');
+  var domain2 = arr2[0];
+  var hoje = domain2.toString();
+
+  if (dataRecebida != hoje) {
+    XrudSend("crud", dataRecebida, dados);
+  }
   MaterialPageRoute(builder: (context) => MyHomePage());
 }
 
@@ -28,13 +43,13 @@ class _HomeState extends State<CalendarioInterface> {
   @override
   void initState() {
     dateTime = DateTime.now();
-    hoje = DateTime.now();
-
     duration = Duration(minutes: 10);
     super.initState();
   }
 
-  List<DateTime> diasCancelados = [];
+  List<DateTime> diasCancelados = [
+    DateTime.now(),
+  ];
 
   @override
   Widget build(BuildContext context) {

@@ -63,7 +63,7 @@ Widget _introScreen() {
       Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/logo.png"),
+            image: AssetImage("assets/images/splash.jpg"),
             fit: BoxFit.none,
           ),
         ),

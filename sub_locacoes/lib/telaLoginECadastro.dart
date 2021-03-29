@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
       title: 'Consultório Beta',
       theme: ThemeData(
         primarySwatch: Colors.purple,
-        primaryColor: const Color(0xFF9c27b0),
+        primaryColor: const Color(0xFF6d63ea), //6d63ea
         accentColor: const Color(0xFF9c27b0),
         canvasColor: const Color(0xFFfafafa),
       ),
