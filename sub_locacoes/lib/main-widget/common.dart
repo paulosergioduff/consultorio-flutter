@@ -3,6 +3,7 @@ import 'package:sub_locacoes/telas/meus_agendamentos.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../main.dart';
+import 'package:sub_locacoes/admin/admintelas/telas/admin_agendamentos.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -38,6 +39,77 @@ class menuPrincipal extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (BuildContext context) => MeusAgendametnos()));
+            },
+          ),
+          ListTile(
+            title: Text('Pagamentos'),
+            onTap: () {
+              // Update the state of the app.
+              // ...
+            },
+          ),
+          ListTile(
+            title: Text('Ranking'),
+            onTap: () {
+              // Update the state of the app.
+              // ...
+            },
+          ),
+          ListTile(
+            title: Text('Sair'),
+            onTap: () async {
+              final User user = _auth.currentUser;
+              if (user == null) {
+                Scaffold.of(context).showSnackBar(const SnackBar(
+                  content: Text('Usuário ainda não foi logado'),
+                ));
+                return;
+              }
+              await _signOut();
+
+              final String uid = user.uid;
+
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => MyApp()));
+
+              Scaffold.of(context).showSnackBar(SnackBar(
+                content: Text('$uid Foi deslogado com sucesso'),
+              ));
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class AdminMenu extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      // Add a ListView to the drawer. This ensures the user can scroll
+      // through the options in the drawer if there isn't enough vertical
+      // space to fit everything.
+      child: ListView(
+        // Important: Remove any padding from the ListView.
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          DrawerHeader(
+            child: Text('Drawer Header'),
+            decoration: BoxDecoration(color: Colors.purple),
+          ),
+          ListTile(
+            title: Text('Início - Admin'),
+            onTap: () {
+              // Update the state of the app.
+              // ...
+            },
+          ),
+          ListTile(
+            title: Text('Meus dadosFireBase'),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => AdminAgendametnos()));
             },
           ),
           ListTile(
