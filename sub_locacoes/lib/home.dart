@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'main-widget/common.dart';
 import 'package:sub_locacoes/clone/Routes/Ongoing.dart';
-import 'package:sub_locacoes/telas/meus_agendamentos.dart';
 import 'main.dart';
 
 void main() {
@@ -72,71 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Drawer Header'),
-              decoration: BoxDecoration(color: Colors.purple),
-            ),
-            ListTile(
-              title: Text('Início'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-            ),
-            ListTile(
-              title: Text('Meus agendamentos'),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => MeusAgendametnos()));
-              },
-            ),
-            ListTile(
-              title: Text('Pagamentos'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-            ),
-            ListTile(
-              title: Text('Ranking'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-            ),
-            ListTile(
-              title: Text('Sair'),
-              onTap: () async {
-                final User user = _auth.currentUser;
-                if (user == null) {
-                  Scaffold.of(context).showSnackBar(const SnackBar(
-                    content: Text('Usuário ainda não foi logado'),
-                  ));
-                  return;
-                }
-                await _signOut();
-
-                final String uid = user.uid;
-
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => MyApp()));
-
-                Scaffold.of(context).showSnackBar(SnackBar(
-                  content: Text('$uid Foi deslogado com sucesso'),
-                ));
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: menuPrincipal(),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
