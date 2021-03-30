@@ -87,3 +87,21 @@ class AuthTypeSelector extends StatelessWidget {
     );
   }
 }
+
+class TemaPrincipal extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Sub Locações',
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+        primaryColor: const Color(0xFF6d63ea), //6d63ea
+        accentColor: const Color(0xFF9c27b0),
+        canvasColor: const Color(0xFFfafafa),
+      ),
+      home: Scaffold(
+        body: AuthTypeSelector(),
+      ),
+    );
+  }
+}
