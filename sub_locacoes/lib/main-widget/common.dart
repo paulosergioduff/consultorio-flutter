@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sub_locacoes/telas/meus_agendamentos.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../main.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -33,7 +34,7 @@ class menuPrincipal extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text('Meus agendamentos'),
+            title: Text('Meus dadosFireBase'),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (BuildContext context) => MeusAgendametnos()));
@@ -95,6 +96,43 @@ class TemaPrincipal extends StatelessWidget {
       /* home: Scaffold(
           //body: //AuthTypeSelector(),
           ),*/
+    );
+  }
+}
+
+List<dynamic> _xrudControllerResult;
+
+class XrudReadField extends StatefulWidget {
+  List<dynamic> entrada;
+
+  XrudReadField({Key key, this.entrada}) : super(key: key);
+
+  @override
+  _XrudReadFieldState createState() => _XrudReadFieldState();
+}
+
+class _XrudReadFieldState extends State<XrudReadField> {
+  CollectionReference dadosFireBase =
+      FirebaseFirestore.instance.collection('crud');
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+      stream: dadosFireBase.snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasError) {
+          return Text('Something went wrong');
+        }
+
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return new CircularProgressIndicator();
+        }
+
+        snapshot.data.docs.map((DocumentSnapshot document) {
+          _xrudControllerResult
+              .add(DateTime.parse(document.data()["studentName"]));
+        }).toList();
+      },
     );
   }
 }

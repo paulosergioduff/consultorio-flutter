@@ -5,14 +5,20 @@
 // @dart=2.9
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_signin_button/button_builder.dart';
 import 'package:sub_locacoes/engine/xrud.dart';
 import 'package:sub_locacoes/services/services-main.dart';
+import 'home.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
 String nomeDeDocumento = "beta";
+
+Future<void> mudaTela(tela) async {
+  MaterialPageRoute(builder: (context) => tela()); // Muda a tela
+}
 
 Future<void> completaCadastro() async {
   String domainRegister = setDomain(nomeDeDocumento).toString();
@@ -31,6 +37,7 @@ Future<void> completaCadastro() async {
   };
 
   XrudSend("$domainTarget", "$nomeDeDocumento", dados);
+  mudaTela(MyHomePage);
 }
 
 String completaNome = "Nome padrão";
@@ -263,19 +270,34 @@ class _RegisterPageState extends State<RegisterPage> {
 
     nomeDeDocumento = _emailController.text;
 
-    final User user = (await _auth.createUserWithEmailAndPassword(
-      email: _emailController.text,
-      password: _passwordController.text,
-    ))
-        .user;
-    if (user != null) {
-      setState(() {
-        _success = true;
-        _userEmail = user.email;
-      });
-    } else {
-      _success = false;
+    try {
+      final User user = (await _auth.createUserWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      ))
+          .user;
+      if (user != null) {
+        setState(() {
+          _success = true;
+          _userEmail = user.email;
+        });
+        Navigator.push(
+          // Muda de página
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  MyHomePage()), //  MyHomePage()), // Nova tela após logado
+        );
+        completaCadastro();
+      } else {
+        _success = false;
+      }
+    } catch (e) {
+      Scaffold.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Falha ao tentar cadastrar'),
+        ),
+      );
     }
-    completaCadastro();
   }
 }

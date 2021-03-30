@@ -10,6 +10,8 @@ import 'package:flutter_signin_button/button_builder.dart';
 import 'package:sub_locacoes/Cadastro.dart';
 import 'package:sub_locacoes/engine/xrud.dart';
 import 'package:sub_locacoes/services/services-main.dart';
+import 'package:sub_locacoes/admin/home.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 String nomeDeDocumento = "beta";
@@ -19,6 +21,10 @@ String completaEmail = "system_email@email.com";
 String completaClinica = "company_system";
 String completaEndereco = "address_system";
 String completaTelefone = "555-555-555";
+
+Future<void> mudaTela(tela) async {
+  MaterialPageRoute(builder: (context) => tela()); // Muda a tela
+}
 
 Future<void> completaCadastro() async {
   String domainRegister = setDomain(nomeDeDocumento).toString();
@@ -204,19 +210,34 @@ class _AdminRegisterPageState extends State<AdminRegisterPage> {
 
     nomeDeDocumento = _emailController.text;
 
-    final User user = (await _auth.createUserWithEmailAndPassword(
-      email: _emailController.text,
-      password: _passwordController.text,
-    ))
-        .user;
-    if (user != null) {
-      setState(() {
-        _success = true;
-        _userEmail = user.email;
-      });
-    } else {
-      _success = false;
+    try {
+      final User user = (await _auth.createUserWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      ))
+          .user;
+      if (user != null) {
+        setState(() {
+          _success = true;
+          _userEmail = user.email;
+        });
+        Navigator.push(
+          // Muda de página
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  AdminMyHomePage()), //  MyHomePage()), // Nova tela após logado
+        );
+        completaCadastro();
+      } else {
+        _success = false;
+      }
+    } catch (e) {
+      Scaffold.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Falha ao tentar cadastrar'),
+        ),
+      );
     }
-    completaCadastro();
   }
 }
