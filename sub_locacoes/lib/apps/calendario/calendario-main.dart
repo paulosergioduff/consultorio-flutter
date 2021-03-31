@@ -111,7 +111,14 @@ class _HomeState extends State<CalendarioInterface> {
                     agendarData("$dateTime");
                     DateTime newDateTime = await showRoundedDatePicker(
                       context: context,
+                      locale: Locale('pt', 'BR'),
                       theme: ThemeData(primarySwatch: Colors.blue),
+                      styleDatePicker: MaterialRoundedDatePickerStyle(
+                        textStyleDayOnCalendarDisabled: TextStyle(
+                            fontSize: 32,
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold),
+                      ),
                       imageHeader: AssetImage(
                         "assets/images/calendar_header_rainy.jpg",
                       ),
@@ -125,6 +132,29 @@ class _HomeState extends State<CalendarioInterface> {
                     }
                   },
                   label: const Text("Selecionar data"),
+                ),
+                FloatingActionButton.extended(
+                  onPressed: () async {
+                    TimeOfDay newTime = await showRoundedTimePicker(
+                        context: context,
+                        initialTime: TimeOfDay.now(),
+                        leftBtn: "NOW",
+                        onLeftBtn: () {
+                          Navigator.of(context).pop(TimeOfDay.now());
+                        });
+                    if (newTime != null) {
+                      setState(() {
+                        dateTime = DateTime(
+                          dateTime.year,
+                          dateTime.month,
+                          dateTime.day,
+                          newTime.hour,
+                          newTime.minute,
+                        );
+                      });
+                    }
+                  },
+                  label: const Text("Escolha o horário"),
                 ),
               ],
             ),
