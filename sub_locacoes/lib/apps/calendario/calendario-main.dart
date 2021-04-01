@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sub_locacoes/engine/xrud.dart';
@@ -95,7 +96,68 @@ class _HomeState extends State<CalendarioInterface> {
             child: ListView(
               padding: const EdgeInsets.only(bottom: 50),
               children: <Widget>[
-                
+                //####################### APP CARREGA DADOS ########################################
+                StreamBuilder<QuerySnapshot>(
+                  stream: agendamentos.snapshots(),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<QuerySnapshot> snapshot) {
+                    if (snapshot.hasError) {
+                      return Text('Something went wrong');
+                    }
+
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return new CircularProgressIndicator();
+                    }
+
+                    snapshot.data.docs.map((DocumentSnapshot document) {
+                      diasCancelados
+                          .add(DateTime.parse(document.data()["reserva"]));
+                    }).toList();
+                  },
+                ),
+                //####################### APP CARREGA DADOS ########################################
+
+                const SizedBox(height: 12),
+                const SizedBox(height: 12),
+                FloatingActionButton.extended(
+                  onPressed: () async {
+                    DateTime newDateTime = await showRoundedDatePicker(
+                      context: context,
+                      // locale: Locale("pt", "BR"),
+                      theme: ThemeData(primarySwatch: Colors.blue),
+                      styleDatePicker: MaterialRoundedDatePickerStyle(
+                          textStyleDayOnCalendarDisabled: TextStyle(
+                              fontSize: 16,
+                              color: Colors.red) //.withOpacity(0.0)),
+
+                          ),
+                      /*textStyleDayOnCalendarDisabled: TextStyle(
+                            fontSize: 28, color: Colors.white.withOpacity(0.1)),*/
+                      imageHeader: AssetImage(
+                        "assets/images/calendar_header_rainy.jpg",
+                      ),
+                      fontFamily: "Mali",
+                      description: "Calendário para o horário: $horaString.",
+                      listDateDisabled: diasCancelados,
+                      textPositiveButton: "Confirmar",
+                      textNegativeButton: "Cancelar",
+                      customWeekDays: [
+                        "DOM",
+                        "SEG",
+                        "TER",
+                        "QUA",
+                        "QUI",
+                        "SEX",
+                        "SAB"
+                      ],
+                    );
+                    if (newDateTime != null) {
+                      setState(() => dateTime = newDateTime);
+                    }
+                  },
+                  label: const Text("Selecionar data"),
+                ),
+
                 const SizedBox(height: 12),
 
                 FloatingActionButton.extended(
@@ -128,14 +190,25 @@ class _HomeState extends State<CalendarioInterface> {
                 const SizedBox(height: 12),
 
                 FloatingActionButton.extended(
-                  /*onPressed: () async {
+                  onPressed: () async {
                     horaString = hora.toString(); //.split(' ');
                     horasplit = horaString.split('-');
                     horario = horasplit[0].toString();
                     //horario = horario.substring(2);
                     agendarData("$dateTime");
-                  },*/
-                  label: const Text("Avançar"),
+
+                    //Timer
+                    const temporizador = const Duration(milliseconds: 2000);
+                    new Timer(
+                        temporizador,
+                        () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MyHomePage())));
+                    //Tier
+                    return Text('Concluindo...');
+                  },
+                  label: const Text("Concluir reserva"),
                 ),
               ],
             ),
@@ -165,139 +238,6 @@ class CalendarWithhourSelect extends StatefulWidget {
 class _CalendarWithhourSelectState extends State<CalendarWithhourSelect> {
   @override
   Widget build(BuildContext context) {
-    @override
-    void initState() {
-      dateTime = DateTime.now();
-      duration = Duration(minutes: 10);
-      super.initState();
-    }
-
-    List<DateTime> diasCancelados = [
-      DateTime.now(),
-    ];
-
-    @override
-    Widget build(BuildContext context) {
-      //String novo = "teste";
-      Widget _buildBody() {
-        return Column(
-          children: <Widget>[
-            Container(
-              padding: const EdgeInsets.all(16),
-              child: Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Text(
-                      "Horário selecionado",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.grey[600],
-                      ),
-                    ),
-                    //XrudSend("users", "refactory", dados);
-                    Text("Confirmar $dateTime - Horário - "),
-                  ],
-                ),
-              ),
-            ),
-            Expanded(
-              child: ListView(
-                padding: const EdgeInsets.only(bottom: 50),
-                children: <Widget>[
-                  //####################### APP CARREGA DADOS ########################################
-                  StreamBuilder<QuerySnapshot>(
-                    stream: agendamentos.snapshots(),
-                    builder: (BuildContext context,
-                        AsyncSnapshot<QuerySnapshot> snapshot) {
-                      if (snapshot.hasError) {
-                        return Text('Something went wrong');
-                      }
-
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return new CircularProgressIndicator();
-                      }
-
-                      snapshot.data.docs.map((DocumentSnapshot document) {
-                        diasCancelados
-                            .add(DateTime.parse(document.data()["reserva"]));
-                      }).toList();
-                    },
-                  ),
-                  //####################### APP CARREGA DADOS ########################################
-
-                  const SizedBox(height: 12),
-                  const SizedBox(height: 12),
-                  FloatingActionButton.extended(
-                    onPressed: () async {
-                      DateTime newDateTime = await showRoundedDatePicker(
-                        context: context,
-                        // locale: Locale("pt", "BR"),
-                        theme: ThemeData(primarySwatch: Colors.blue),
-                        styleDatePicker: MaterialRoundedDatePickerStyle(
-                            textStyleDayOnCalendarDisabled: TextStyle(
-                                fontSize: 16,
-                                color: Colors.red) //.withOpacity(0.0)),
-
-                            ),
-                        /*textStyleDayOnCalendarDisabled: TextStyle(
-                            fontSize: 28, color: Colors.white.withOpacity(0.1)),*/
-                        imageHeader: AssetImage(
-                          "assets/images/calendar_header_rainy.jpg",
-                        ),
-                        fontFamily: "Mali",
-                        description: "Calendário para o horário: $horaString.",
-                        listDateDisabled: diasCancelados,
-                        textPositiveButton: "Confirmar",
-                        textNegativeButton: "Cancelar",
-                        customWeekDays: [
-                          "DOM",
-                          "SEG",
-                          "TER",
-                          "QUA",
-                          "QUI",
-                          "SEX",
-                          "SAB"
-                        ],
-                      );
-                      if (newDateTime != null) {
-                        setState(() => dateTime = newDateTime);
-                      }
-                    },
-                    label: const Text("Selecionar data"),
-                  ),
-return Container();
-                  const SizedBox(height: 12),
-                  const SizedBox(height: 12),
-
-                  FloatingActionButton.extended(
-                    onPressed: () async {
-                      horaString = hora.toString(); //.split(' ');
-                      horasplit = horaString.split('-');
-                      horario = horasplit[0].toString();
-                      //horario = horario.substring(2);
-                      agendarData("$dateTime");
-                    },
-                    label: const Text("Concluir reserva"),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        );
-      }
-
-      return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text('Calendário'),
-        ),
-        body: Container(
-          padding: EdgeInsets.symmetric(horizontal: 32),
-          child: _buildBody(),
-        ),
-      );
-    }
+    return Container();
   }
 }
