@@ -4,20 +4,23 @@ import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sub_locacoes/engine/xrud.dart';
 import '../../home.dart';
+import 'package:intl/intl.dart';
+
+//DateFormat dateFormat = DateFormat("HH:mm");
 
 class CalendarioInterface extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
-final rotacrud = "$colletionDomain/reserva/data";
+final rotareserva = "$colletionDomain/reserva/data";
+final agenda = "$colletionDomain/agendamentos/data";
+String horario = "00:01";
 
 CollectionReference agendamentos =
-    FirebaseFirestore.instance.collection(rotacrud);
+    FirebaseFirestore.instance.collection(rotareserva);
 
 agendarData(dataAlvo) {
-  Map<String, Object> dados = {'studentName': dataAlvo};
-
   String dataAlvoString = dataAlvo.toString();
 
   var arr1 = dataAlvoString.split(' ');
@@ -31,8 +34,15 @@ agendarData(dataAlvo) {
   var domain2 = arr2[0];
   var hoje = domain2.toString();
 
+  Map<String, Object> dados = {
+    'reserva': dataRecebida,
+    'autor': user.email,
+    'dominio': colletionDomain,
+    'horario': horario
+  };
+
   if (dataRecebida != hoje) {
-    XrudSend(rotacrud, dataRecebida, dados);
+    XrudSend(rotareserva, dataRecebida, dados);
     MaterialPageRoute(builder: (BuildContext context) => MyHomePage());
   }
 }
@@ -41,6 +51,9 @@ class _HomeState extends State<CalendarioInterface> {
   DateTime dateTime;
   DateTime hoje;
   Duration duration;
+  DateTime hora;
+  List horasplit;
+  String horaString;
 
   @override
   void initState() {
@@ -74,7 +87,7 @@ class _HomeState extends State<CalendarioInterface> {
                     ),
                   ),
                   //XrudSend("users", "refactory", dados);
-                  Text("Confirmar $dateTime"),
+                  Text("Confirmar $dateTime - Horário - "),
                 ],
               ),
             ),
@@ -98,7 +111,7 @@ class _HomeState extends State<CalendarioInterface> {
 
                     snapshot.data.docs.map((DocumentSnapshot document) {
                       diasCancelados
-                          .add(DateTime.parse(document.data()["studentName"]));
+                          .add(DateTime.parse(document.data()["reserva"]));
                     }).toList();
                   },
                 ),
@@ -108,17 +121,18 @@ class _HomeState extends State<CalendarioInterface> {
                 const SizedBox(height: 12),
                 FloatingActionButton.extended(
                   onPressed: () async {
-                    agendarData("$dateTime");
                     DateTime newDateTime = await showRoundedDatePicker(
                       context: context,
-                      locale: Locale('pt', 'BR'),
+                      // locale: Locale("pt", "BR"),
                       theme: ThemeData(primarySwatch: Colors.blue),
                       styleDatePicker: MaterialRoundedDatePickerStyle(
-                        textStyleDayOnCalendarDisabled: TextStyle(
-                            fontSize: 32,
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold),
-                      ),
+                          textStyleDayOnCalendarDisabled: TextStyle(
+                              fontSize: 16,
+                              color: Colors.red) //.withOpacity(0.0)),
+
+                          ),
+                      /*textStyleDayOnCalendarDisabled: TextStyle(
+                            fontSize: 28, color: Colors.white.withOpacity(0.1)),*/
                       imageHeader: AssetImage(
                         "assets/images/calendar_header_rainy.jpg",
                       ),
@@ -126,6 +140,17 @@ class _HomeState extends State<CalendarioInterface> {
                       description:
                           "Escolha no calendário entre as datas disponíveis.",
                       listDateDisabled: diasCancelados,
+                      textPositiveButton: "Confirmar",
+                      textNegativeButton: "Cancelar",
+                      customWeekDays: [
+                        "DOM",
+                        "SEG",
+                        "TER",
+                        "QUA",
+                        "QUI",
+                        "SEX",
+                        "SAB"
+                      ],
                     );
                     if (newDateTime != null) {
                       setState(() => dateTime = newDateTime);
@@ -133,6 +158,9 @@ class _HomeState extends State<CalendarioInterface> {
                   },
                   label: const Text("Selecionar data"),
                 ),
+
+                const SizedBox(height: 12),
+
                 FloatingActionButton.extended(
                   onPressed: () async {
                     TimeOfDay newTime = await showRoundedTimePicker(
@@ -151,10 +179,23 @@ class _HomeState extends State<CalendarioInterface> {
                           newTime.hour,
                           newTime.minute,
                         );
+                        hora = DateTime(newTime.hour);
                       });
                     }
                   },
-                  label: const Text("Escolha o horário"),
+                  label: const Text("Selecione o horário"),
+                ),
+                const SizedBox(height: 12),
+
+                FloatingActionButton.extended(
+                  onPressed: () async {
+                    horaString = hora.toString(); //.split(' ');
+                    horasplit = horaString.split('-');
+                    horario = horasplit[0].toString();
+                    //horario = horario.substring(2);
+                    agendarData("$dateTime");
+                  },
+                  label: const Text("Concluir reserva"),
                 ),
               ],
             ),
