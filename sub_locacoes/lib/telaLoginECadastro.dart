@@ -12,6 +12,7 @@ import './Cadastro.dart';
 import './AdminCadastro.dart';
 //import 'package:sub_locacoes/admin/tiposDeCadastro.dart';
 import './Login.dart';
+import './AdminLogin.dart';
 
 /// The entry point of the application.
 ///
@@ -80,6 +81,16 @@ class AuthTypeSelector extends StatelessWidget {
               backgroundColor: Colors.orange,
               text: 'Entrar',
               onPressed: () => _pushPage(context, SignInPage()),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(16),
+            alignment: Alignment.center,
+            child: SignInButtonBuilder(
+              icon: Icons.verified_user,
+              backgroundColor: Colors.orange,
+              text: 'Admin',
+              onPressed: () => _pushPage(context, AdminSignInPage()),
             ),
           ),
         ],

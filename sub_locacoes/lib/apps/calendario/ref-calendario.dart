@@ -101,7 +101,7 @@ class _HomeState extends State<Home> {
                 ),
                 const SizedBox(height: 12),
                 FloatingActionButton.extended(
-                  onPressed: () async {
+                  onPressed: () ahoraFormatsync {
                     DateTime newDateTime = await showRoundedDatePicker(
                       context: context,
                       locale: Locale("th", "TH"),
