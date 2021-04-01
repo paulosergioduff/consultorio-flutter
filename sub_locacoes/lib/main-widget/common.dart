@@ -208,3 +208,19 @@ class _XrudReadFieldState extends State<XrudReadField> {
     );
   }
 }
+
+class MainAppbar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Sub Locações',
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+        primaryColor: const Color(0xFF9c27b0),
+        accentColor: const Color(0xFF9c27b0),
+        canvasColor: const Color(0xFFfafafa),
+      ),
+      home: MyHomePage(title: 'Sub Locações'), // Passando parametros como texto
+    );
+  }
+}

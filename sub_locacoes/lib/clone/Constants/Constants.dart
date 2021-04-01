@@ -50,5 +50,5 @@ class Constants {
   ];
 
   static Color redAirbnb = Color(0xffFF5A5F);
-  static Color greenAirbnb = Colors.purple;
+  static Color greenAirbnb = Color(0xFF9c27b0); //Colors.purple;
 }
