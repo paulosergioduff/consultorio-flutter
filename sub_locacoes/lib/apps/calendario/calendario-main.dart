@@ -7,15 +7,21 @@ import '../../home.dart';
 import 'package:intl/intl.dart';
 
 //DateFormat dateFormat = DateFormat("HH:mm");
+DateTime dateTime;
+DateTime hoje;
+Duration duration;
+DateTime hora;
+List horasplit;
+String horaString;
+
+final rotareserva = "$colletionDomain/reserva/data";
+final agenda = "$colletionDomain/agendamentos/data";
+String horario = "Horário ainda não definido";
 
 class CalendarioInterface extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
-
-final rotareserva = "$colletionDomain/reserva/data";
-final agenda = "$colletionDomain/agendamentos/data";
-String horario = "00:01";
 
 CollectionReference agendamentos =
     FirebaseFirestore.instance.collection(rotareserva);
@@ -48,13 +54,6 @@ agendarData(dataAlvo) {
 }
 
 class _HomeState extends State<CalendarioInterface> {
-  DateTime dateTime;
-  DateTime hoje;
-  Duration duration;
-  DateTime hora;
-  List horasplit;
-  String horaString;
-
   @override
   void initState() {
     dateTime = DateTime.now();
@@ -137,8 +136,7 @@ class _HomeState extends State<CalendarioInterface> {
                         "assets/images/calendar_header_rainy.jpg",
                       ),
                       fontFamily: "Mali",
-                      description:
-                          "Escolha no calendário entre as datas disponíveis.",
+                      description: "Calendário para o horário: $horaString.",
                       listDateDisabled: diasCancelados,
                       textPositiveButton: "Confirmar",
                       textNegativeButton: "Cancelar",
@@ -180,6 +178,9 @@ class _HomeState extends State<CalendarioInterface> {
                           newTime.minute,
                         );
                         hora = DateTime(newTime.hour);
+                        horaString = hora.toString(); //.split(' ');
+                        horasplit = horaString.split('-');
+                        horaString = horasplit[0].toString();
                       });
                     }
                   },
@@ -214,5 +215,17 @@ class _HomeState extends State<CalendarioInterface> {
         child: _buildBody(),
       ),
     );
+  }
+}
+
+class CalendarWithhourSelect extends StatefulWidget {
+  @override
+  _CalendarWithhourSelectState createState() => _CalendarWithhourSelectState();
+}
+
+class _CalendarWithhourSelectState extends State<CalendarWithhourSelect> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
