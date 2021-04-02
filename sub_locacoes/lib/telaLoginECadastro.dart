@@ -57,9 +57,9 @@ class AuthTypeSelector extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             alignment: Alignment.center,
             child: SignInButtonBuilder(
-              icon: Icons.person_add,
+              icon: Icons.store,
               backgroundColor: Colors.indigo,
-              text: 'Cadastre-se como proprietário',
+              text: 'Cadastro de poprietário',
               onPressed: () => _pushPage(context, AdminRegisterPage()),
             ),
           ),
@@ -68,8 +68,8 @@ class AuthTypeSelector extends StatelessWidget {
             alignment: Alignment.center,
             child: SignInButtonBuilder(
               icon: Icons.person_add,
-              backgroundColor: Colors.indigo,
-              text: 'Cadastre-se como profissional',
+              backgroundColor: Colors.green,
+              text: 'Cadastro de profissional',
               onPressed: () => _pushPage(context, RegisterPage()),
             ),
           ),
@@ -88,7 +88,7 @@ class AuthTypeSelector extends StatelessWidget {
             alignment: Alignment.center,
             child: SignInButtonBuilder(
               icon: Icons.verified_user,
-              backgroundColor: Colors.orange,
+              backgroundColor: Colors.red,
               text: 'Admin',
               onPressed: () => _pushPage(context, AdminSignInPage()),
             ),

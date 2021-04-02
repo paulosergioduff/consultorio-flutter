@@ -54,6 +54,60 @@ agendarData(dataAlvo) {
   }
 }
 
+higienizaData(dataAlvoString) {
+  var arr1 = dataAlvoString.split(' ');
+  var domain1 = arr1[0];
+  var dataRecebida = domain1.toString();
+
+  return dataRecebida;
+}
+
+agendarEmMassa(dataAlvo) {
+  String dataAlvoString = dataAlvo.toString();
+
+  var arr1 = dataAlvoString.split(' ');
+  var domain1 = arr1[0];
+  var dataRecebida = domain1.toString();
+  //DateTime.now()
+
+  String hojeString = DateTime.now().toString();
+
+  var arr2 = hojeString.split(' ');
+  var domain2 = arr2[0];
+  var hoje = domain2.toString();
+
+  //var status = null;
+
+  var status = higienizaData(dataRecebida); // Serve apenas 1 vez antes do loop
+  Map<String, Object> dados = {
+    'reserva': status,
+    'autor': user.email,
+    'dominio': colletionDomain,
+    'horario': horario
+  };
+
+  XrudSend(rotareserva, status, dados);
+
+  if (dataRecebida != hoje) {
+    for (var i = 1; i < 3; i++) {
+      var alvo = DateTime.parse(status);
+      var alvoplus = alvo.add(Duration(days: 7));
+      var alvoString = alvoplus.toString();
+      var alvofinal = higienizaData(alvoString).toString();
+      status = alvofinal;
+
+      Map<String, Object> dados = {
+        'reserva': alvofinal,
+        'autor': user.email,
+        'dominio': colletionDomain,
+        'horario': horario
+      };
+
+      XrudSend(rotareserva, alvofinal, dados);
+    }
+  }
+}
+
 class _HomeState extends State<CalendarioInterface> {
   @override
   void initState() {
@@ -209,6 +263,29 @@ class _HomeState extends State<CalendarioInterface> {
                     return Text('Concluindo...');
                   },
                   label: const Text("Concluir reserva"),
+                ),
+                const SizedBox(height: 12),
+
+                FloatingActionButton.extended(
+                  onPressed: () async {
+                    horaString = hora.toString(); //.split(' ');
+                    horasplit = horaString.split('-');
+                    horario = horasplit[0].toString();
+                    //horario = horario.substring(2);
+                    agendarEmMassa("$dateTime");
+
+                    //Timer
+                    const temporizador = const Duration(milliseconds: 4000);
+                    new Timer(
+                        temporizador,
+                        () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MyHomePage())));
+                    //Tier
+                    return Text('Concluindo...');
+                  },
+                  label: const Text("Agendar em massaa"),
                 ),
               ],
             ),

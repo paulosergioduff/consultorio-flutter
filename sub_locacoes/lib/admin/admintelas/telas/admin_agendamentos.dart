@@ -127,7 +127,7 @@ class _AdminAgendametnosState extends State<AdminAgendametnos> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('CRUD App'),
+        title: Text('Meus agendamentos'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -188,7 +188,7 @@ class _AdminAgendametnosState extends State<AdminAgendametnos> {
                       elevation: 8.0,
                       onPressed: () => createData(),
                       color: Colors.green,
-                      child: Text('Create',
+                      child: Text('Aceitar',
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       textColor: Colors.white,
                       shape: raisedButtonBorder(),
@@ -224,7 +224,7 @@ class _AdminAgendametnosState extends State<AdminAgendametnos> {
                       elevation: 8.0,
                       onPressed: () => deleteData(),
                       color: Colors.red,
-                      child: Text('Delete',
+                      child: Text('Recusar',
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       textColor: Colors.white,
                       shape: raisedButtonBorder(),

@@ -24,8 +24,12 @@ class menuPrincipal extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            child: Text('Drawer Header'),
-            decoration: BoxDecoration(color: Colors.purple),
+            child: Text(''),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                image: DecorationImage(
+                    image: AssetImage("assets/images/splash.jpg"),
+                    fit: BoxFit.none)),
           ),
           ListTile(
             title: Text('Início'),
@@ -35,7 +39,7 @@ class menuPrincipal extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text('Meus dadosFireBase'),
+            title: Text('Meus agendamentos'),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (BuildContext context) => MeusAgendametnos()));
@@ -95,8 +99,12 @@ class AdminMenu extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            child: Text('Drawer Header'),
-            decoration: BoxDecoration(color: Colors.purple),
+            child: Text(''),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                image: DecorationImage(
+                    image: AssetImage("assets/images/splash.jpg"),
+                    fit: BoxFit.none)),
           ),
           ListTile(
             title: Text('Início - Admin'),
@@ -106,7 +114,7 @@ class AdminMenu extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text('Meus dadosFireBase'),
+            title: Text('Meus agendamentos'),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (BuildContext context) => AdminAgendametnos()));
@@ -160,7 +168,7 @@ class TemaPrincipal extends StatelessWidget {
     return MaterialApp(
       title: 'Sub Locações',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.white,
         primaryColor: const Color(0xFF6d63ea), //6d63ea
         accentColor: const Color(0xFF9c27b0),
         canvasColor: const Color(0xFFfafafa),
@@ -184,13 +192,13 @@ class XrudReadField extends StatefulWidget {
 }
 
 class _XrudReadFieldState extends State<XrudReadField> {
-  CollectionReference dadosFireBase =
+  CollectionReference agendamentos =
       FirebaseFirestore.instance.collection('crud');
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: dadosFireBase.snapshots(),
+      stream: agendamentos.snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
           return Text('Something went wrong');
@@ -215,7 +223,7 @@ class MainAppbar extends StatelessWidget {
     return MaterialApp(
       title: 'Sub Locações',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.white,
         primaryColor: const Color(0xFF9c27b0),
         accentColor: const Color(0xFF9c27b0),
         canvasColor: const Color(0xFFfafafa),

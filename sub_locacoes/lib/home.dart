@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'main-widget/common.dart';
 import 'package:sub_locacoes/clone/Routes/Ongoing.dart';
 import 'main.dart';
+import 'package:sub_locacoes/main-widget/common.dart';
 
 void main() {
   runApp(SubLocacoes());
@@ -18,7 +19,7 @@ class SubLocacoes extends StatelessWidget {
       title: 'Sub Locações',
       theme: ThemeData(
         primarySwatch: Colors.purple,
-        primaryColor: const Color(0xFF9c27b0),
+        primaryColor: const Color(0xFF6d63ea), //6d63ea
         accentColor: const Color(0xFF9c27b0),
         canvasColor: const Color(0xFFfafafa),
       ),
@@ -73,11 +74,11 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      /*floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ), // */ //This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

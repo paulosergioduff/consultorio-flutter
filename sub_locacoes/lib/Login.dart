@@ -49,7 +49,7 @@ class _SignInPageState extends State<SignInPage> {
                   content: Text('$uid Foi deslogado com sucesso'),
                 ));
               },
-              child: const Text('Sair'),
+              //child: const Text('Sair'),
             );
           })
         ],

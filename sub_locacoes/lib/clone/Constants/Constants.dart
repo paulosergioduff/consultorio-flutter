@@ -49,6 +49,6 @@ class Constants {
         "assets/images/properties/p4.jpg"),
   ];
 
-  static Color redAirbnb = Color(0xffFF5A5F);
-  static Color greenAirbnb = Color(0xFF9c27b0); //Colors.purple;
+  static Color redAirbnb = Color(0xff6d63ea);
+  static Color greenAirbnb = Color(0xFF6d63ea); //Colors.purple;
 }
