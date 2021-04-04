@@ -46,6 +46,9 @@ class menuPrincipal extends StatelessWidget {
             },
           ),
           ListTile(
+            title: Text('Relatórios'),
+          ),
+          ListTile(
             title: Text('Pagamentos'),
             onTap: () {
               // Update the state of the app.
@@ -114,11 +117,14 @@ class AdminMenu extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text('Meus agendamentos'),
+            title: Text('Agendamentos'),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (BuildContext context) => AdminAgendametnos()));
             },
+          ),
+          ListTile(
+            title: Text('Relatórios'),
           ),
           ListTile(
             title: Text('Pagamentos'),

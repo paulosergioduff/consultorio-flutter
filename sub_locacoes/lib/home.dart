@@ -62,6 +62,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            // Usar listView deslizável com imagens do OnGoing
+
             RaisedButton(
               child: Text('Iniciar agendamento'),
               onPressed: () {
@@ -80,5 +82,56 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(Icons.add),
       ), // */ //This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+}
+
+class Opcao {
+  const Opcao({this.titulo, this.icon});
+
+  final String titulo;
+  final IconData icon;
+}
+
+const List<Opcao> opcoes = const <Opcao>[
+  const Opcao(titulo: 'Carro', icon: Icons.directions_car),
+  const Opcao(titulo: 'Bike', icon: Icons.directions_bike),
+  const Opcao(titulo: 'Barco', icon: Icons.directions_boat),
+  const Opcao(titulo: 'Ônibux', icon: Icons.directions_bus),
+  const Opcao(titulo: 'Trem', icon: Icons.directions_railway),
+  const Opcao(titulo: 'Andar', icon: Icons.directions_walk),
+  const Opcao(titulo: 'Carro', icon: Icons.directions_car),
+  const Opcao(titulo: 'Bike', icon: Icons.drafts),
+  const Opcao(titulo: 'Barco', icon: Icons.dvr),
+  const Opcao(titulo: 'Copy', icon: Icons.copyright),
+  const Opcao(titulo: 'Train', icon: Icons.cloud_off),
+  const Opcao(titulo: 'Car', icon: Icons.directions_car),
+  const Opcao(titulo: 'Bike', icon: Icons.directions_bike),
+  const Opcao(titulo: 'Barco', icon: Icons.directions_boat),
+  const Opcao(titulo: 'Ônibus', icon: Icons.directions_bus),
+  const Opcao(titulo: 'Trem', icon: Icons.directions_railway),
+  const Opcao(titulo: 'Andar', icon: Icons.directions_walk),
+  const Opcao(titulo: 'Carro', icon: Icons.directions_car),
+  const Opcao(titulo: 'Bike', icon: Icons.drafts),
+  const Opcao(titulo: 'Barco', icon: Icons.dvr),
+];
+
+class OpcaoCard extends StatelessWidget {
+  const OpcaoCard({Key key, this.opcao}) : super(key: key);
+  final Opcao opcao;
+
+  @override
+  Widget build(BuildContext context) {
+    final TextStyle textStyle = Theme.of(context).textTheme.display1;
+    return Card(
+        color: Colors.white,
+        child: Center(
+          child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Icon(opcao.icon, size: 80.0, color: textStyle.color),
+                Text(opcao.titulo, style: textStyle),
+              ]),
+        ));
   }
 }
