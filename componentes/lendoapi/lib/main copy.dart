@@ -56,7 +56,7 @@ class _LendoJsonPageState extends State<LendoJsonPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Resgatando dados do servidor - hot-reload',
+      title: 'Resgatando dados do servidor',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

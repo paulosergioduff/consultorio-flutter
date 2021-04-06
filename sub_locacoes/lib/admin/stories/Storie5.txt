@@ -1,0 +1,20 @@
+* O CEO entra no sistema, e tem todos os dados para remarketing, de clientes e proprietários
+* O proprietário entra no sistema, e tem dados sobre psicológos, ranking, pagamentos, etc.
+* O Profissional entra no sistema, e tem relatório sobre seus gastos mensais, semanais, etc.
+
+
+Opções:
+* Envio de janela de dados para o PHP
+-> Criar servidor local para app de Album
+-> Modificar variáveis para relatório local
+-> Simular processamento de números em PHP
+-> Estudar operações Where no firebase
+-> Isolar funcionalidade do Read no Firebase
+* Relatório externo
+* Regras de negócios internas
+
+Suposta solução final:
+* Usar firebase host
+* Usar projeto xrud encontrado em localhost
+* Usar autentificação MDL
+* Exibir dados no app web
