@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../main.dart';
 import 'package:sub_locacoes/admin/admintelas/telas/admin_agendamentos.dart';
+import 'package:sub_locacoes/telas/relatorios.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -47,6 +48,10 @@ class menuPrincipal extends StatelessWidget {
           ),
           ListTile(
             title: Text('Relatórios'),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => Relatorios()));
+            },
           ),
           ListTile(
             title: Text('Pagamentos'),
