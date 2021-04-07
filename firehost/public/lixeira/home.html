@@ -1,0 +1,65 @@
+<html>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<!-- Dependencias -->
+<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-firestore.js"></script>
+<script type="text/javascript" src="js/configFire.js"></script>
+<!--Dependencia de autentificação -->
+<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<script type="text/javascript">
+  var paginaLogin = false;
+</script>
+
+
+
+<header>
+  <nav>
+    <ul>
+      <li><a href="#">Featured</a><button id="btnLogOut" class="btn btn-danger">Sair</button></li>
+      <li><a href="#"> Gêneros</a></li>
+      <li><a href="#">Novidades</a></li>
+      
+     <!-- <script src="https://use.fontawesome.com/f449517365.js"></script> -->
+    </ul>
+  </nav>
+</header>
+<main >
+  <hr>
+  <div class="container" style="display: none">
+    <input type="email" id="txtEmail" placeholder="email"><br>
+    <input type="password" id="txtPassword" placeholder="senha"><br>
+    <button id="btnLogin" >Login</button><button id="btnSignUp">Cadastro</button><br>
+    <button id="btnLogOut" style="display: none;">Sair</button>
+  </div>
+  <hr>
+  <div id="app-content" style="display: none;">
+        <h1> Gêneros
+      </main>
+
+      <center><iframe src="Read.html" frameborder="0" width="100%" height="500px"></iframe></center><br>
+        <div class="music christian"> <i class="fa fa-book fa-4x" aria-hidden="true"></i><p class="c">Christian</p></div></div>
+          <div class="music pop"><i class="fa fa-fire fa-4x" aria-hidden="true"></i><p class="c">Pop</p></div>
+      <div class="music mood"><i class="fa fa-meh-o fa-4x" aria-hidden="true"></i><p class="c">Mood</p></div>
+      <div class="music hiphop"><i class="fa fa-link fa-4x" aria-hidden="true"></i><p class="c">Hip Hop </p></div>
+      <div class="music chill">
+      <p class="c">Chill </p><i class="fa fa-snowflake-o fa-4x" aria-hidden="true"></i>
+      </div>
+      <div class="music latino"><i class="fa fa-volume-up fa-4x" aria-hidden="true"></i>
+      <p class="c">Latino </p></div>
+      <div class="music electronic"><i class="fa fa-diamond fa-4x" aria-hidden="true"></i><p class="c"> Electronic x Dance</p></div>
+      <div class="music country"> <i class="fa fa-star fa-4x" aria-hidden="true"></i>
+      <p class="c"> Country</p></div>
+      <div class="music rock"><i class="fa fa-bolt fa-4x" aria-hidden="true"></i>
+      <p class="c"> Rock</p></div>
+      <div class="music focus"><i class="fa fa-desktop fa-4x" aria-hidden="true"></i>
+      <p class="c">Focus </p></div>
+        <div class="music randb"><i class="fa fa-music fa-4x" aria-hidden="true"></i>
+      <p class="c"> RnB</p></div>
+         <div class="music party"><i class="fa fa-headphones fa-4x" aria-hidden="true"></i><p class="c"> Party</p></div>
+  </div>    
+
+   <script type="text/javascript" src="js/appAuth.js"></script>
+  </html>
