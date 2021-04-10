@@ -1,0 +1,48 @@
+
+var ftGUID_5459170="48093A746567B5";
+var ftConfID_5459170="0";
+var ftParams_5459170="ftOBA=1&ft_domain=www.tutorialkart.com&ft_ifb=1&ft_agentEnv=0&ft_referrer=https%3A%2F%2Fwww.tutorialkart.com%2F&us_privacy=${US_PRIVACY}&cachebuster=668053.4579457042&ft_section=adbSeg:66898477940068366544584901222340180353&ft_keyword=adbSeg:__13330890__498434__";
+var ftKeyword_5459170="";
+var ftCustom_5459170="";
+var ftSection_5459170="adbSeg:66898477940068366544584901222340180353";
+var ftSegment_5459170="w2c";
+var ftSegmentList_5459170=[{s:'w2c'}];
+var ftRuleMatch_5459170="0";
+var ftTimestamp_5459170="1616809010";
+var ftGeoC2_5459170="br";
+var ftGeoState_5459170="rj";
+var ftGeoCity_5459170="rio de janeiro";
+var ftISP_5459170="ola fibra telecomunicacoes ltda";
+var ftSpeed_5459170="broadband";
+var ftDMA_5459170="76008";
+var ftLong_5459170="-43.18";
+var ftLat_5459170="-22.9";
+var ftPostal_5459170="20010-000";
+var ftTimeZone_5459170="-300";
+var ftMobileCarrier_5459170="";
+var ftImp5459170 = {};
+ftImp5459170.privacy = "x";
+ftImp5459170.guidAge = "25";
+ftImp5459170.impID = "84A1B886-F63B-2DD8-2503-5D954F786EAF";
+ftImp5459170.duid = "FT:48093A746567B5";
+
+ftImp5459170.ft_tpplid = "";
+ftImp5459170.ft_c = {};
+ftImp5459170.gdpr = "";
+ftImp5459170.gdpr_consent = "";
+ftImp5459170.gdpr_pd = "";
+ftImp5459170.oob_consent = "0";
+ftImp5459170.gdprStoredConsent = "";
+ftImp5459170.us_privacy = "!!US_PRIVACY!";
+
+ftImp5459170.jsAppend = "1";
+(function(){
+    var tag = document.getElementById('ft_servedby_5459170') || (function(s){
+    	return s[s.length-1];
+    }(document.getElementsByTagName('script'))),
+           js = document.createElement('script');
+    js.src = 
+"https://cdn.flashtalking.com/xre/545/5459170/3383042/js/j-5459170-3383042.js";
+    js.id = "ftscript_m5459170";
+    tag.parentNode.insertBefore(js, tag);
+}());

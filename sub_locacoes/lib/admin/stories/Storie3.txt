@@ -1,0 +1,8 @@
+* Sou um profissional. Em contato com o dono da clínica, recebo o 
+app de agendamento.
+* Me cadastro normalmente usando o código da clínica, validação de celular, e domínio
+* No app, reservo as salas, por mês ou em massa, sempre escolhendo a sala
+* Em meus agendamentos, posso cancelar uma agenda superior a 24h (ou o inverso)
+* Posso visualizar a somatória dos meus aluguéis na tela principal
+* No menu, tenho acesso a meus relatórios em PDF, assim como o admin
+* Opção de acessar PIX do domínio para quitar dívida

@@ -49,7 +49,7 @@ class _SignInPageState extends State<SignInPage> {
                   content: Text('$uid Foi deslogado com sucesso'),
                 ));
               },
-              child: const Text('Sair'),
+              //child: const Text('Sair'),
             );
           })
         ],
@@ -802,13 +802,9 @@ class _OtherProvidersSignInSectionState
         userCredential = await _auth.signInWithCredential(googleAuthCredential);
       }
 
-      Navigator.push(
-        // Muda de página
-        context,
-        MaterialPageRoute(
-            builder: (context) =>
-                SubLocacoes()), //  MyHomePage()), // Nova tela após logado
-      );
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => SubLocacoes()),
+          (Route<dynamic> route) => false);
 
       final user = userCredential.user;
       Scaffold.of(context).showSnackBar(SnackBar(

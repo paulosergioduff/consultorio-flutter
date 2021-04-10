@@ -30,6 +30,10 @@ dependencies:
   google_sign_in: ^4.5.9
   splashscreen: ^1.2.0
   http: ^0.13.0
+  intl: ^0.17.0
+  webview_flutter: ^1.0.5
+
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -106,3 +110,5 @@ flutter:
      - assets/images/social_media/
      - assets/images/Illustrations/
      - assets/
+     - assets/images/calendar_header_rainy.jpg
+     - assets/images/splash.jpg

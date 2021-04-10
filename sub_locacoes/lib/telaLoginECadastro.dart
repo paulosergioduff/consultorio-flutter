@@ -9,7 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_builder.dart';
 
 import './Cadastro.dart';
+import './AdminCadastro.dart';
+//import 'package:sub_locacoes/admin/tiposDeCadastro.dart';
 import './Login.dart';
+import './AdminLogin.dart';
 
 /// The entry point of the application.
 ///
@@ -21,7 +24,7 @@ class HomeScreen extends StatelessWidget {
       title: 'Consultório Beta',
       theme: ThemeData(
         primarySwatch: Colors.purple,
-        primaryColor: const Color(0xFF9c27b0),
+        primaryColor: const Color(0xFF6d63ea), //6d63ea
         accentColor: const Color(0xFF9c27b0),
         canvasColor: const Color(0xFFfafafa),
       ),
@@ -54,9 +57,19 @@ class AuthTypeSelector extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             alignment: Alignment.center,
             child: SignInButtonBuilder(
-              icon: Icons.person_add,
+              icon: Icons.store,
               backgroundColor: Colors.indigo,
-              text: 'Cadastre-se',
+              text: 'Cadastro de poprietário',
+              onPressed: () => _pushPage(context, AdminRegisterPage()),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(16),
+            alignment: Alignment.center,
+            child: SignInButtonBuilder(
+              icon: Icons.person_add,
+              backgroundColor: Colors.green,
+              text: 'Cadastro de profissional',
               onPressed: () => _pushPage(context, RegisterPage()),
             ),
           ),
@@ -70,7 +83,35 @@ class AuthTypeSelector extends StatelessWidget {
               onPressed: () => _pushPage(context, SignInPage()),
             ),
           ),
+          Container(
+            padding: const EdgeInsets.all(16),
+            alignment: Alignment.center,
+            child: SignInButtonBuilder(
+              icon: Icons.verified_user,
+              backgroundColor: Colors.red,
+              text: 'Admin',
+              onPressed: () => _pushPage(context, AdminSignInPage()),
+            ),
+          ),
         ],
+      ),
+    );
+  }
+}
+
+class TemaPrincipal extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Sub Locações',
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+        primaryColor: const Color(0xFF6d63ea), //6d63ea
+        accentColor: const Color(0xFF9c27b0),
+        canvasColor: const Color(0xFFfafafa),
+      ),
+      home: Scaffold(
+        body: AuthTypeSelector(),
       ),
     );
   }

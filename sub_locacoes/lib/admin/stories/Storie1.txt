@@ -1,0 +1,9 @@
+* Sou um proprietário de clínica, e quero alugar minhas salas
+* Na PlayStore, acho o aplicativo sublocações, e instalo
+* Na tela de instalação, acho opções de instalação, proprietário ou profissional querendo alugar
+* Instação requer nome de usuário admin e celular
+* Ao entrar em contato com equipe de marketing, receber o código de clínica, o proprietário se cadastra no app
+* Ao entrar no aplicativo, ele cadastra suas salas enviando uploads e descrição
+
+-> celular precisa ser configurado
+-> Precisa de permissão do CEO para criar grupo

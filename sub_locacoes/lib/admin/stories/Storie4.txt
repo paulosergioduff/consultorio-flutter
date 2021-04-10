@@ -1,0 +1,4 @@
+* O CEO tem todas as permissões
+* O CEO recebe pagamento por todos os PIX ou outros métodos
+* O CEO gera relatórios de todos os dados via XLS
+* O CEO decide sobre pagamentos, etc

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Material Design Lite -->
+    <script src="js/material.min.js"></script>
+    <link rel="stylesheet" href="css/material.indigo-pink.min.css">
+    <!-- Roboto Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- icones externos -->
+    <script src="https://kit.fontawesome.com/a664376c48.js"></script>
+
+        	<!-- baseado em authDemo.html -->
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-firestore.js"></script>
+<script type="text/javascript" src="js/configFire.js"></script>
+<!--Dependencia de autentificação -->
+<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+<script src="js/json2html.js"></script>
+<!-- icones externos -->
+<script src="https://kit.fontawesome.com/a664376c48.js"></script>
+
+<script type="text/javascript">
+  var paginaLogin = false;
+</script>
+
+
+    <!-- Grid CSS -->
+    <link rel="stylesheet" href="css/grid.css">
+
+    
+    <title>Document</title>
+</head>
+<body>
+
+      <!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">Title</span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We hide it in small screens. -->
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+        </nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Title</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="" id="btnLogOut">Sair</a>
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content"><!-- Your content goes here -->
+      
+        <!-- List items with avatar and action -->
+<style>
+  .demo-list-action {
+    width: 300px;
+  }
+  </style>
+  
+ <!-- content -->
+
+        <center>
+                <div id="output"></div>
+
+                <script src="js/xrud.js"></script>
+                <script>
+            var listaGlobal = "";
+            
+                    let dataDemo = {
+                                nome: "CasasBahia", Local: "RJ", country: "USA",
+                                capital: false, population: 1860000 };
+            
+                                function xrud_miniController($content, $document){
+                                    $documentDelete = "'empresas', "+"'"+$document+"'";
+                                    $documentInsert = "'empresas', "+"'"+$document+"', dataDemo";
+                                    $documentRead = "'empresas', "+"'"+$document+"'"; // Para aprimorar
+                                    $documentUpdate = "'empresas', "+"'"+$document+"'dataDemo";
+                                var html = '<span class="material-icons mdl-list__item-avatar">person</span>'+json2html.transform($content,{'<>':'span','html': '${nome}'});
+                                var html = html+json2html.transform($content,{'<>':'span','html': '${Local}'})+'<a href="javascript: xrud_read('+$documentRead+');">Listar</a>'+'<a href="javascript: xrud_send('+$documentInsert+');">Inserir</a>'+'<a href="javascript: xrud_send('+$documentUpdate+');">Atualizar</a>'+'<a href="javascript: xrud_delete('+$documentDelete+');">Deletar</a><hr>';
+                                var htmlFinal = window.document.getElementById('output').innerHTML = listaGlobal+html;
+                                listaGlobal = htmlFinal;
+                            }
+            
+                   
+            
+                    // implementation 
+                xrud_send('empresas', 'CasasBahia', dataDemo);
+                //xrud_delete('empresas', 'SF');
+                //xrud_read('empresas');
+                </script>
+        </center>            
+  
+   <!-- content -->    
+      
+      </div>
+    </main>
+  </div>
+
+  <!-- Para refatorar: Prazo curto de projeto -->
+  <div style="display: none">
+      <button id="btnLogin" class="btn btn-success" >Login</button><button id="btnSignUp">Cadastro</button><br>
+      <button id="btnLogOut" style="display: none;">Sair</button>
+  </div>
+
+  <script src="js/appAuth.js"></script>
+  
+</body>
+</html>

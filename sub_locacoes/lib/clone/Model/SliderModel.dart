@@ -12,7 +12,7 @@ class SliderModel {
     SliderModel s1 = new SliderModel(
         "assets/images/Illustrations/il1.jpg",
         "Reserve por hora",
-        "Caso tenha alguma emergÊncia você pode escolher os horários disponíveis. Deslise para a direita para mais opções ");
+        "Caso tenha alguma emergência você pode escolher os horários disponíveis. Deslise para a direita para mais opções ");
     SliderModel s2 = new SliderModel("assets/images/Illustrations/il2.jpg",
         "Reserve por sala", "Várias salas configuradas para sua especialidade");
     SliderModel s3 = new SliderModel(

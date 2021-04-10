@@ -32,7 +32,7 @@ class _PropertiesState extends State<Properties> {
 
     List<Widget> properties = [
       new ImageProperty(true, Constants.properties[1]),
-      new ImageProperty(false, Constants.properties[0]),
+      //new ImageProperty(false, Constants.properties[0]),
       //_buildPadding(),
     ];
     return Scaffold(
