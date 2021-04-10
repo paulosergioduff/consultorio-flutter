@@ -58,30 +58,26 @@
         <center>
           <h1 id="usertest">User test</h1>
           <a class="mdl-navigation__link" href="" id="btnLogOut">Sair</a>
-         
-                <div id="output"></div>
 
+         <table id="output">
+          <th>Autor</th>
+          <th>Horário</th>
+          <th>Reserva</th>
+        </table>
                 <script src="js/xrud.js"></script>
                 <script>
             var listaGlobal = "";
             
-                    let dataDemo = {
-                                nome: "supermarket", Local: "RJ", country: "USA",
-                                capital: false, population: 1860000 };
-            
                                 function xrud_miniController($content){
                                 
-                                var html = json2html.transform($content,{'<>':'h3','html': '${reserva}'});
-                              //  var html = html+json2html.transform($content,{'<>':'li','html': '${Local}'})+'<hr>';
+                                var html = json2html.transform($content,{'<>':'span','html': '<tr><td>'+'${autor}'+'</td>'});
+                                  var html = html+json2html.transform($content,{'<>':'span','html': '<td>'+'${horario}'+'</td>'});
+                                  var html = html+json2html.transform($content,{'<>':'span','html': '<td>'+'${reserva}'+'</td></tr>'});
+                                var listaGlobal = window.document.getElementById('output').innerHTML;
                                 var htmlFinal = window.document.getElementById('output').innerHTML = listaGlobal+html;
                                 listaGlobal = htmlFinal;
                             }
-            
-                   
-            
-                    // implementation 
-                //xrud_send('empresas', 'supermarket', dataDemo);
-                //xrud_delete('empresas', 'SF');
+
                 xrud_read('nova-iguacu.com.br/reserva/data');
                 </script>
         </center>            

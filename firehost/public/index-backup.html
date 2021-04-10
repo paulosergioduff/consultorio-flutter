@@ -23,6 +23,7 @@
 <!--Dependencia de autentificação -->
 <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="js/json2html.js"></script>
 
 <script type="text/javascript">
   var paginaLogin = false;
@@ -39,31 +40,9 @@
 
       <!-- Always shows a header, even in smaller screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
-      <div class="mdl-layout__header-row">
-        <!-- Title -->
-        <span class="mdl-layout-title">Title</span>
-        <!-- Add spacer, to align navigation to the right -->
-        <div class="mdl-layout-spacer"></div>
-        <!-- Navigation. We hide it in small screens. -->
-        <nav class="mdl-navigation mdl-layout--large-screen-only">
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-        </nav>
-      </div>
+   
     </header>
-    <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title">Title</span>
-      <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="" id="btnLogOut">Sair</a>
-      </nav>
-    </div>
+    
     <main class="mdl-layout__content">
       <div class="page-content"><!-- Your content goes here -->
       
@@ -77,7 +56,27 @@
  <!-- content -->
 
         <center>
-          <!-- contéudo aqui -->
+          <h1 id="usertest">User test</h1>
+          <a class="mdl-navigation__link" href="" id="btnLogOut">Sair</a>
+         
+                <div id="output"></div>
+
+                <script src="js/xrud.js"></script>
+                <script>
+            var listaGlobal = "";
+            
+                
+            
+                                function xrud_miniController($content){
+                                
+                                var html = json2html.transform($content,{'<>':'h3','html': '${reserva}'});
+                              //  var html = html+json2html.transform($content,{'<>':'li','html': '${Local}'})+'<hr>';
+                                var htmlFinal = window.document.getElementById('output').innerHTML = listaGlobal+html;
+                                listaGlobal = htmlFinal;
+                            }
+            
+                xrud_read('nova-iguacu.com.br/reserva/data');
+                </script>
         </center>            
   
    <!-- content -->    
@@ -93,6 +92,11 @@
   </div>
 
   <script src="js/appAuth.js"></script>
+
+  <script>
+    var login = localStorage.getItem("login");    
+    window.document.getElementById('usertest').innerHTML = ""+login;
+  </script>
   
 </body>
 </html>

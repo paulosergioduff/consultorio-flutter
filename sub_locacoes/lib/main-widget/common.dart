@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sub_locacoes/clone/Routes/HomePage.dart';
 import 'package:sub_locacoes/telas/meus_agendamentos.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -50,7 +51,10 @@ class menuPrincipal extends StatelessWidget {
             title: Text('Relatórios'),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => Relatorios()));
+                  builder: (BuildContext context) => MyWebView(
+                        title: "Meus relatórios",
+                        selectedUrl: "https://sublocacoesweb.web.app/",
+                      )));
             },
           ),
           ListTile(
