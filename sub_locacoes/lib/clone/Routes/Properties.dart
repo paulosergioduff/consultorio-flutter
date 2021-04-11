@@ -8,7 +8,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sub_locacoes/clone/Widgets/ImageView.dart';
 import 'package:flutter_slider_indicator/flutter_slider_indicator.dart';
-
 import 'Payer.dart';
 
 class Properties extends StatefulWidget {
@@ -31,7 +30,7 @@ class _PropertiesState extends State<Properties> {
     });
 
     List<Widget> properties = [
-      new ImageProperty(true, Constants.properties[1]),
+      new ImageProperty(true, MinhasSalas.properties[1]),
       //new ImageProperty(false, Constants.properties[0]),
       //_buildPadding(),
     ];

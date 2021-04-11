@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../main.dart';
 import 'package:sub_locacoes/admin/admintelas/telas/admin_agendamentos.dart';
+import 'package:sub_locacoes/admin/admintelas/telas/criarQuartos.dart';
 import 'package:sub_locacoes/telas/relatorios.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -119,10 +120,17 @@ class AdminMenu extends StatelessWidget {
                     fit: BoxFit.none)),
           ),
           ListTile(
-            title: Text('Início - Admin'),
+            title: Text('Início'),
             onTap: () {
               // Update the state of the app.
               // ...
+            },
+          ),
+          ListTile(
+            title: Text('Nova sala'),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => CriarQuartos()));
             },
           ),
           ListTile(
