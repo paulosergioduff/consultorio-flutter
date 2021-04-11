@@ -25,13 +25,16 @@ class menuPrincipal extends StatelessWidget {
         // Important: Remove any padding from the ListView.
         padding: EdgeInsets.zero,
         children: <Widget>[
-          DrawerHeader(
-            child: Text(''),
+          UserAccountsDrawerHeader(
             decoration: BoxDecoration(
-                color: Colors.white,
-                image: DecorationImage(
-                    image: AssetImage("assets/images/splash.jpg"),
-                    fit: BoxFit.none)),
+              color: Colors.grey.shade50,
+            ),
+            accountName: Text("Sublocações"),
+            accountEmail: null,
+            currentAccountPicture: CircleAvatar(
+              radius: 70,
+              backgroundImage: AssetImage("assets/images/drawer.png"),
+            ),
           ),
           ListTile(
             title: Text('Início'),
@@ -110,13 +113,16 @@ class AdminMenu extends StatelessWidget {
         // Important: Remove any padding from the ListView.
         padding: EdgeInsets.zero,
         children: <Widget>[
-          DrawerHeader(
-            child: Text(''),
+          UserAccountsDrawerHeader(
             decoration: BoxDecoration(
-                color: Colors.white,
-                image: DecorationImage(
-                    image: AssetImage("assets/images/splash.jpg"),
-                    fit: BoxFit.none)),
+              color: Colors.grey.shade50,
+            ),
+            accountName: Text("Sublocações"),
+            accountEmail: null,
+            currentAccountPicture: CircleAvatar(
+              radius: 70,
+              backgroundImage: AssetImage("assets/images/drawer.png"),
+            ),
           ),
           ListTile(
             title: Text('Início - Admin'),

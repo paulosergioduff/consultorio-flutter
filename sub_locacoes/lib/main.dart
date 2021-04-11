@@ -61,6 +61,7 @@ Widget _introScreen() {
         loaderColor: Colors.transparent,
       ),
       Container(
+        width: double.maxFinite,
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/splash.jpg"),
