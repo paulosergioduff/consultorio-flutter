@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sub_locacoes/clone/Routes/Properties.dart';
 import '../../home.dart';
+import 'package:sub_locacoes/main-widget/common.dart';
 
 class Ongoing extends StatefulWidget {
   @override
@@ -41,9 +42,13 @@ class _OngoingState extends State<Ongoing> {
         accentColor: const Color(0xFF9c27b0),
         canvasColor: const Color(0xFFfafafa),
       ),
-      home: MyHomePage(title: 'Sub Locações'),
+      // home: SubLocacoes(title: 'Sub Locações'),
     );
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Sub Locações"), // Passando paramtro -->(widget.title),
+      ),
+      drawer: menuPrincipal(),
       backgroundColor: Colors.white,
       body: PageView.builder(
         itemBuilder: (context, index) {
@@ -144,7 +149,7 @@ class SlideTiles extends StatelessWidget {
                 //textoBotao = "Sair";
 
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => MyHomePage()));
+                    builder: (BuildContext context) => SubLocacoes()));
               }
             },
             child: Container(

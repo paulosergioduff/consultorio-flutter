@@ -1,5 +1,14 @@
 * Com a conta cadastrada, recebo atualizações sobre pedidos de agendamento
 - Escolhe atender ou recusar
 * Todas os atos vão para o relatório
+* Posso cadastrar quartos
 * O dono pode dar gratuidade ou cancelar o agendamento
 * Cadastro o PIX do meu domínio 
+
+Task1 -> Criando quartos 
+x Uma página CRUD permite a criação de campos de novo quarto
+* A página de quartos grava em lista, dados do domínio de um quarto 
+-> Editar campos para guardar informações de quarto comparando com model
+-> Conferir no firebase
+* A lista apresenta estruturas identicas ao de quartos é exibita em um text
+* A lista de carregamento dos quartos é substituída pela do firebase

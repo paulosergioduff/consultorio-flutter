@@ -21,7 +21,7 @@ class SliderModel {
         "Deslize para direita para voltar para as opções ");
     slides.add(s1);
     slides.add(s2);
-    slides.add(s3);
+    //slides.add(s3); // Antes era um módulo separado da home, que precisava de uma opção para voltar para a home
     return slides;
   }
 }
