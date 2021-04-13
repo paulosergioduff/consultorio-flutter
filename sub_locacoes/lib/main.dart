@@ -65,7 +65,7 @@ Widget _introScreen() {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/splash.jpg"),
-            fit: BoxFit.none,
+            fit: BoxFit.fill,
           ),
         ),
       ),

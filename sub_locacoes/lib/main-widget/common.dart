@@ -29,7 +29,7 @@ class menuPrincipal extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.grey.shade50,
             ),
-            accountName: Text("Sublocações"),
+            accountName: null,
             accountEmail: null,
             currentAccountPicture: CircleAvatar(
               radius: 70,
@@ -117,7 +117,7 @@ class AdminMenu extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.grey.shade50,
             ),
-            accountName: Text("Sublocações"),
+            accountName: null,
             accountEmail: null,
             currentAccountPicture: CircleAvatar(
               radius: 70,
