@@ -50,7 +50,7 @@ agendarData(dataAlvo) {
 
   if (dataRecebida != hoje) {
     XrudSend(rotareserva, dataRecebida, dados);
-    MaterialPageRoute(builder: (BuildContext context) => MyHomePage());
+    MaterialPageRoute(builder: (BuildContext context) => SubLocacoes());
   }
 }
 
@@ -258,7 +258,7 @@ class _HomeState extends State<CalendarioInterface> {
                         () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => MyHomePage())));
+                                builder: (context) => SubLocacoes())));
                     //Tier
                     return Text('Concluindo...');
                   },
@@ -281,7 +281,7 @@ class _HomeState extends State<CalendarioInterface> {
                         () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => MyHomePage())));
+                                builder: (context) => SubLocacoes())));
                     //Tier
                     return Text('Concluindo...');
                   },

@@ -1,137 +1,175 @@
+import 'package:sub_locacoes/apps/calendario/calendario-main.dart';
+import 'package:sub_locacoes/clone/Constants/Constants.dart';
+import 'package:sub_locacoes/clone/Model/SliderModel.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'main-widget/common.dart';
-import 'package:sub_locacoes/clone/Routes/Ongoing.dart';
-import 'main.dart';
+import 'package:sub_locacoes/clone/Routes/Properties.dart';
 import 'package:sub_locacoes/main-widget/common.dart';
 
-void main() {
-  runApp(SubLocacoes());
+class SubLocacoes extends StatefulWidget {
+  @override
+  MyHomePage createState() => MyHomePage();
 }
 
-class SubLocacoes extends StatelessWidget {
-  // This widget is the root of your application.
+class MyHomePage extends State<SubLocacoes> {
+  List<SliderModel> slides = new List<SliderModel>();
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+// Example code for sign out.
+  Future<void> _signOut() async {
+    await _auth.signOut();
+  }
+
+  int currentState;
+
+  PageController pageController = new PageController(initialPage: 0);
+  @override
+  void initState() {
+    slides = SliderModel.getSlides();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    //StartMenu();
+    MaterialApp(
       title: 'Sub Locações',
       theme: ThemeData(
         primarySwatch: Colors.purple,
-        primaryColor: const Color(0xFF6d63ea), //6d63ea
+        primaryColor: const Color(0xFF9c27b0),
         accentColor: const Color(0xFF9c27b0),
         canvasColor: const Color(0xFFfafafa),
       ),
-      home: MyHomePage(title: 'Sub Locações'), // Passando parametros como texto
     );
-  }
-}
-
-final FirebaseAuth _auth = FirebaseAuth.instance;
-
-// Example code for sign out.
-Future<void> _signOut() async {
-  await _auth.signOut();
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  // always marked "final".
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() =>
-      MaterialPageRoute(builder: (context) => Ongoing()); // Muda a tela
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Sub Locações"), // Passando paramtro -->(widget.title),
       ),
       drawer: menuPrincipal(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            // Usar listView deslizável com imagens do OnGoing
-
-            RaisedButton(
-              child: Text('Iniciar agendamento'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Ongoing()),
-                );
-              },
-            ),
-          ],
-        ),
+      backgroundColor: Colors.white,
+      body: PageView.builder(
+        itemBuilder: (context, index) {
+          return SlideTiles(
+            slides[index].imagePath,
+            slides[index].text,
+            slides[index].title,
+            index,
+          );
+        },
+        controller: pageController,
+        itemCount: slides.length,
+        scrollDirection: Axis.horizontal,
+        onPageChanged: (val) {
+          currentState = val;
+        },
       ),
-      /*floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // */ //This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
 
-class Opcao {
-  const Opcao({this.titulo, this.icon});
+class SlideTiles extends StatelessWidget {
+  String imagePath, text, title;
+  int current;
+  String textoBotao = "Selecionar";
 
-  final String titulo;
-  final IconData icon;
-}
-
-const List<Opcao> opcoes = const <Opcao>[
-  const Opcao(titulo: 'Carro', icon: Icons.directions_car),
-  const Opcao(titulo: 'Bike', icon: Icons.directions_bike),
-  const Opcao(titulo: 'Barco', icon: Icons.directions_boat),
-  const Opcao(titulo: 'Ônibux', icon: Icons.directions_bus),
-  const Opcao(titulo: 'Trem', icon: Icons.directions_railway),
-  const Opcao(titulo: 'Andar', icon: Icons.directions_walk),
-  const Opcao(titulo: 'Carro', icon: Icons.directions_car),
-  const Opcao(titulo: 'Bike', icon: Icons.drafts),
-  const Opcao(titulo: 'Barco', icon: Icons.dvr),
-  const Opcao(titulo: 'Copy', icon: Icons.copyright),
-  const Opcao(titulo: 'Train', icon: Icons.cloud_off),
-  const Opcao(titulo: 'Car', icon: Icons.directions_car),
-  const Opcao(titulo: 'Bike', icon: Icons.directions_bike),
-  const Opcao(titulo: 'Barco', icon: Icons.directions_boat),
-  const Opcao(titulo: 'Ônibus', icon: Icons.directions_bus),
-  const Opcao(titulo: 'Trem', icon: Icons.directions_railway),
-  const Opcao(titulo: 'Andar', icon: Icons.directions_walk),
-  const Opcao(titulo: 'Carro', icon: Icons.directions_car),
-  const Opcao(titulo: 'Bike', icon: Icons.drafts),
-  const Opcao(titulo: 'Barco', icon: Icons.dvr),
-];
-
-class OpcaoCard extends StatelessWidget {
-  const OpcaoCard({Key key, this.opcao}) : super(key: key);
-  final Opcao opcao;
+  SlideTiles(this.imagePath, this.text, this.title, this.current);
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle textStyle = Theme.of(context).textTheme.display1;
-    return Card(
-        color: Colors.white,
-        child: Center(
-          child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Icon(opcao.icon, size: 80.0, color: textStyle.color),
-                Text(opcao.titulo, style: textStyle),
-              ]),
-        ));
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            imagePath,
+            width: MediaQuery.of(context).size.width,
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              for (int i = 0; i < SliderModel.getSlides().length; i++)
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 1),
+                  width: current == i ? 20 : 8,
+                  height: 6,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: current == i
+                          ? Constants.greenAirbnb
+                          : Colors.grey[400]),
+                ),
+            ],
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Text(
+            title,
+            style: TextStyle(
+                fontSize: 22,
+                color: Colors.black54,
+                fontWeight: FontWeight.w600),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Text(
+            text,
+            style: TextStyle(fontSize: 18, color: Colors.black38),
+            textAlign: TextAlign.center,
+          ),
+          GestureDetector(
+            onTap: () {
+              if (title == "Reserve por hora") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CalendarioInterface()),
+                );
+              }
+              if (title == "Reserve por sala") {
+                //AddProperty
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Properties()),
+                );
+              }
+              /*if (title == "Sair do modo agendamento") {
+                //AddProperty
+                //textoBotao = "Sair";
+
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => MyHomePage()));
+              }*/
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+              margin: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                  color: Constants.greenAirbnb,
+                  borderRadius: BorderRadius.circular(25),
+                  boxShadow: [
+                    BoxShadow(
+                        blurRadius: 2, color: Colors.grey, offset: Offset(0, 2))
+                  ]),
+              child: Text(
+                textoBotao,
+                style: TextStyle(color: Colors.white),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

@@ -286,7 +286,7 @@ class _RegisterPageState extends State<RegisterPage> {
           context,
           MaterialPageRoute(
               builder: (context) =>
-                  MyHomePage()), //  MyHomePage()), // Nova tela após logado
+                  SubLocacoes()), //  MyHomePage()), // Nova tela após logado
         );
         completaCadastro();
       } else {
