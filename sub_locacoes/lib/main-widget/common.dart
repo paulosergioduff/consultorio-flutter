@@ -26,17 +26,17 @@ class menuPrincipal extends StatelessWidget {
         // Important: Remove any padding from the ListView.
         padding: EdgeInsets.zero,
         children: <Widget>[
-          UserAccountsDrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.grey.shade50,
-            ),
-            accountName: null,
-            accountEmail: null,
-            currentAccountPicture: CircleAvatar(
-              radius: 70,
-              backgroundImage: AssetImage("assets/images/drawer.png"),
-            ),
-          ),
+          DrawerHeader(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                backgroundImage: AssetImage("assets/images/drawer.png"),
+                radius: 60,
+              )
+            ],
+          )),
           ListTile(
             title: Text('Início'),
             onTap: () {
@@ -114,17 +114,17 @@ class AdminMenu extends StatelessWidget {
         // Important: Remove any padding from the ListView.
         padding: EdgeInsets.zero,
         children: <Widget>[
-          UserAccountsDrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.grey.shade50,
-            ),
-            accountName: null,
-            accountEmail: null,
-            currentAccountPicture: CircleAvatar(
-              radius: 70,
-              backgroundImage: AssetImage("assets/images/drawer.png"),
-            ),
-          ),
+          DrawerHeader(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                backgroundImage: AssetImage("assets/images/drawer.png"),
+                radius: 60,
+              )
+            ],
+          )),
           ListTile(
             title: Text('Início'),
             onTap: () {
@@ -199,7 +199,8 @@ class TemaPrincipal extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.white,
         primaryColor: const Color(0xFF6d63ea), //6d63ea
-        accentColor: const Color(0xFF9c27b0),
+        accentColor: const Color(0xFF6d63ea),
+        //accentColor: const Color(0xFF9c27b0),
         canvasColor: const Color(0xFFfafafa),
       ),
       /* home: Scaffold(
@@ -253,8 +254,10 @@ class MainAppbar extends StatelessWidget {
       title: 'Sub Locações',
       theme: ThemeData(
         primarySwatch: Colors.white,
-        primaryColor: const Color(0xFF9c27b0),
-        accentColor: const Color(0xFF9c27b0),
+        primaryColor: const Color(0xFF6d63ea),
+        accentColor: const Color(0xFF6d63ea),
+        // primaryColor: const Color(0xFF9c27b0),
+        // accentColor: const Color(0xFF9c27b0),
         canvasColor: const Color(0xFFfafafa),
       ),
       home: MyHomePage(title: 'Sub Locações'), // Passando parametros como texto

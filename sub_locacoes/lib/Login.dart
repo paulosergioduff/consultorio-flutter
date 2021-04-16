@@ -18,7 +18,7 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
 /// Entrypoint example for various sign-in flows with Firebase.
 class SignInPage extends StatefulWidget {
   /// The page title.
-  final String title = 'Autentificação';
+  final String title = 'Sub Locações';
 
   @override
   State<StatefulWidget> createState() => _SignInPageState();
@@ -98,15 +98,15 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
                 Container(
                   alignment: Alignment.center,
                   child: const Text(
-                    'Entre usando email e senha',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    'Autenticação',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                 ),
                 TextFormField(
                   controller: _emailController,
                   decoration: const InputDecoration(labelText: 'Email'),
                   validator: (String value) {
-                    if (value.isEmpty) return 'Falta informar o email';
+                    if (value.isEmpty) return 'Favor preencher email';
                     return null;
                   },
                 ),
@@ -114,23 +114,27 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
                   controller: _passwordController,
                   decoration: const InputDecoration(labelText: 'Senha'),
                   validator: (String value) {
-                    if (value.isEmpty) return 'Falta informar a senha';
+                    if (value.isEmpty) return 'Favor informar senha';
                     return null;
                   },
                   obscureText: true,
                 ),
-                Container(
-                  padding: const EdgeInsets.only(top: 16),
-                  alignment: Alignment.center,
-                  child: SignInButton(
-                    Buttons.Email,
-                    text: 'Entrar',
-                    onPressed: () async {
-                      if (_formKey.currentState.validate()) {
-                        await _signInWithEmailAndPassword();
-                      }
-                    },
-                  ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      child: Text("Entrar"),
+                      style: ElevatedButton.styleFrom(
+                        primary: const Color(0xFF6d63ea),
+                      ),
+                      onPressed: () async {
+                        if (_formKey.currentState.validate()) {
+                          await _signInWithEmailAndPassword();
+                        }
+                      },
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -253,7 +257,7 @@ class _EmailLinkSignInSectionState extends State<_EmailLinkSignInSection> {
       Scaffold.of(context).showSnackBar(
         SnackBar(
           content: Text(
-              'Um email foi enviado para $_userEmail . Verifique sua caisa de email!'),
+              'Um email foi enviado para $_userEmail . Verifique sua caixa de email!'),
         ),
       );
     } catch (e) {
@@ -295,7 +299,7 @@ class _AnonymouslySignInSectionState extends State<_AnonymouslySignInSection> {
               child: SignInButtonBuilder(
                 text: 'Entrar',
                 icon: Icons.person_outline,
-                backgroundColor: Colors.deepPurple,
+                backgroundColor: const Color(0xFF6d63ea),
                 onPressed: _signInAnonymously,
               ),
             ),
