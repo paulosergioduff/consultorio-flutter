@@ -119,22 +119,25 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
                   },
                   obscureText: true,
                 ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ElevatedButton(
-                      child: Text("Entrar"),
-                      style: ElevatedButton.styleFrom(
-                        primary: const Color(0xFF6d63ea),
+                Padding(
+                  padding: const EdgeInsets.all(40.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        child: Text("Entrar"),
+                        style: ElevatedButton.styleFrom(
+                          primary: const Color(0xFF6d63ea),
+                        ),
+                        onPressed: () async {
+                          if (_formKey.currentState.validate()) {
+                            await _signInWithEmailAndPassword();
+                          }
+                        },
                       ),
-                      onPressed: () async {
-                        if (_formKey.currentState.validate()) {
-                          await _signInWithEmailAndPassword();
-                        }
-                      },
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
