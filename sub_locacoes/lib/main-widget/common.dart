@@ -3,6 +3,7 @@ import 'package:sub_locacoes/clone/Routes/HomePage.dart';
 import 'package:sub_locacoes/telas/meus_agendamentos.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sub_locacoes/telas/ranking.dart';
 import '../main.dart';
 import 'package:sub_locacoes/admin/admintelas/telas/admin_agendamentos.dart';
 import 'package:sub_locacoes/admin/admintelas/telas/criarQuartos.dart';
@@ -71,8 +72,11 @@ class menuPrincipal extends StatelessWidget {
           ListTile(
             title: Text('Ranking'),
             onTap: () {
-              // Update the state of the app.
-              // ...
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => Ranking(
+                        title: "Ranking",
+                        selectedUrl: "https://sublocacoesweb.web.app/",
+                      )));
             },
           ),
           ListTile(

@@ -144,51 +144,6 @@ class _MeusAgendametnosState extends State<MeusAgendametnos> {
           padding: EdgeInsets.all(12.0),
           child: Column(
             children: [
-              TextFormField(
-                style: simpleTextStyle(),
-                decoration: textFieldInputDecoration(
-                  'Name',
-                  Icon(Icons.account_circle_outlined),
-                ),
-                onChanged: (String name) {
-                  setState(() {
-                    getautor(name);
-                  });
-                },
-              ),
-              SizedBox(height: 10.0),
-              TextFormField(
-                style: simpleTextStyle(),
-                decoration: textFieldInputDecoration(
-                  'Student ID',
-                  Icon(Icons.perm_identity_outlined),
-                ),
-                onChanged: (String sID) {
-                  getreserva(sID);
-                },
-              ),
-              SizedBox(height: 10.0),
-              TextFormField(
-                style: simpleTextStyle(),
-                decoration: textFieldInputDecoration(
-                  'Study Program ID',
-                  Icon(Icons.perm_identity_outlined),
-                ),
-                onChanged: (String pID) {
-                  gethorario(pID);
-                },
-              ),
-              SizedBox(height: 10.0),
-              TextFormField(
-                style: simpleTextStyle(),
-                decoration: textFieldInputDecoration(
-                  'CGPA',
-                  Icon(Icons.confirmation_number_outlined),
-                ),
-                onChanged: (String gpa) {
-                  getdominio(gpa);
-                },
-              ),
               SizedBox(height: 15.0),
               Row(
                 children: [
@@ -197,8 +152,8 @@ class _MeusAgendametnosState extends State<MeusAgendametnos> {
                       padding: EdgeInsets.symmetric(vertical: 15.0),
                       elevation: 8.0,
                       onPressed: () => createData(),
-                      color: Colors.green,
-                      child: Text('Create',
+                      color: const Color(0xFF6d63ea),
+                      child: Text('Novo',
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       textColor: Colors.white,
                       shape: raisedButtonBorder(),
@@ -209,8 +164,8 @@ class _MeusAgendametnosState extends State<MeusAgendametnos> {
                       padding: EdgeInsets.symmetric(vertical: 15.0),
                       elevation: 8.0,
                       onPressed: () => readData(),
-                      color: Colors.blue,
-                      child: Text('Read',
+                      color: const Color(0xFF6d63ea),
+                      child: Text('Atualizar',
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       textColor: Colors.white,
                       shape: raisedButtonBorder(),
@@ -221,8 +176,8 @@ class _MeusAgendametnosState extends State<MeusAgendametnos> {
                       padding: EdgeInsets.symmetric(vertical: 15.0),
                       elevation: 8.0,
                       onPressed: () => updateData(),
-                      color: Colors.orange,
-                      child: Text('Update',
+                      color: const Color(0xFF6d63ea),
+                      child: Text('Alterar',
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       textColor: Colors.white,
                       shape: raisedButtonBorder(),
@@ -233,7 +188,7 @@ class _MeusAgendametnosState extends State<MeusAgendametnos> {
                       padding: EdgeInsets.symmetric(vertical: 15.0),
                       elevation: 8.0,
                       onPressed: () => deleteData(),
-                      color: Colors.red,
+                      color: const Color(0xFF6d63ea),
                       child: Text('Cancelar',
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       textColor: Colors.white,
@@ -254,14 +209,14 @@ class _MeusAgendametnosState extends State<MeusAgendametnos> {
                   ),
                   Expanded(
                     child: Text(
-                      'Student ID',
+                      'Data',
                       textAlign: TextAlign.center,
                       style: TextStyle(fontWeight: FontWeight.w900),
                     ),
                   ),
                   Expanded(
                     child: Text(
-                      'Program ID',
+                      'Horário',
                       textAlign: TextAlign.center,
                       style: TextStyle(fontWeight: FontWeight.w900),
                     ),
