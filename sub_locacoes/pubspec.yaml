@@ -113,4 +113,9 @@ flutter:
      - assets/images/calendar_header_rainy.jpg
      - assets/images/splash.jpg
      - assets/images/drawer.png
-     - assets/fonts
+     - assets/fonts/Nunito-ExtraLight.ttf
+
+fonts:
+  - family: Nunito ExtraLight
+    fonts:
+     - assets/fonts/Nunito-ExtraLight.ttf

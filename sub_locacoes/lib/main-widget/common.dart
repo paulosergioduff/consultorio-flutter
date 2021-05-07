@@ -38,7 +38,7 @@ class menuPrincipal extends StatelessWidget {
               children: [
                 CircleAvatar(
                   backgroundImage: AssetImage("assets/images/drawer.png"),
-                  radius: 60,
+                  radius: 80,
                 )
               ],
             )),
@@ -74,8 +74,12 @@ class menuPrincipal extends StatelessWidget {
                   },
                 ),
                 ListTile(
-                  title:
-                      Text('Pagamentos', style: TextStyle(color: Colors.white)),
+                  title: Text(
+                    'Pagamentos',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
                   onTap: () {
                     // Update the state of the app.
                     // ...
