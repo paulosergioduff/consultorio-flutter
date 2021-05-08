@@ -234,6 +234,7 @@ class TemaPrincipal extends StatelessWidget {
     return MaterialApp(
       title: 'Sub Locações',
       theme: ThemeData(
+        fontFamily: 'Nunito-ExtraLight',
         primarySwatch: Colors.white,
         primaryColor: const Color(0xFF6d63ea), //6d63ea
         accentColor: const Color(0xFF6d63ea),
@@ -290,6 +291,7 @@ class MainAppbar extends StatelessWidget {
     return MaterialApp(
       title: 'Sub Locações',
       theme: ThemeData(
+        fontFamily: 'Nunito-ExtraLight',
         primarySwatch: Colors.white,
         primaryColor: const Color(0xFF6d63ea),
         accentColor: const Color(0xFF6d63ea),
