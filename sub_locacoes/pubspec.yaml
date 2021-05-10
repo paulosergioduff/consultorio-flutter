@@ -32,6 +32,7 @@ dependencies:
   http: ^0.13.0
   intl: ^0.17.0
   webview_flutter: ^1.0.5
+  carousel_slider: ^3.0.0
 
 
 
@@ -46,7 +47,6 @@ dev_dependencies:
   flutter_localizations: # Add this line
     sdk: flutter
   font_awesome_flutter: ^8.11.0
-  carousel_slider: ^3.0.0
   flutter_slider_indicator: ^0.2.0
   shimmer: ^1.1.2
   google_maps_flutter: ^2.0.1

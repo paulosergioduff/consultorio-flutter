@@ -4,7 +4,8 @@ import 'package:sub_locacoes/clone/Model/SliderModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:sub_locacoes/clone/Routes/Properties.dart';
+//import 'package:sub_locacoes/clone/Routes/Properties.dart';
+import 'package:sub_locacoes/apps/slider.dart';
 import 'package:sub_locacoes/main-widget/common.dart';
 
 class SubLocacoes extends StatefulWidget {
@@ -139,7 +140,8 @@ class SlideTiles extends StatelessWidget {
                 //AddProperty
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Properties()),
+                  MaterialPageRoute(
+                      builder: (context) => CarouselWithIndicatorDemo()),
                 );
               }
               /*if (title == "Sair do modo agendamento") {

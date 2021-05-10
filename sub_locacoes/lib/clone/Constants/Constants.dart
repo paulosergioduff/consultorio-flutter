@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:sub_locacoes/clone/Model/Address.dart';
-import 'package:sub_locacoes/clone/Model/Hotel.dart';
+import 'package:sub_locacoes/clone/Model/NewRoom.dart';
 import 'package:sub_locacoes/clone/Model/Property.dart';
 import 'package:sub_locacoes/clone/Model/Wilaya.dart';
 import 'package:sub_locacoes/clone/Model/Appartement.dart';
@@ -11,11 +11,11 @@ String texto = ""; // Texto para editar informações
 
 class Constants {
   static List<Property> properties = [
-    Hotel(
-      "hotel",
+    NewRoom(
+      "NewRoom",
       ['assets/images/properties/p1.jpg', "assets/images/properties/p2.jpg"],
       5000,
-      Address("Label1", "String1", "Title1", "Hotel1", "num15", "num09025"),
+      Address("Label1", "String1", "Title1", "NewRoom1", "num15", "num09025"),
       "As mais pedidas da programação ",
       4.2,
       Commodite(true, true, false, true, true, true, true, true, true),
@@ -55,11 +55,11 @@ class Constants {
 
 class MinhasSalas {
   static List<Property> properties = [
-    Hotel(
-      "hotel",
+    NewRoom(
+      "NewRoom",
       ['assets/images/properties/p1.jpg', "assets/images/properties/p2.jpg"],
       5000,
-      Address("Label1", "String1", "Title1", "Hotel1", "num15", "num09025"),
+      Address("Label1", "String1", "Title1", "NewRoom1", "num15", "num09025"),
       "As mais pedidas da programação ",
       4.2,
       Commodite(true, true, false, true, true, true, true, true, true),

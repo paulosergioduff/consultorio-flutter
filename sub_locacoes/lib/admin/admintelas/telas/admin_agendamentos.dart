@@ -134,191 +134,8 @@ class _AdminAgendametnosState extends State<AdminAgendametnos> {
           padding: EdgeInsets.all(12.0),
           child: Column(
             children: [
-              TextFormField(
-                style: simpleTextStyle(),
-                decoration: textFieldInputDecoration(
-                  'Name',
-                  Icon(Icons.account_circle_outlined),
-                ),
-                onChanged: (String name) {
-                  setState(() {
-                    getautor(name);
-                  });
-                },
-              ),
-              SizedBox(height: 10.0),
-              TextFormField(
-                style: simpleTextStyle(),
-                decoration: textFieldInputDecoration(
-                  'Student ID',
-                  Icon(Icons.perm_identity_outlined),
-                ),
-                onChanged: (String sID) {
-                  getreserva(sID);
-                },
-              ),
-              SizedBox(height: 10.0),
-              TextFormField(
-                style: simpleTextStyle(),
-                decoration: textFieldInputDecoration(
-                  'Study Program ID',
-                  Icon(Icons.perm_identity_outlined),
-                ),
-                onChanged: (String pID) {
-                  gethorario(pID);
-                },
-              ),
-              SizedBox(height: 10.0),
-              TextFormField(
-                style: simpleTextStyle(),
-                decoration: textFieldInputDecoration(
-                  'CGPA',
-                  Icon(Icons.confirmation_number_outlined),
-                ),
-                onChanged: (String gpa) {
-                  getdominio(gpa);
-                },
-              ),
               SizedBox(height: 15.0),
-              Row(
-                children: [
-                  Expanded(
-                    child: RaisedButton(
-                      padding: EdgeInsets.symmetric(vertical: 15.0),
-                      elevation: 8.0,
-                      onPressed: () => createData(),
-                      color: Colors.green,
-                      child: Text('Aceitar',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
-                      textColor: Colors.white,
-                      shape: raisedButtonBorder(),
-                    ),
-                  ),
-                  Expanded(
-                    child: RaisedButton(
-                      padding: EdgeInsets.symmetric(vertical: 15.0),
-                      elevation: 8.0,
-                      onPressed: () => readData(),
-                      color: Colors.blue,
-                      child: Text('Read',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
-                      textColor: Colors.white,
-                      shape: raisedButtonBorder(),
-                    ),
-                  ),
-                  Expanded(
-                    child: RaisedButton(
-                      padding: EdgeInsets.symmetric(vertical: 15.0),
-                      elevation: 8.0,
-                      onPressed: () => updateData(),
-                      color: Colors.orange,
-                      child: Text('Update',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
-                      textColor: Colors.white,
-                      shape: raisedButtonBorder(),
-                    ),
-                  ),
-                  Expanded(
-                    child: RaisedButton(
-                      padding: EdgeInsets.symmetric(vertical: 15.0),
-                      elevation: 8.0,
-                      onPressed: () => deleteData(),
-                      color: Colors.red,
-                      child: Text('Recusar',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
-                      textColor: Colors.white,
-                      shape: raisedButtonBorder(),
-                    ),
-                  ),
-                ],
-              ),
-              Divider(thickness: 1.0, height: 25.0, color: Colors.green),
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      'Name',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontWeight: FontWeight.w900),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      'Student ID',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontWeight: FontWeight.w900),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      'Program ID',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontWeight: FontWeight.w900),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      'CGPA',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontWeight: FontWeight.w900),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 10.0),
-              StreamBuilder(
-                stream: FirebaseFirestore.instance
-                    .collection(rotareserva)
-                    .snapshots(),
-                // ignore: missing_return
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: snapshot.data.docs.length,
-                      itemBuilder: (context, index) {
-                        DocumentSnapshot documentSnapshot =
-                            snapshot.data.docs[index];
-                        return Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                documentSnapshot["autor"],
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            Expanded(
-                              child: Text(
-                                documentSnapshot["reserva"],
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            Expanded(
-                              child: Text(
-                                documentSnapshot["horario"],
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            Expanded(
-                              child: Text(
-                                documentSnapshot["dominio"].toString(),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  } else {
-                    return Align(
-                      alignment: FractionalOffset.bottomCenter,
-                      child: CircularProgressIndicator(
-                        backgroundColor: Colors.black,
-                      ),
-                    );
-                  }
-                },
-              ),
+              MyStream(),
             ],
           ),
         ),
@@ -347,4 +164,65 @@ TextStyle simpleTextStyle() {
 
 RoundedRectangleBorder raisedButtonBorder() {
   return RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0));
+}
+
+class MyStream extends StatefulWidget {
+  @override
+  _MyStreamState createState() => _MyStreamState();
+}
+
+class _MyStreamState extends State<MyStream> {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+      stream: FirebaseFirestore.instance.collection(rotareserva).snapshots(),
+      // ignore: missing_return
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return ListView.builder(
+            shrinkWrap: true,
+            itemCount: snapshot.data.docs.length,
+            itemBuilder: (context, index) {
+              DocumentSnapshot documentSnapshot = snapshot.data.docs[index];
+              return Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      documentSnapshot["autor"],
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      documentSnapshot["reserva"],
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      documentSnapshot["horario"],
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      documentSnapshot["dominio"].toString(),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              );
+            },
+          );
+        } else {
+          return Align(
+            alignment: FractionalOffset.bottomCenter,
+            child: CircularProgressIndicator(
+              backgroundColor: Colors.black,
+            ),
+          );
+        }
+      },
+    );
+  }
 }
