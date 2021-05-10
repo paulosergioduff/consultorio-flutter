@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Splash Screen',
       theme: ThemeData(
+        fontFamily: 'NunitoExtraLight',
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Splash Screen Flutter'),
