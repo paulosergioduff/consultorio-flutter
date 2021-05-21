@@ -8,7 +8,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
-import 'telaLoginECadastro.dart';
+import 'Login.dart';
 import 'package:flutter/cupertino.dart';
 
 Future<void> main() async {
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Splash Screen',
       theme: ThemeData(
-        fontFamily: 'NunitoExtraLight',
+        fontFamily: 'nunito',
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Splash Screen Flutter'),
@@ -58,7 +58,7 @@ Widget _introScreen() {
           end: Alignment.bottomLeft,
           colors: [Colors.grey[50]],
         ),
-        navigateAfterSeconds: HomeScreen(),
+        navigateAfterSeconds: SignInPage(),
         loaderColor: Colors.transparent,
       ),
       Container(

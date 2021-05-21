@@ -90,9 +90,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: NunitoExtraLight
+    - family: nunito
       fonts:
-        - asset: assets/fonts/NunitoExtraLight.ttf
+        - asset: assets/fonts/nunito.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
@@ -113,5 +113,8 @@ flutter:
      - assets/images/calendar_header_rainy.jpg
      - assets/images/splash.jpg
      - assets/images/drawer.png
+     - assets/images/login.jpg
+     - assets/images/escolha1.jpg
+     - assets/images/escolha2.jpg
 
 
