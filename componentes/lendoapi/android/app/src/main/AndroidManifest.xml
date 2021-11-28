@@ -1,9 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.lendoapi">
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Permissão para uso de internet no app -->
    <application
         android:label="lendoapi"
         android:icon="@mipmap/ic_launcher">
+        <!-- Permissão para uso de http (ABAIXO) usesCleartextTraffic="true"-->
         <activity
+            android:usesCleartextTraffic="true" 
             android:name=".MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"

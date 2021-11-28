@@ -3,35 +3,20 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'mapeando.dart';
 
-Future<Server> fetchServer() async {
+Future<Mapeando> buscarServico() async {
   final response = await http.get(Uri.https('cdn.jsdelivr.net',
       'gh/paulosergioduff/serverbtcapi@master/sublocacoes/subloc-server.json'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
     // then parse the JSON.
-    return Server.fromJson(jsonDecode(response.body));
+    return Mapeando.fromJson(jsonDecode(response.body));
   } else {
     // If the server did not return a 200 OK response,
     // then throw an exception.
-    throw Exception('Failed to load Server');
-  }
-}
-
-class Server {
-  final int userId;
-  final int id;
-  final String content;
-
-  Server({this.userId, this.id, this.content});
-
-  factory Server.fromJson(Map<String, dynamic> json) {
-    return Server(
-      userId: json['userId'],
-      id: json['id'],
-      content: json['content'],
-    );
+    throw Exception('Failed to load Mapeando');
   }
 }
 
@@ -45,12 +30,12 @@ class LendoJsonPage extends StatefulWidget {
 }
 
 class _LendoJsonPageState extends State<LendoJsonPage> {
-  Future<Server> futureServer;
+  Future<Mapeando> futureMapeando;
 
   @override
   void initState() {
     super.initState();
-    futureServer = fetchServer();
+    futureMapeando = buscarServico();
   }
 
   @override
@@ -65,15 +50,16 @@ class _LendoJsonPageState extends State<LendoJsonPage> {
           title: Text('Resgatando dados do servidor'),
         ),
         body: Center(
-          child: FutureBuilder<Server>(
-            future: futureServer,
+          child: FutureBuilder<Mapeando>(
+            future: futureMapeando,
             builder: (context, snapshot) {
+              String resultado = snapshot.data.dadoExtraido;
+              int resultado2 = snapshot.data.userId;
               if (snapshot.hasData) {
-                return Text(snapshot.data.content);
+                return Text(resultado2.toString());
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
               }
-
               // By default, show a loading spinner.
               return CircularProgressIndicator();
             },
