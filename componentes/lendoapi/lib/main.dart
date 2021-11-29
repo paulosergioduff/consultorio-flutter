@@ -56,7 +56,9 @@ class _LendoJsonPageState extends State<LendoJsonPage> {
               String resultado = snapshot.data.dadoExtraido;
               int resultado2 = snapshot.data.userId;
               if (snapshot.hasData) {
-                return Text(resultado2.toString());
+                return telaRecebeParametro(
+                  parametro1: resultado,
+                );
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
               }
@@ -67,5 +69,16 @@ class _LendoJsonPageState extends State<LendoJsonPage> {
         ),
       ),
     );
+  }
+}
+
+class telaRecebeParametro extends StatelessWidget {
+  final String parametro1;
+
+  const telaRecebeParametro({Key key, this.parametro1}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(parametro1);
   }
 }
